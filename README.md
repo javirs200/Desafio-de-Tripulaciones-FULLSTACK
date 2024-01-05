@@ -1,19 +1,38 @@
-# Desarrollo Web Full Stack:
+# Guía de Desarrollo Fullstack
 
-* Crear la arquitectura de la solución, y encargarse de la implementación de la misma.
-* Decidir las tecnologías a usar con sentido y trabajando de la mano con Ciberseguridad para llegar a un consenso de nivel de 
-seguridad.
-* Trabajar en un front y back que permita visualizar los datos de la app y permita la interacción del usuario de la mano de los 
-compañeros de UX.
-* Desarrollar el front de la app con React y backend con node + express. 
-* La aplicación debe ser mobile-first y SPA (single page application), de manera que no haya en ningún momento recarga de 
-página, y solo se carguen y rendericen aquellos contenidos mínimos necesarios con cada cambio de endpoint.
-* Se valorará la proactividad, originalidad y búsqueda de soluciones a todos los niveles.
-* Elegir la bbdd (SQL o NoSQL) adecuada para cada app en función del modelo de datos necesitado compatible con el resultado 
-del trabajo de Data.
-* Se permite (y recomienda, si con ello se minimiza el tiempo de desarrollo y se acelera así el de entrega) el uso de cualquier 
-recurso de terceros (librerías, paquetes npm, etc.) además del código propio.
-* Gestionar el control de versiones con GitHub desde el principio del proyecto.
-* Gestionar la documentación y pruebas del proyecto hasta el punto que el tiempo lo permita y de la mejor manera posible.
-* Trabajar con los compañeros en la presentación, para exponer el trabajo de desarrollo.
-* Documentación
+## Tecnologías y Herramientas
+- **Lenguaje de Programación:** JavaScript
+- **Backend:** Node.js con Express.js
+- **Frontend:** React
+- **ORM para SQL:** Sequelize para interactuar con Cloud SQL
+
+## Desarrollo y Directrices Específicas
+- **Arquitectura de la Solución:**
+  - Crear y documentar la arquitectura de la solución, asegurando la implementación efectiva de la misma.
+  - Trabajar lado a lado con el equipo de Ciberseguridad para determinar el nivel de seguridad adecuado. ( Nota: De que lado? ~~del que tengo aqui colg~~ cordinarse con ciberseguridad para que puedan revisar el código y evitar vulnerabilidades) 
+  
+- **Desarrollo Frontend y Backend:**
+  - Desarrollar el frontend de la aplicación utilizando React, enfocándose en un diseño mobile-first y SPA (single page application).
+  - Crear y mantener una API RESTful con Express.js, que será alojada en Cloud Run, para el manejo del backend.
+  - Asegurar que la aplicación no requiera recarga de página y que solo cargue y renderice los contenidos necesarios con cada cambio de endpoint.
+
+- **Selección de Base de Datos:**
+  - Elegir entre base de datos SQL o NoSQL según el modelo de datos requerido y la compatibilidad con los resultados del trabajo de Data.
+  - Integrar Sequelize para la manipulación de la base de datos SQL en Cloud SQL, si se elige SQL como base de datos.
+
+- **Uso de Recursos de Terceros:**
+  - Utilizar recursos de terceros (librerías, paquetes npm, etc.) para optimizar el tiempo de desarrollo y entrega.
+
+- **Gestión de Control de Versiones:**
+  - Manejar el control de versiones del proyecto utilizando GitHub desde el inicio del proyecto.
+
+- **Documentación y Pruebas:**
+  - Gestionar la documentación y pruebas del proyecto hasta donde el tiempo lo permita.
+  - Documentar adecuadamente todas las fases y componentes del desarrollo.
+
+- **Colaboración y Presentación:**
+  - Trabajar en colaboración con otros equipos, especialmente con UX, para una implementación y presentación efectiva del proyecto.
+
+## Documentación
+- Mantener la documentación actualizada a lo largo de todo el proceso de desarrollo, cubriendo aspectos técnicos y decisiones tomadas.
+- Preparar material para la presentación del proyecto, destacando características clave y decisiones de diseño.
