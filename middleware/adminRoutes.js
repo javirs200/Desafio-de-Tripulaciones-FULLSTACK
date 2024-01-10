@@ -7,7 +7,7 @@ adminRoutes.use(async (req, res, next) => {
         console.log("ADMIN USER");
         next();
     }else{
-        res.status(401);
+        res.status(401).send();
     }
     
 });
