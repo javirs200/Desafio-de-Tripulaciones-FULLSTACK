@@ -5,19 +5,18 @@ const userController = require('../controllers/users.controller')
 const getAccessToken = require('../middleware/getAccessToken');
 const decodeToken = require('../middleware/decodeToken');
 const adminRoutes = require('../middleware/adminRoutes');
+const clientRoutes = require('../middleware/clientRoutes');
 
 // POST
-userRouter.post("/", userController.createUser);
-// userRouter.post("/", ()=>{console.log('llega');});
+userRouter.post("/",getAccessToken, decodeToken, adminRoutes, userController.createUser);
 
-// GET
-userRouter.get("/", userController.readUser);
-// userRouter.get("/", ()=>{console.log('llega');});
+// GET client asesor route demo
+userRouter.get("/", getAccessToken, decodeToken, clientRoutes, userController.readUser);
 
 // DELETE
-userRouter.delete("/", userController.deleteUser);
+userRouter.delete("/", getAccessToken, decodeToken, adminRoutes, userController.deleteUser);
 
-//para probar JWT
-userRouter.get('/all', getAccessToken, decodeToken, adminRoutes, userController.getAllUsers);
+//client asesor route demo
+userRouter.get('/all', getAccessToken, decodeToken, clientRoutes, userController.getAllUsers);
 
 module.exports = userRouter;
