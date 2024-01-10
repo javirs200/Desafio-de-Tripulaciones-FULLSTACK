@@ -11,7 +11,8 @@ const userRoutes = require('./routes/users.routes')
 const loginRoutes = require('./routes/login.routes')
 
 //DB conection Startup
-const db = require('./config/db_pgsql')
+const database = require('./config/db_pgsql')
+database.connectSQL()
 
 app.use(cors());
 app.use(express.json());
