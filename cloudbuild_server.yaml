@@ -26,4 +26,3 @@ steps:
 
 images:
 - 'gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA'
-
