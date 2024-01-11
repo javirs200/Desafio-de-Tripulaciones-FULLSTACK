@@ -31,7 +31,4 @@ steps:
 images:
 - 'gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA'
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/978880424422/secrets/"aquivaelnombre"/versions/1
-      env: 'DB_URL_SQL'
+
