@@ -2,7 +2,22 @@ import { useState, useEffect } from 'react'
 
 
 
-function TablaInputFactura() {
+function TablaInputFactura({
+  inputConsumoAnual,
+  setInputConsumoAnual,
+  inputConsumo,
+  setInputConsumo,
+  inputPrecioAnual,
+  setImputPrecioAnual,
+  inputPrecioMes,
+  setImputPrecioMes,
+  inputPotenciaContratada,
+  setPotenciaContratada,
+  inputPotenciaFacturada,
+  setPotenciaFacturada,
+  inputPrecioPotencia,
+  setPrecioPotencia 
+}) {
 
 
 
@@ -11,41 +26,41 @@ function TablaInputFactura() {
 
 
   //ESTADO PATA METER EL CONSUMO ANUAL DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA
-  const [inputConsumoAnual, setInputConsumoAnual] = useState({
-    consumo_anual_p1 : 0,
-    consumo_anual_p2 : 0,
-    consumo_anual_p3 : 0,
-    consumo_anual_p4 : 0,
-    consumo_anual_p5 : 0,
-    consumo_anual_p6 : 0
-  });
+  // const [inputConsumoAnual, setInputConsumoAnual] = useState({
+  //   consumo_anual_p1 : 0,
+  //   consumo_anual_p2 : 0,
+  //   consumo_anual_p3 : 0,
+  //   consumo_anual_p4 : 0,
+  //   consumo_anual_p5 : 0,
+  //   consumo_anual_p6 : 0
+  // });
  
-  const [inputConsumo, setInputConsumo] = useState({
-    consumo_factura_p1 : 0,
-    consumo_factura_p2 : 0,
-    consumo_factura_p3 : 0,
-    consumo_factura_p4 : 0,
-    consumo_factura_p5 : 0,
-    consumo_factura_p6 : 0
-  });
-  //ESTADO PATA METER EL PRECIO ANUAL DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA
-  const [inputPrecioAnual, setImputPrecioAnual] = useState({
-    precio_anual_p1 : 0,
-    precio_anual_p2 : 0,
-    precio_anual_p3 : 0,
-    precio_anual_p4 : 0,
-    precio_anual_p5 : 0,
-    precio_anual_p6 : 0
-  });
+  // const [inputConsumo, setInputConsumo] = useState({
+  //   consumo_factura_p1 : 0,
+  //   consumo_factura_p2 : 0,
+  //   consumo_factura_p3 : 0,
+  //   consumo_factura_p4 : 0,
+  //   consumo_factura_p5 : 0,
+  //   consumo_factura_p6 : 0
+  // });
+  // //ESTADO PATA METER EL PRECIO ANUAL DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA
+  // const [inputPrecioAnual, setImputPrecioAnual] = useState({
+  //   precio_anual_p1 : 0,
+  //   precio_anual_p2 : 0,
+  //   precio_anual_p3 : 0,
+  //   precio_anual_p4 : 0,
+  //   precio_anual_p5 : 0,
+  //   precio_anual_p6 : 0
+  // });
 
-  const [inputPrecioMes, setImputPrecioMes] = useState({
-    precio_factura_p1 : 0,
-    precio_factura_p2 : 0,
-    precio_factura_p3 : 0,
-    precio_factura_p4 : 0,
-    precio_factura_p5 : 0,
-    precio_factura_p6 : 0
-  });
+  // const [inputPrecioMes, setImputPrecioMes] = useState({
+  //   precio_factura_p1 : 0,
+  //   precio_factura_p2 : 0,
+  //   precio_factura_p3 : 0,
+  //   precio_factura_p4 : 0,
+  //   precio_factura_p5 : 0,
+  //   precio_factura_p6 : 0
+  // });
   
   const [descuentoActual, setDescuentoActual] = useState(0);
 
@@ -78,34 +93,34 @@ function TablaInputFactura() {
 
 //_______________________ ESTADOS POTENCIA __________________________________
 
-const [inputPotenciaContratada, setPotenciaContratada] = useState({
-  potencia_contratada_p1: 0,
-  potencia_contratada_p2: 0,
-  potencia_contratada_p3: 0,
-  potencia_contratada_p4: 0,
-  potencia_contratada_p5: 0,
-  potencia_contratada_p6: 0,
-});
+// const [inputPotenciaContratada, setPotenciaContratada] = useState({
+//   potencia_contratada_p1: 0,
+//   potencia_contratada_p2: 0,
+//   potencia_contratada_p3: 0,
+//   potencia_contratada_p4: 0,
+//   potencia_contratada_p5: 0,
+//   potencia_contratada_p6: 0,
+// });
 
-const [inputPotenciaFacturada, setPotenciaFacturada] = useState({
-  potencia_facturada_p1 : 0,
-  potencia_facturada_p2 : 0,
-  potencia_facturada_p3 : 0,
-  potencia_facturada_p4 : 0,
-  potencia_facturada_p5 : 0,
-  potencia_facturada_p6 : 0
+// const [inputPotenciaFacturada, setPotenciaFacturada] = useState({
+//   potencia_facturada_p1 : 0,
+//   potencia_facturada_p2 : 0,
+//   potencia_facturada_p3 : 0,
+//   potencia_facturada_p4 : 0,
+//   potencia_facturada_p5 : 0,
+//   potencia_facturada_p6 : 0
   
-});
+// });
 
-const [inputPrecioPotencia, setPrecioPotencia] = useState({
-  precio_potencia_p1 : 0,
-  precio_potencia_p2 : 0,
-  precio_potencia_p3 : 0,
-  precio_potencia_p4 : 0,
-  precio_potencia_p5 : 0,
-  precio_potencia_p6 : 0
+// const [inputPrecioPotencia, setPrecioPotencia] = useState({
+//   precio_potencia_p1 : 0,
+//   precio_potencia_p2 : 0,
+//   precio_potencia_p3 : 0,
+//   precio_potencia_p4 : 0,
+//   precio_potencia_p5 : 0,
+//   precio_potencia_p6 : 0
   
-});
+// });
 
 const [descuentoPotencia, setDescuentoPotencia] = useState(0);
 
