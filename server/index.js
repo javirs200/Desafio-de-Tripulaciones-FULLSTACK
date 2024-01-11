@@ -9,6 +9,7 @@ const cors = require('cors');
 //routers
 const userRoutes = require('./routes/users.routes')
 const loginRoutes = require('./routes/login.routes')
+const preciosRoutes = require('./routes/precios.routes')
 
 //DB conection Startup
 const database = require('./config/db_pgsql')
@@ -22,6 +23,9 @@ app.use(helmet());
 app.use('/api/users',userRoutes)
 
 app.use('/api/login',loginRoutes)
+
+app.use('/api/precios',preciosRoutes)
+
 
 //* Serve static assets in production, must be at this location of this file
 // if (process.env.NODE_ENV === 'production') {
