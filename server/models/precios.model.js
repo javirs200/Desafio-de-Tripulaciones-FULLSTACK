@@ -3,7 +3,7 @@ const { db } = require('../config/db_pgsql');
 
 const { DataTypes } = require('sequelize');
 
-const fijo = db.define("fijo", {
+const precio_fijo = db.define("precio_fijo", {
     sistema: {
         field: 'sistema',
         type: DataTypes.STRING(50),
@@ -79,15 +79,15 @@ const fijo = db.define("fijo", {
 },
     {
         db,
-        modelName: 'fijo',
-        tableName: 'fijo',
+        modelName: 'precio_fijo',
+        tableName: 'precio_fijo',
         timestamps:false
     }
 );
 
 // This syncs our model with our database.
 // Users.sync({alter:true});
-fijo.removeAttribute('id')
-fijo.sync();
+precio_fijo.removeAttribute('id')
+precio_fijo.sync();
 
-module.exports = fijo;
+module.exports = precio_fijo;
