@@ -1,7 +1,12 @@
 import React from "react";
+import TablaInputFactura from "./TablaInputFactura"
 
 const TablesContainer = () => {
-  return <div>TablesContainer</div>;
+  return (
+    <>
+      <TablaInputFactura/>
+    </>
+  );
 };
 
 export default TablesContainer;
