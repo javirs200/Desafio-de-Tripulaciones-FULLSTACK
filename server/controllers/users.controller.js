@@ -5,8 +5,8 @@ const getAllUsers = async (req, res) => {
     let user = await usersModel.findAll();
     res.status(200).json(user);
   } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    console.log(`ERROR: ${error}`);
+    res.status(400).json({ msj: `ERROR: ${error}` });
   }
 };
 
