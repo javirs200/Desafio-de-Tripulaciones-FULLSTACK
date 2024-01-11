@@ -16,7 +16,7 @@ steps:
   entrypoint: bash
   args: [
     "-c",
-    "gcloud run deploy react-nodejs-cloudbuilds-server 
+    "gcloud run deploy cloudbuilds-server 
     --image=gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA 
     --region=europe-west1 
     --platform=managed 
@@ -25,13 +25,6 @@ steps:
     --update-env-vars DB_URL_SQL=$$DB_URL_SQL"
   ]
 
-  secretEnv: [
-    'DB_URL_SQL'
-  ]
 images:
 - 'gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA'
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/978880424422/secrets/"aquivaelnombre"/versions/1
-      env: 'DB_URL_SQL'
