@@ -17,7 +17,7 @@ const fijo = db.define("fijo", {
         type: DataTypes.STRING(50),
     },
     producto_cia:{
-        field:'producto',
+        field:'producto_cia',
         type: DataTypes.STRING(50),
     },
     tarifa:{
@@ -85,6 +85,7 @@ const fijo = db.define("fijo", {
 );
 
 // This syncs our model with our database.
-Users.sync({alter:true});
+// Users.sync({alter:true});
+fijo.sync();
 
 module.exports = fijo;

@@ -33,6 +33,7 @@ const usuarios = db.define("usuarios", {
 );
 
 // This syncs our model with our database.
-Users.sync({alter:true});
+// Users.sync({alter:true});
+usuarios.sync();
 
 module.exports = usuarios;
