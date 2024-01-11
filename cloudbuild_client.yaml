@@ -23,6 +23,3 @@ steps:
     --allow-unauthenticated 
     --port=8080"
   ]
-
-images:
-- 'gcr.io/$PROJECT_ID/app$COMMIT_SHA'
