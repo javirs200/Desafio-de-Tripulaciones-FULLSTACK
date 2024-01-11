@@ -21,11 +21,6 @@ steps:
     --region=europe-west1 
     --platform=managed 
     --allow-unauthenticated 
-    --port=8080 
-    --update-env-vars DB_URL_SQL=$$DB_URL_SQL"
+    --port=8080"
   ]
-
-  
-images:
-- 'gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA'
 
