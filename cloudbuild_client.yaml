@@ -9,7 +9,7 @@ steps:
 
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/users-app-server:$COMMIT_SHA']
+  args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/users-app-client:$COMMIT_SHA']
 
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
