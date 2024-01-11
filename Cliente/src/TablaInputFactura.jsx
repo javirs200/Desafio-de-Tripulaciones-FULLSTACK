@@ -5,6 +5,11 @@ import './App.css'
 function App() {
   const [cups, setCups]= useState("");
 
+
+//_______________________ ESTADOS ENERGIA __________________________________
+
+
+
   //ESTADO PATA METER EL CONSUMO ANUAL DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA
   const [inputConsumoAnual, setInputConsumoAnual] = useState({
     consumo_anual_p1 : 0,
@@ -42,8 +47,6 @@ function App() {
     precio_factura_p6 : 0
   });
   
-
-
   const [descuentoActual, setDescuentoActual] = useState(0);
 
   const [precioDescuentoActual, setPrecioDescuentoActual] = useState({
@@ -72,6 +75,23 @@ function App() {
     p5 : 0,
     p6 : 0,
   });
+
+//_______________________ ESTADOS POTENCIA __________________________________
+
+const [inputPotenciaContratada, setPotenciaContratada] = useState({
+  potencia_contratada_p1: 0,
+  potencia_contratada_p2: 0,
+  potencia_contratada_p3: 0,
+  potencia_contratada_p4: 0,
+  potencia_contratada_p5: 0,
+  potencia_contratada_p6: 0,
+})
+
+const [inputPotenciaFacturada, setPotenciaFacturada] = useState({
+  
+})
+
+//_______________________ FUNCIONES ENERGIA __________________________________
 
   
 
@@ -174,6 +194,7 @@ function App() {
       <section>
         <table border="1">
           <thead>
+          {/* INPUTS ENERGIA */}
             <tr>
               <th>FRANJA</th>
               <th>CONSUMO ANUAL (kWh)</th>
@@ -184,6 +205,17 @@ function App() {
               <th>PRECIO CON DESCUENTO </th>
               <th>TOTAL PAGO EN FACTURA</th>
               <th>TOTAL PAGO ANUAL</th>
+
+          {/* INPUTS POTENCIA */}
+
+              <th>POTENCIA CONTRATADA (kW)</th>
+              <th>POTENCIA FACTURADA (kW)</th>
+              <th>PRECIOS POTENCIA (€/kW/día)</th>
+              <th>DESCUENTO (%)</th>
+              <th>PRECIO CON DESCUENTO</th>
+              <th>TOTAL PAGO EN FACTURA	</th>
+              <th>TOTAL PAGO ANUAL</th>
+          
             </tr>
           </thead>
           <tbody>
@@ -199,6 +231,17 @@ function App() {
               <td>{precioDescuentoActual.p1}</td>
               <td>{totalPagoFactura.p1} </td>
               <td>{totalPagoAnual.p1}</td>
+
+              <td><input type="number" name="potencia_contratada_p1" step="any" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="potencia_facturada_p1" step="any" 
+        onChange={handleInputConsumo}></input></td>
+              <td><input type="number" name="precio_potencia_p1" step="any" onChange={handleInputPrecioAnual}></input></td>
+              <td><input type="number" name="descuento_potencia" step="any" value={inputPrecioMes.p1}
+        onChange={handleInputPrecioMes}></input></td>
+              <td><input type="number" name="precio_potencia_descuento_p1" step="any" onChange={handleInputDescuentoActual}></input></td>
+              <td>{precioPotenciaActual.p1}</td>
+              <td>{totalPagoPotenciaFactura.p1} </td>
+              <td>{totalPagoPotenciaAnual.p1}</td>
             </tr>
             <tr>
               <td>P2</td>
