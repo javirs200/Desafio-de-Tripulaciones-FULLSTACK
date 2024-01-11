@@ -22,7 +22,6 @@ steps:
     --platform=managed 
     --allow-unauthenticated 
     --port=8080 
-    --update-env-vars DB_URL_SQL=$$DB_URL_SQL"
   ]
 
 images:
