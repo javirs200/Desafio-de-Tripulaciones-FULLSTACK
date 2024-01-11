@@ -17,7 +17,7 @@ steps:
   args: [
     "-c",
     "gcloud run deploy react-nodejs-cloudbuilds-client 
-    --image=europe-west1-docker.pkg.dev/$PROJECT_ID/users-app-server:$COMMIT_SHA
+    --image=europe-west1-docker.pkg.dev/$PROJECT_ID/users-app-client:$COMMIT_SHA
     --region=europe-west1 
     --platform=managed 
     --allow-unauthenticated 
