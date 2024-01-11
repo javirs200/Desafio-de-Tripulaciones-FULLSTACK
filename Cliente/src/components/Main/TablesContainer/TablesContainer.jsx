@@ -1,10 +1,13 @@
 import React from "react";
-import TablaInputFactura from "./TablaInputFactura"
+import TableInputFactura from "./TableInputFactura/TableInputFactura"
+import TablePropuesta from "./TablePropuesta/TablePropuesta"
 
 const TablesContainer = () => {
   return (
     <>
-      <TablaInputFactura/>
+      <TableInputFactura/>
+      <TablePropuesta/>
+      
     </>
   );
 };
