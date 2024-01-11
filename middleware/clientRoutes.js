@@ -3,11 +3,11 @@ const express = require("express");
 const userRoutes = express.Router();
 
 userRoutes.use(async (req, res, next) => {
-    if (req.token.role === "asesor") {
+    if (req.token.role === "asesor" || req.token.role === "admin") {
         console.log("CLIENT USER");
         next();
     } else {
-        res.status(401);
+        res.status(401).send();
     }
 
 });
