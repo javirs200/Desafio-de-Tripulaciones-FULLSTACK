@@ -22,7 +22,4 @@ steps:
     --platform=managed 
     --allow-unauthenticated 
     --port=8080 
-  ]
-
-images:
-- 'gcr.io/$PROJECT_ID/users-app-server:$COMMIT_SHA'
+]
