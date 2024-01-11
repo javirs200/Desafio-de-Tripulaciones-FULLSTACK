@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 
 
 
-function App() {
-  const [cups, setCups]= useState("");
+function TablaInputFactura() {
+
 
 
 //_______________________ ESTADOS ENERGIA __________________________________
@@ -384,8 +384,7 @@ const handleInputDescuentoPotencia = (e) => {
               <td><input type="number" name="potencia_facturada_p2" step="any" 
         onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p2" step="any" onChange={handleInputPrecioPotencia}></input></td>
-              <td><input type="number" name="descuento_potencia" step="any"
-        onChange={handleInputDescuentoPotencia}></input></td>
+              <td></td>
               <td>{precioPotenciaDescuento.p2}</td>
               <td>{totalPagoFacturaPotencia.p2}</td>
               <td>{totalPagoAnualPotencia.p2}</td>
@@ -405,8 +404,7 @@ const handleInputDescuentoPotencia = (e) => {
               <td><input type="number" name="potencia_facturada_p3" step="any" 
         onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p3" step="any" onChange={handleInputPrecioPotencia}></input></td>
-              <td><input type="number" name="descuento_potencia" step="any" 
-        onChange={handleInputDescuentoPotencia}></input></td>
+              <td></td>
               <td>{precioPotenciaDescuento.p3}</td>
               <td>{totalPagoFacturaPotencia.p3}</td>
               <td>{totalPagoAnualPotencia.p3}</td>
@@ -427,8 +425,7 @@ const handleInputDescuentoPotencia = (e) => {
               <td><input type="number" name="potencia_facturada_p4" step="any" 
         onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p4" step="any" onChange={handleInputPrecioPotencia}></input></td>
-              <td><input type="number" name="descuento_potencia" step="any" 
-        onChange={handleInputDescuentoPotencia}></input></td>
+              <td></td>
               <td>{precioPotenciaDescuento.p4}</td>
               <td>{totalPagoFacturaPotencia.p4}</td>
               <td>{totalPagoAnualPotencia.p4}</td>
@@ -450,8 +447,7 @@ const handleInputDescuentoPotencia = (e) => {
               <td><input type="number" name="potencia_facturada_p5" step="any" 
         onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p5" step="any" onChange={handleInputPrecioPotencia}></input></td>
-              <td><input type="number" name="descuento_potencia" step="any" 
-        onChange={handleInputDescuentoPotencia}></input></td>
+              <td></td>
               <td>{precioPotenciaDescuento.p5}</td>
               <td>{totalPagoFacturaPotencia.p5}</td>
               <td>{totalPagoAnualPotencia.p5}</td>
@@ -473,8 +469,7 @@ const handleInputDescuentoPotencia = (e) => {
               <td><input type="number" name="potencia_facturada_p6" step="any" 
         onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p6" step="any" onChange={handleInputPrecioPotencia}></input></td>
-              <td><input type="number" name="descuento_potencia" step="any" 
-        onChange={handleInputDescuentoPotencia}></input></td>
+              <td></td>
               <td>{precioPotenciaDescuento.p6}</td>
               <td>{totalPagoFacturaPotencia.p6}</td>
               <td>{totalPagoAnualPotencia.p6}</td>
@@ -509,4 +504,4 @@ const handleInputDescuentoPotencia = (e) => {
   )
 }
 
-export default App
+export default TablaInputFactura
