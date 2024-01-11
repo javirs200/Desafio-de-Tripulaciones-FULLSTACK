@@ -57,7 +57,7 @@ const fijo = db.define("fijo", {
         type: DataTypes.DOUBLE,
     },
     p2_e:{
-    field:'p2_e',
+        field:'p2_e',
         type: DataTypes.DOUBLE,
     },
     p3_e:{
@@ -80,12 +80,14 @@ const fijo = db.define("fijo", {
     {
         db,
         modelName: 'fijo',
-        tableName: 'fijo' 
+        tableName: 'fijo',
+        timestamps:false
     }
 );
 
 // This syncs our model with our database.
 // Users.sync({alter:true});
+fijo.removeAttribute('id')
 fijo.sync();
 
 module.exports = fijo;
