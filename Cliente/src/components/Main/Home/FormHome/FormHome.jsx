@@ -8,17 +8,17 @@ const FormHome = () => {
 <form className="form_home">
         <input
           type="text"
-          className="input_name"
+          className="input_form"
           placeholder="Nombre/Razón"
         ></input>
         <input
           type="text"
-          className="input_password"
+          className="input_form"
           placeholder="Dirección"
         ></input>
         <input
           type="text"
-          className="input_password"
+          className="input_form"
           placeholder="Cups"
         ></input>
       </form>

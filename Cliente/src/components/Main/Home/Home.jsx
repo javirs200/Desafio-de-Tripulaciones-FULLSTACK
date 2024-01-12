@@ -1,15 +1,18 @@
 import React from "react";
 import Nav from "./Nav/Nav";
 import FormHome from "./FormHome/FormHome";
-import "./Home.css"
-
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
-      <Nav />
-      <FormHome />
-    </div>
+    <>
+      <header>
+        <Nav />
+      </header>
+      <div>
+        <FormHome />
+      </div>
+    </>
   );
 };
 

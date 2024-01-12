@@ -9,28 +9,27 @@ const Login = () => {
   };
   return (
 
-    <div>
-      <img src="/PropiedadLogotipo-negro.png" alt="logo" className="logo" />
-      <h3 className="title_login">Iniciar sesión</h3>
-      <form>
+    <section className="form_logo_container">
+      <p className="create_p">Inicia sesión</p>
+      <form className="form_label">
         <input
-          type="text"
-          className="input_name"
-          placeholder="Nombre de Usuario"
+          type="email"
+          className="input_form"
+          placeholder="Email"
         ></input>
         <input
-          type="text"
-          className="input_password"
+          type="password"
+          className="input_form"
           placeholder="Contraseña"
         ></input>
       </form>
       <p>
         ¿No tienes cuenta? <a>Registrate</a>
       </p>
-      <button onClick={handleButtonClick} type="submit">
+      <button className="form_button" onClick={handleButtonClick} type="submit">
         Continuar
       </button>
-    </div>
+    </section>
   );
 };
 
