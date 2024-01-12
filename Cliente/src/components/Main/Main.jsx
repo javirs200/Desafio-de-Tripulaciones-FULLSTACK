@@ -1,20 +1,19 @@
 import React from "react";
+import Login from "./Login/Login";
+import Home from "./Home/Home";
 import { Route, Routes, Navigate } from "react-router-dom";
-import TablesContainer from "./TablesContainer/TablesContainer"
+
+
+
 
 const Main = () => {
-  return (
-    <>
-      <main>
-        <Routes>
-          {/* <Route path="/" element={<Home/>} /> */}
-          <Route path="/table" element={<TablesContainer/>} />
-          <Route path="/*" element={<Navigate to={"/home"} />} />
-        </Routes>
-      </main>
-    
-    </>
-  )
+  return (<main>
+      <Routes>
+        <Route path="/login" element={<Login/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/" element={<Navigate to={"/home"} />} />
+      </Routes>
+    </main>)
 };
 
 export default Main;
