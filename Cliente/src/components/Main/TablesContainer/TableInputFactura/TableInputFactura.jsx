@@ -436,107 +436,119 @@ function TablaInputFactura({
 
       <section>
         <table border="1">
+          <tbody>
           <tr>
             <th>DIAS DE FACTURACION</th>
-            <td><input type="number" name="valor_numerico" id="valor_numerico"></input></td>
+            <td><input type="number" name="dias_facturacion"></input></td>
           </tr>
+        </tbody>
         </table>
 
         <table border="1">
+          <tbody>
           <tr>
             <th>ENERGIA REACTIVA</th>
-            <td><input type="number" name="valor_numerico" id="valor_numerico"></input></td>
+            <td><input type="number" name="energia_reactiva"></input></td>
           </tr>
+        </tbody>
         </table>
 
         <table border="1">
+          <tbody>
           <tr>
             <th>IMPUESTO ELÉCTRICO</th>
-            <td><input type="number" name="valor_numerico" id="valor_numerico"></input></td>
+            <td><input type="number" name="impuesto_electrico"></input></td>
           </tr>
+        </tbody>
         </table>
 
         <table border="1">
+          <tbody>
           <tr>
             <th>ALQUILER DE EQUIPO</th>
-            <td><input type="number" name="valor_numerico" id="valor_numerico"></input></td>
+            <td><input type="number" name="alquiler_equipo"></input></td>
           </tr>
+        </tbody>
         </table>
 
         <table border="1">
+          <tbody>
           <tr>
             <th>IMPORTE TOTAL FACTURA</th>
-            <td><input type="number" name="valor_numerico" id="valor_numerico"></input></td>
+            <td><input type="number" name="importe_total_factura"></input></td>
           </tr>
+        </tbody>
         </table>
 
       </section>
 
       <section>
         <table border="1">
-          <tr>
-            <th>OTROS</th>
-            <th><input type="number" name="valor_numerico" id="valor_numerico"></input></th>
-            <td>
-              <select name="select_si_no_1" id="select_si_no_1">
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </td>
-            <td>
-              <select name="select_si_no_2" id="select_si_no_2">
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </td>
-          </tr>
-        </table>
-
-        <table border="1">
-        <tbody>
-          <tr>
-            <th>OTROS</th>
-            <th><input type="number" name="valor_numerico" id="valor_numerico"></input></th>
-            <td>
-              <select name="select_si_no_1" id="select_si_no_1">
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </td>
-            <td>
-              <select name="select_si_no_2" id="select_si_no_2">
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-
-        <table border="1">
-        <tbody>
-          <tr>
-            <th>IVA</th>
-            <td>
-              <select name="iva">
-                <option value="21" >21%</option>
-                <option value="10">10%</option>
-                <option value="5">5%</option>
-              </select>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        
-        <table border="1">
           <tbody>
           <tr>
-            <th>TOTAL ANUAL ESTIMADO</th>
-            <td> €</td>
+            <th>OTROS</th>
+            <th><input type="number" name="otros_a"></input></th>
+            <td>
+              <select name="otros_a_status01">
+                <option value="true">SI</option>
+                <option value="false">NO</option>
+              </select>
+            </td>
+            <td>
+              <select name="otros_a_status02">
+                <option value="true">SI</option>
+                <option value="false">NO</option>
+              </select>
+            </td>
           </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <th>OTROS</th>
+              <th><input type="number" name="otros_b"></input></th>
+              <td>
+                <select name="otros_b_status01">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+              <td>
+                <select name="otros_b_status02">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+            </tr>
           </tbody>
         </table>
-        
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <th>IVA</th>
+              <td>
+                <select name="iva">
+                  <option value="21" >21%</option>
+                  <option value="10">10%</option>
+                  <option value="5">5%</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <th>TOTAL ANUAL ESTIMADO</th>
+              <td> €</td>
+            </tr>
+          </tbody>
+        </table>
+
 
 
       </section >
