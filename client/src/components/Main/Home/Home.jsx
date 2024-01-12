@@ -6,12 +6,12 @@ import "./Home.css";
 const Home = () => {
   return (
     <>
-      <header>
+     
         <Nav />
-      </header>
-      <div>
+      
+     
         <FormHome />
-      </div>
+      
     </>
   );
 };
