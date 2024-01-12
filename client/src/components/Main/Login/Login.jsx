@@ -1,15 +1,17 @@
 import React from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 const Login = () => {
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate("/home");
   };
-  return (
+  return <section className="form_logo_container">
 
-    <section className="form_logo_container">
+      <Logo/>  
+      <article className="form_section"> 
       <p className="create_p">Inicia sesión</p>
       <form className="form_label">
         <input
@@ -26,11 +28,11 @@ const Login = () => {
       <p>
         ¿No tienes cuenta? <a>Registrate</a>
       </p>
-      <button className="form_button" onClick={handleButtonClick} type="submit">
-        Continuar
-      </button>
+      <button id="button_login" className="form_button"  type="click" onClick={handleButtonClick} >Continuar</button>
+      </article>
     </section>
-  );
+  
 };
 
 export default Login;
+
