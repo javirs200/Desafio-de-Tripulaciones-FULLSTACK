@@ -5,6 +5,10 @@ import TablePropuesta from "./TablePropuesta/TablePropuesta"
 
 const TablesContainer = () => {
 
+//_________________________ ESTADOS ENERGIA ______________________________________
+
+
+  //ESTADO PATA METER EL CONSUMO ANUAL (INPUTS EN TABLA, DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA)
   const [inputConsumoAnual, setInputConsumoAnual] = useState({
     consumo_anual_p1 : 0,
     consumo_anual_p2 : 0,
@@ -22,7 +26,7 @@ const TablesContainer = () => {
     consumo_factura_p5 : 0,
     consumo_factura_p6 : 0
   });
-  //ESTADO PATA METER EL PRECIO ANUAL DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA
+  //ESTADO PATA METER EL PRECIO ANUAL (INPUTS EN TABLA, DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA)
   const [inputPrecioAnual, setImputPrecioAnual] = useState({
     precio_anual_p1 : 0,
     precio_anual_p2 : 0,
@@ -41,6 +45,8 @@ const TablesContainer = () => {
     precio_factura_p6 : 0
   });
 
+
+//_________________________ ESTADOS POTENCIA ______________________________________
 
   const [inputPotenciaContratada, setPotenciaContratada] = useState({
     potencia_contratada_p1: 0,
