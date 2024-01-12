@@ -1,4 +1,5 @@
 const usersModel = require("../models/users.model");
+const { validationResult } = require('express-validator');
 
 const getAllUsers = async (req, res) => {
   try {
@@ -11,13 +12,21 @@ const getAllUsers = async (req, res) => {
 };
 
 const readUser = async (req, res) => {
-  const email = req.body.email
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   try {
+    const email = req.body.email
     let user = await usersModel.findOne({ where: { email: email } });
-    res.status(200).json(user);
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(400).json({ msg: "wrong credentials user not found" });
+    }
   } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    console.log(`ERROR: ${error}`);
+    res.status(400).json({ msj: `ERROR: ${error}` });
   }
 };
 
@@ -32,7 +41,7 @@ const createUser = async (req, res) => {
       role:""
     }
     */
-    if(data.role == null){
+    if (data.role == null) {
       //default role unprivileged user
       data.role = 'asesor';
     }
@@ -45,31 +54,31 @@ const createUser = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
-  try {
-    const data = req.body;
-    const id = data.id_user;
-    if (id) {
-      let result = await usersModel.update(data,{ where: { id_user: id } });
-      res
-          .status(201)
-          .json({ message: "User actualizado", updatedUser: { data } });
-      if (result.matchedCount == 0)
-        res.status(400).json({ message: `User con ID ${id} no encontrado` });
-      else if (result.modifiedCount == 0)
-        res.status(400).json({ message: `User con ID ${id} no modificado` });
-      else if (result.acknowledged && result.modifiedCount > 0)
-        res
-          .status(201)
-          .json({ message: "User actualizado", updatedUser: { data } });
-    } else {
-      res.status(400).json({ message: "formato de User erroneo" });
-    }
-  } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
-  }
-};
+// const updateUser = async (req, res) => {
+//   try {
+//     const data = req.body;
+//     const id = data.id_user;
+//     if (id) {
+//       let result = await usersModel.update(data,{ where: { id_user: id } });
+//       res
+//           .status(201)
+//           .json({ message: "User actualizado", updatedUser: { data } });
+//       if (result.matchedCount == 0)
+//         res.status(400).json({ message: `User con ID ${id} no encontrado` });
+//       else if (result.modifiedCount == 0)
+//         res.status(400).json({ message: `User con ID ${id} no modificado` });
+//       else if (result.acknowledged && result.modifiedCount > 0)
+//         res
+//           .status(201)
+//           .json({ message: "User actualizado", updatedUser: { data } });
+//     } else {
+//       res.status(400).json({ message: "formato de User erroneo" });
+//     }
+//   } catch (error) {
+//     console.log(`ERROR: ${error.stack}`);
+//     res.status(400).json({ msj: `ERROR: ${error.stack}` });
+//   }
+// };
 
 const deleteUser = async (req, res) => {
   try {
