@@ -5,7 +5,7 @@ const FormHome = () => {
 <>
 <h1>Empieza una nueva propuesta</h1>
 <br/>
-<form className="form_home">
+<form className="form_label">
         <input
           type="text"
           className="input_form"
