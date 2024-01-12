@@ -5,8 +5,8 @@ const getAllUsers = async (req, res) => {
     let user = await usersModel.findAll();
     res.status(200).json(user);
   } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    console.log(`ERROR: ${error}`);
+    res.status(400).json({ msj: `ERROR: ${error}` });
   }
 };
 
@@ -24,10 +24,19 @@ const readUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const data = req.body;
+    /*
+    data{
+      name:""
+      email:"@"
+      password:"HASH"
+      role:""
+    }
+    */
     if(data.role == null){
+      //default role unprivileged user
       data.role = 'asesor';
     }
-    console.log('datos para el user ', data);
+    // console.log('datos para el user ', data);
     let answer = await usersModel.create(data);
     res.status(201).json(answer);
   } catch (error) {

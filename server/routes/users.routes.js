@@ -17,6 +17,6 @@ userRouter.get("/", getAccessToken, decodeToken, clientRoutes, userController.re
 userRouter.delete("/", getAccessToken, decodeToken, adminRoutes, userController.deleteUser);
 
 //client asesor route demo
-userRouter.get('/all', getAccessToken, decodeToken, clientRoutes, userController.getAllUsers);
+userRouter.get('/all',userController.getAllUsers);
 
 module.exports = userRouter;

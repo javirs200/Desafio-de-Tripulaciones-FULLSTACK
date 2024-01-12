@@ -3,11 +3,10 @@ const { db } = require('../config/db_pgsql');
 
 const { DataTypes } = require('sequelize');
 
-const usuarios = db.define("usuarios", {
+const usuario = db.define("usuario", {
     id_usuario: {
         field: 'id_usuario',
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
+        type: DataTypes.INTEGER,
         primaryKey: true,
     },
     email: {
@@ -17,23 +16,25 @@ const usuarios = db.define("usuarios", {
         primaryKey: true,
     },
     contraseña:{ // esto tiene que estar en hash 
-        field: 'password',
+        field: 'contraseña',
         type: DataTypes.STRING(50)
     },
     rol: {
-        field: 'role',
+        field: 'rol',
         type: DataTypes.STRING(50)
     },
+    
 },
     {
         db,
-        modelName: 'usuarios',
-        tableName: 'usuarios' 
+        modelName: 'usuario',
+        tableName: 'usuario',
+        timestamps:false,
     }
 );
 
 // This syncs our model with our database.
 // Users.sync({alter:true});
-usuarios.sync();
+usuario.sync();
 
-module.exports = usuarios;
+module.exports = usuario;
