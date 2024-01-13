@@ -1,6 +1,6 @@
 const usersModels = require('../models/users.model');
 const { createToken } = require('../config/jsonWebToken');
-var bcrypt = require('bcryptjs');
+let bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 
 const login = async (req, res) => {
