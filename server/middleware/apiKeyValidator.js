@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const node_env = process.env.NODE_ENV;
 
-let apiKeyUSES = process.env.MY_API_KEY_USES;
+let apiKeyUSES = process.env.MY_API_KEY_USES; // Ejemplo: establece los usos iniciales de la clave API, considera usar una base de datos para esto
 
 const MY_API_KEY = process.env.MY_API_KEY;
 
@@ -17,11 +17,12 @@ apiKeyValidator.use(async (req, res, next) => {
     }
 
     if (req.body.apiKey === MY_API_KEY && (apiKeyUSES > 0 || node_env === 'develop')) {
-        console.log("API KEY ACCESS");
+        console.log("ACCESO CON CLAVE API");
         apiKeyUSES --;
         next();
     }else{
-        return res.status(400).json({ msj: 'api key erronea o inutilizada'});
+        return res.status(401).json({ message: "No autorizado: Clave API inválida o sin usos restantes, contacta con adminsitrador" });
+
     }
     
 });
