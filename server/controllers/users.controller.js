@@ -1,5 +1,10 @@
 const usersModel = require("../models/users.model");
 const { validationResult } = require('express-validator');
+let bcrypt = require('bcryptjs');
+require('dotenv').config()
+const uuidV4 = require('uuid')
+
+const salt = process.env.SALT
 
 const getAllUsers = async (req, res) => {
   try {
@@ -32,58 +37,38 @@ const readUser = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const data = req.body;
-    /*
-    data{
-      name:""
-      email:"@"
-      password:"HASH"
-      role:""
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
-    */
-    if (data.role == null) {
+    let {nombre,apellido,email,password,rol} = req.body;
+
+    if (rol == null) {
       //default role unprivileged user
-      data.role = 'asesor';
+      rol = 'asesor';
     }
-    // console.log('datos para el user ', data);
+    password = await bcrypt.hash(password,10)
+
+    const id_usuario = uuidV4.v4()
+
+    const data = {id_usuario,nombre,apellido,email,password,rol}
+
+    console.log('datos para guardar en dB ', data);
     let answer = await usersModel.create(data);
     res.status(201).json(answer);
   } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    console.log(`ERROR: ${error}`);
+    res.status(400).json({ msj: `ERROR: ${error}` });
   }
 };
 
-// const updateUser = async (req, res) => {
-//   try {
-//     const data = req.body;
-//     const id = data.id_user;
-//     if (id) {
-//       let result = await usersModel.update(data,{ where: { id_user: id } });
-//       res
-//           .status(201)
-//           .json({ message: "User actualizado", updatedUser: { data } });
-//       if (result.matchedCount == 0)
-//         res.status(400).json({ message: `User con ID ${id} no encontrado` });
-//       else if (result.modifiedCount == 0)
-//         res.status(400).json({ message: `User con ID ${id} no modificado` });
-//       else if (result.acknowledged && result.modifiedCount > 0)
-//         res
-//           .status(201)
-//           .json({ message: "User actualizado", updatedUser: { data } });
-//     } else {
-//       res.status(400).json({ message: "formato de User erroneo" });
-//     }
-//   } catch (error) {
-//     console.log(`ERROR: ${error.stack}`);
-//     res.status(400).json({ msj: `ERROR: ${error.stack}` });
-//   }
-// };
-
 const deleteUser = async (req, res) => {
   try {
-    const data = req.body;
-    const email = data.email;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const {email} = req.body;
     if (email) {
       let result = await usersModel.destroy({ where: { email: email } });
       if (result.deletedCount == 0)
@@ -96,8 +81,8 @@ const deleteUser = async (req, res) => {
       res.status(400).json({ message: "formato de User erroneo" });
     }
   } catch (error) {
-    console.log(`ERROR: ${error.stack}`);
-    res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    console.log(`ERROR: ${error}`);
+    res.status(400).json({ msj: `ERROR: ${error}` });
   }
 };
 

@@ -6,8 +6,12 @@ const getAccessToken = require('../middleware/getAccessToken');
 const decodeToken = require('../middleware/decodeToken');
 const adminRoutes = require('../middleware/adminRoutes');
 const clientRoutes = require('../middleware/clientRoutes');
+const apiKeyValidator = require('../middleware/apiKeyValidator')
 
-// POST
+// POST // con api key para primer user
+userRouter.post("/apiKey",apiKeyValidator, userController.createUser);
+
+// POST // solo el admin
 userRouter.post("/",getAccessToken, decodeToken, adminRoutes, userController.createUser);
 
 // GET client asesor route demo
