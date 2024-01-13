@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
+import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
+
 
 const TablesContainer = () => {
 
@@ -98,6 +100,7 @@ const TablesContainer = () => {
         inputPrecioPotencia={inputPrecioPotencia}
         setPrecioPotencia={setPrecioPotencia}     
       />
+      <SelectPropuesta/>
       <TablePropuesta
         inputConsumoAnual={inputConsumoAnual} 
         inputConsumo={inputConsumo}
