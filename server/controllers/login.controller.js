@@ -15,10 +15,10 @@ const login = async (req, res) => {
         if(user){
             bcrypt.compare(password, user.password).then((result)=>{
                 if (result) {
-                    const token = createToken({ email: user.email, role: user.role });
+                    const token = createToken({ email: user.email, role: user.rol });
                     res.status(200)
                         .cookie('access_token', token, { secure: true, httpOnly: true })
-                        .json({ role: user.role, cookie: token });
+                        .json({ role: user.rol, cookie: token });
                 } else {
                     res.status(400).json({ msg: "wrong credentials invalid password" });
                 }
