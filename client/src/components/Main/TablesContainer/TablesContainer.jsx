@@ -28,13 +28,14 @@ const TablesContainer = () => {
   });
   //ESTADO PATA METER EL PRECIO ANUAL (INPUTS EN TABLA, DE FORMA MANUAL SI NO HAY WEB SCRAPING DE CANDELA)
   const [inputPrecioAnual, setImputPrecioAnual] = useState({
-    precio_anual_p1 : 0,
-    precio_anual_p2 : 0,
-    precio_anual_p3 : 0,
-    precio_anual_p4 : 0,
-    precio_anual_p5 : 0,
-    precio_anual_p6 : 0
+    precio_anual_p1 : 0.281599,  
+    precio_anual_p2 : 0.268394,  
+    precio_anual_p3 : 0.263138,  
+    precio_anual_p4 : 0.242581, 
+    precio_anual_p5 : 0.212685,  
+    precio_anual_p6 : 0.234854  
   });
+
 
   const [inputPrecioMes, setImputPrecioMes] = useState({
     precio_factura_p1 : 0,

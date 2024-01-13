@@ -82,7 +82,7 @@ function TablaInputFactura({
   });
 
   //_________________ ESTADOS DE OTROS CAMPOS DE LA FACTURA___________________________
-  const [diasFacturados, setDiasFacturados] = useState();
+  const [diasFacturados, setDiasFacturados] = useState(0);
 
 
   //_______________________ FUNCIONES ENERGIA __________________________________
@@ -306,9 +306,9 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <td>P1</td>
-              <td><input type="number" name="consumo_anual_p1" step="0.000001" min="0" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_anual_p1" step="0.000001" min="0" placeholder={inputConsumoAnual.consumo_anual_p1} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p1" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p1" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="precio_anual_p1" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p1} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p1" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td><input type="number" name="descuento_actual" step="any" min="0" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
               <td>{precioDescuentoActual.p1} €</td>
@@ -325,9 +325,9 @@ function TablaInputFactura({
             </tr>
             <tr>
               <td>P2</td>
-              <td><input type="number" name="consumo_anual_p2" step="any" min="0" onChange={handleInputConsumoAnual}></input></td>
-              <td><input type="number" name="consumo_factura_p2" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p2" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="consumo_anual_p2" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p2} onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_factura_p2" step="any" min="0"  onChange={handleInputConsumo}></input></td>
+              <td><input type="number" name="precio_anual_p2" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p2} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p2" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td></td>
               <td>{precioDescuentoActual.p2} €</td>
@@ -344,9 +344,9 @@ function TablaInputFactura({
             </tr>
             <tr>
               <td>P3</td>
-              <td><input type="number" name="consumo_anual_p3" step="any" min="0" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_anual_p3" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p3} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p3" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p3" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="precio_anual_p3" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p3} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p3" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td></td>
               <td>{precioDescuentoActual.p3} €</td>
@@ -363,9 +363,9 @@ function TablaInputFactura({
             </tr>
             <tr>
               <td>P4</td>
-              <td><input type="number" name="consumo_anual_p4" step="any" min="0" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_anual_p4" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p4} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p4" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p4" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="precio_anual_p4" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p4} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p4" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td></td>
               <td>{precioDescuentoActual.p4} €</td>
@@ -382,9 +382,9 @@ function TablaInputFactura({
             </tr>
             <tr>
               <td>P5</td>
-              <td><input type="number" name="consumo_anual_p5" step="any" min="0" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_anual_p5" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p5} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p5" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p5" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="precio_anual_p5" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p5} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p5" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td></td>
               <td>{precioDescuentoActual.p5} €</td>
@@ -401,9 +401,9 @@ function TablaInputFactura({
             </tr>
             <tr>
               <td>P6</td>
-              <td><input type="number" name="consumo_anual_p6" step="any" min="0" onChange={handleInputConsumoAnual}></input></td>
+              <td><input type="number" name="consumo_anual_p6" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p6} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p6" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p6" step="any" min="0" onChange={handleInputPrecioAnual}></input> €</td>
+              <td><input type="number" name="precio_anual_p6" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p6} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p6" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td></td>
               <td>{precioDescuentoActual.p6} €</td>
