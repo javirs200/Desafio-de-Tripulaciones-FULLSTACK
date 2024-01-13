@@ -6,7 +6,7 @@ const { DataTypes } = require('sequelize');
 const usuario = db.define("usuario", {
     id_usuario: {
         field: 'id_usuario',
-        type: DataTypes,
+        type: DataTypes.UUIDV4,
         primaryKey: true,
     },
     nombre: {
@@ -14,7 +14,7 @@ const usuario = db.define("usuario", {
         type: DataTypes.STRING(50)
     },
     apellido:{
-        field: 'contraseña',
+        field: 'apellido',
         type: DataTypes.STRING(50)
     },
     email: {
