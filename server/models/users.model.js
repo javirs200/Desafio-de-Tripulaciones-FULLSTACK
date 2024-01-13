@@ -6,8 +6,16 @@ const { DataTypes } = require('sequelize');
 const usuario = db.define("usuario", {
     id_usuario: {
         field: 'id_usuario',
-        type: DataTypes.INTEGER,
+        type: DataTypes,
         primaryKey: true,
+    },
+    nombre: {
+        field: 'nombre',
+        type: DataTypes.STRING(50)
+    },
+    apellido:{
+        field: 'contraseña',
+        type: DataTypes.STRING(50)
     },
     email: {
         field: 'email',
