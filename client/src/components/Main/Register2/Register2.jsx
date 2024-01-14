@@ -30,6 +30,9 @@ const Register1 = () => {
 
   // onSubmit={handleSubmit}  PONER EN LA ETIQUETA FORM
  
+
+  // usaremos el use effect para comparar las contraseñas cada vez que haya  un cambio en alguna de ellas, de ahí que los parámetro de comparación sean esos. Es importante usar el use effect porque sin ello solo se dispara una vez el on change, de esta forma siempre se compara.
+  // cuando el estado de isMatch sea true se pondrá en verde la línea 
   useEffect(() => {
     setIsMatch(password1 === password2);
   }, [password1, password2]);

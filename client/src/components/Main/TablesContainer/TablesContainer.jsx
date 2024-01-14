@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
+import './TablesContainer.css'
 
 
 const TablesContainer = () => {
