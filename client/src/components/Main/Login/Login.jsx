@@ -6,12 +6,16 @@ import Logo from "../Logo/Logo";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleButtonClick = () => {
-    if (isValidEmail(email)) {
+    if (isValidEmail(email) && isValidPassword(password)) {
+      // Simulo el login.
+      setLoggedIn(true);
       navigate("/home");
     } else {
-      alert("Por favor, ingrese un correo electrónico válido.");
+      alert("Por favor, ingrese un correo electrónico y una contraseña válidos.");
     }
   };
 
@@ -19,6 +23,12 @@ const Login = () => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
+
+  // Para hablar la validación con Jaavi:
+  
+  // const isValidPassword = (password) => {
+  //   return password.length >= 6;
+  // };
 
   return (
     <section className="form_logo_container">
@@ -37,6 +47,8 @@ const Login = () => {
             type="password"
             className="input_form"
             placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </form>
         <br/>
