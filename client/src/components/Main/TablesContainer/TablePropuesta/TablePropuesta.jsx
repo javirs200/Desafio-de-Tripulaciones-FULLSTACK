@@ -10,6 +10,9 @@ const TablePropuesta = ({
 }) => {
   return (
     <>
+    <section className='company'>
+      <h4>PROPUESTA SEVERAL</h4>
+    </section>
      
 
       <section>

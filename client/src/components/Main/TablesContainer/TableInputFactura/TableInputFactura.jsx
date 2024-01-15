@@ -267,7 +267,7 @@ function TablaInputFactura({
 
   return (
     <>
-    <section id='company'>
+    <section className='company'>
       <h4>COMPANÍA ACTUAL - "INTRODUCIR A PARTIR DEL INPUT PANTALLA ANTERIOR"</h4>
     </section>
       <section >
