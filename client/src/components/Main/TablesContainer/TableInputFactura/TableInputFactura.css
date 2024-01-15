@@ -27,7 +27,7 @@ input[type="number"]{
     table-layout: fixed;
     width: 100%;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
  
 }
 
@@ -115,3 +115,60 @@ td{
     border-bottom: none;
 
 }
+
+
+#other_section{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 76px;
+}
+
+
+
+#other_section > table > tbody > tr>th{
+    border-radius: 8px 0px 0px 8px;
+    border-top: 1px solid var(--Primary-Black, #0F0000);
+    border-right: 0.5px solid var(--Primary-Black, #0F0000);
+    border-bottom: 1px solid var(--Primary-Black, #0F0000);
+    border-left: 1px solid var(--Primary-Black, #0F0000);
+    background: var(--secondary-secundario-rojo-8, rgba(193, 0, 0, 0.08));
+    font-family: Noto Sans;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+
+}
+
+#other_section > table > tbody > tr> td {
+
+    display: flex;
+    width: 73px;
+    height: 16px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 8px 8px 0px;
+    border-top: 1px solid var(--Primary-Black, #0F0000);
+    border-right: 1px solid var(--Primary-Black, #0F0000);
+    border-bottom: 1px solid var(--Primary-Black, #0F0000);
+    border-left: 0.5px solid var(--Primary-Black, #0F0000);
+
+}
+
+#other_table_total_title{
+    border-radius: 8px 0px 0px 8px;
+    background: var(--Primary-Red-500, #C10000) !important;
+    width: 147px;
+    height: 28px;
+    font-family: Noto Sans;
+    font-size: 10px;
+    font-style: normal;
+    line-height: normal;
+    color: #FDFCFC;
+   
+
+}
+
+
