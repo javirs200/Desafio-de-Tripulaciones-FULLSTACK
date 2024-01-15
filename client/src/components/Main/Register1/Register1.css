@@ -47,10 +47,12 @@
     margin-top: 10%;
     border-radius: 8px;
     border: none;
+    cursor:pointer;
 
 }
 .form_button:hover{
     background-color: #F53D3D;
+    
 }
 
 .input_form{

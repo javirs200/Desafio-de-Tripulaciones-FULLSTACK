@@ -234,3 +234,25 @@ select:focus{
 select{
     border: none;
 }
+
+#button_section{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center
+}
+
+
+#section_open_button{
+    border-radius: 8px;
+    background: var(--Primary-Red-500, #C10000);
+    border:none;
+    color:#FDFCFC;
+    width: 240px;
+    height: 40px;
+    cursor:pointer;
+}
+
+#section_open_button:hover{
+    background-color: #F53D3D;
+
+}

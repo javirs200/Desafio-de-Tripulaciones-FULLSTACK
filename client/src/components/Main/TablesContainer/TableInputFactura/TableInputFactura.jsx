@@ -3,6 +3,7 @@ import './TableInputFactura.css'
 
 
 
+
 function TablaInputFactura({
   inputConsumoAnual,
   setInputConsumoAnual,
@@ -18,6 +19,7 @@ function TablaInputFactura({
   setPotenciaFacturada,
   inputPrecioPotencia,
   setPrecioPotencia,
+  showTable2,
   valorOtrosMes,
   setValorOtrosMes,
   valorOtrosAnual,
@@ -33,7 +35,7 @@ function TablaInputFactura({
 
 }) {
 
-
+ 
   //_______________________ ESTADOS ENERGIA __________________________________
 
   const [descuentoActual, setDescuentoActual] = useState(0);
@@ -314,7 +316,7 @@ function TablaInputFactura({
     <>
       <section className='company'>
       <h4>COMPANÍA ACTUAL </h4>
-    </section>
+      </section>
 
       <section >
         <table id='first_table'>
@@ -546,6 +548,7 @@ function TablaInputFactura({
 
       </section>
 
+
       <section className='other_section_2'>
         <table className='other_table'>
           <tbody>
@@ -593,6 +596,7 @@ function TablaInputFactura({
             </tr>
           </tbody>
         </table>
+
 
 
       <section>
@@ -654,10 +658,16 @@ function TablaInputFactura({
             </tbody>
           </table>
         </article>
+
       </section >
+
+      <section id='button_section'>
+        <button id='section_open_button' type='click' onClick={showTable2}>Desplegar propuesta</button>
+      </section>
+
 
     </>
   )
 }
 
-export default TablaInputFactura
+export default TablaInputFactura;
