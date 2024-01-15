@@ -9,28 +9,28 @@ const TablePropuesta = ({
 }) => {
   return (
     <>
-      <table border="1">
+      <table >
           <thead>
             <tr>
-              <th>FRANJA</th>
-              <th>CONSUMO ANUAL (kWh)</th>
-              <th>CONSUMO FACTURA ACTUAL (kWh)</th>
-              <th>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
-              <th>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
-              <th>DESCUENTO(%)</th>
-              <th>PRECIO CON DESCUENTO </th>
-              <th>TOTAL PAGO EN FACTURA</th>
-              <th>TOTAL PAGO ANUAL</th>
+              <th className='tr_inputs'>FRANJA</th>
+              <th className='tr_inputs'>CONSUMO ANUAL (kWh)</th>
+              <th className='tr_inputs'>CONSUMO FACTURA ACTUAL (kWh)</th>
+              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
+              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
+              <th className='tr_inputs'>DESCUENTO(%)</th>
+              <th className='tr_inputs'>PRECIO CON DESCUENTO </th>
+              <th className='tr_inputs'>TOTAL PAGO EN FACTURA</th>
+              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
 
 
 
-              <th>POTENCIA CONTRATADA (kW)</th>
-              <th>POTENCIA FACTURADA (kW)</th>
-              <th>PRECIOS POTENCIA (€/kW/día)</th>
-              <th>DESCUENTO (%)</th>
-              <th>PRECIO CON DESCUENTO</th>
-              <th>TOTAL PAGO EN FACTURA	</th>
-              <th>TOTAL PAGO ANUAL</th>
+              <th className='tr_inputs'>POTENCIA CONTRATADA (kW)</th>
+              <th className='tr_inputs'>POTENCIA FACTURADA (kW)</th>
+              <th className='tr_inputs'>PRECIOS POTENCIA (€/kW/día)</th>
+              <th className='tr_inputs'>DESCUENTO (%)</th>
+              <th className='tr_inputs'>PRECIO CON DESCUENTO</th>
+              <th className='tr_inputs'>TOTAL PAGO EN FACTURA	</th>
+              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
           
             </tr>
           </thead>
