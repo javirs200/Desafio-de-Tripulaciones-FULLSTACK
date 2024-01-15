@@ -1,6 +1,6 @@
 const usersModels = require('../models/users.model');
 const { createToken } = require('../config/jsonWebToken');
-var bcrypt = require('bcryptjs');
+let bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 
 const login = async (req, res) => {
@@ -15,18 +15,18 @@ const login = async (req, res) => {
         if(user){
             bcrypt.compare(password, user.password).then((result)=>{
                 if (result) {
-                    const token = createToken({ email: user.email, role: user.role });
+                    const token = createToken({ email: user.email, role: user.rol });
                     res.status(200)
                         .cookie('access_token', token, { secure: true, httpOnly: true })
-                        .json({ role: user.role, cookie: token });
+                        .json({ msg: "login ok" });
                 } else {
-                    res.status(400).json({ msg: "wrong credentials invalid password" });
+                    res.status(400).json({ msg: "Las credenciales proporcionadas son incorrectas" });
                 }
             }).catch((error) => {
                 res.status(500).json({ msg: "Internal server error" });
             });
         }else{
-            res.status(400).json({ msg: "wrong credentials user not found" });
+            res.status(400).json({ msg: "Las credenciales proporcionadas son incorrectas" });
         }
         
     } catch (error) {
@@ -44,22 +44,9 @@ const logout = async (req, res) => {
     }
 };
 
-
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await usersModels.getAllUsers();
-        console.log(users);
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(400).json({ msg: error.message })
-    }
-}
-
-
 const loginController = {
     login,
     logout,
-    getAllUsers
 };
 
 

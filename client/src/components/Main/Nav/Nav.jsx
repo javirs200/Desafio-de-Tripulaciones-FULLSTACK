@@ -1,7 +1,6 @@
 import React from "react";
-import "./Nav.css"
-import foto from "../../../../assets/img/several_negro.png"
-
+import "./Nav.css";
+import foto from "../../../assets/img/several_negro.png";
 
 const Nav = () => {
   return (
@@ -14,7 +13,7 @@ const Nav = () => {
       <li>Perfil</li>
     </ul>
     <p>Candela</p>
-    {/* <img src="" alt="logo" className="logo" /> */}
+    
     </nav>
   );
 };
