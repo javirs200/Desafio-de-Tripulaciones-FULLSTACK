@@ -17,7 +17,10 @@ function TablaInputFactura({
   inputPotenciaFacturada,
   setPotenciaFacturada,
   inputPrecioPotencia,
-  setPrecioPotencia
+  setPrecioPotencia,
+  valorOtrosMes,
+  setValorOtrosMes,
+  setValorOtrosAnual
 }) {
 
 
@@ -86,6 +89,11 @@ function TablaInputFactura({
   const [diasFacturados, setDiasFacturados] = useState(0);
 
 
+  const [cantidadOtros, setCantidadOtros] = useState([[0, "", ""]]);
+
+
+
+
   //_______________________ FUNCIONES ENERGIA __________________________________
 
 
@@ -138,7 +146,7 @@ function TablaInputFactura({
     const valor = e.target.value;
 
     // Actualizar el estado con el nuevo valor del input
-    setDescuentoActual(valor*1);
+    setDescuentoActual(valor * 1);
   };
 
   //_______________________ FUNCIONES POTENCIA __________________________________
@@ -185,7 +193,30 @@ function TablaInputFactura({
     const valor = e.target.value;
 
     // Actualizar el estado con el nuevo valor del input
-    setDiasFacturados(valor*1);
+    setDiasFacturados(valor * 1);
+  };
+
+  const generarOtros = () => {
+    setCantidadOtros([...cantidadOtros, [0, "", ""]]);
+  };
+
+  const handleInputOtrosValue = (e) => {
+    let array = cantidadOtros
+    array[e.target.name * 1][0] = e.target.value * 1;
+    setCantidadOtros([...array]);
+
+  };
+
+  const handleInputOtrosMes = (e) => {
+    let array = cantidadOtros
+    array[e.target.name * 1][1] = e.target.value;
+    setCantidadOtros([...array]);
+  };
+
+  const handleInputOtrosAnual = (e) => {
+    let array = cantidadOtros
+    array[e.target.name * 1][2] = e.target.value;
+    setCantidadOtros([...array]);
   };
 
   // SUMATORIOS
@@ -194,12 +225,12 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioDescuentoActual({
-      p1: inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual/100),
-      p2: inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual/100),
-      p3: inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual/100),
-      p4: inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual/100),
-      p5: inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual/100),
-      p6: inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual/100),
+      p1: inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual / 100),
+      p2: inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual / 100),
+      p3: inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual / 100),
+      p4: inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual / 100),
+      p5: inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual / 100),
+      p6: inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual / 100),
     })
   }, [inputPrecioMes, descuentoActual]);
 
@@ -217,12 +248,12 @@ function TablaInputFactura({
 
   useEffect(() => {
     setTotalPagoAnual({
-      p1: inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual/100))) ,
-      p2: inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual/100))),
-      p3: inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual/100))),
-      p4: inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual/100))),
-      p5: inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual/100))),
-      p6: inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual/100))),
+      p1: inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual / 100))),
+      p2: inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual / 100))),
+      p3: inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual / 100))),
+      p4: inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual / 100))),
+      p5: inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual / 100))),
+      p6: inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual / 100))),
     })
 
   }, [inputConsumoAnual, inputPrecioAnual, descuentoActual]);
@@ -232,12 +263,12 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioPotenciaDescuento({
-      p1: inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual/100)),
-      p2: inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual/100)),
-      p3: inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual/100)),
-      p4: inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual/100)),
-      p5: inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual/100)),
-      p6: inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual/100)),
+      p1: inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual / 100)),
+      p2: inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual / 100)),
+      p3: inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual / 100)),
+      p4: inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual / 100)),
+      p5: inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual / 100)),
+      p6: inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual / 100)),
     })
   }, [inputPrecioPotencia, descuentoActual]);
 
@@ -262,6 +293,29 @@ function TablaInputFactura({
       p6: inputPotenciaContratada.potencia_contratada_p6 * inputPrecioPotencia.precio_potencia_p6 * 365
     })
   }, [inputPotenciaContratada, inputPrecioPotencia]);
+
+  //_________________ SUMATORIOS DE OTROS CAMPOS DE LA FACTURA___________________________
+
+  useEffect(() => {
+    setValorOtrosMes(0);
+    setValorOtrosAnual(0);
+    let suma1 = 0
+    let suma2 = 0
+    for (let i = 0; i < cantidadOtros.length; i++) {
+      console.log(suma1, suma2)
+      console.log(cantidadOtros[i][0])
+      console.log("entrando en array")
+      cantidadOtros[i][1] == "true" ? suma1 += cantidadOtros[i][0] : "";
+      cantidadOtros[i][2] == "true" ? suma2 += cantidadOtros[i][0]: "";
+    };
+    setValorOtrosMes(suma1);
+    setValorOtrosAnual(suma2);
+
+  }, [cantidadOtros]);
+
+
+  
+ 
 
 
 
@@ -330,7 +384,7 @@ function TablaInputFactura({
             <tr>
               <td>P2</td>
               <td><input type="number" name="consumo_anual_p2" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p2} onChange={handleInputConsumoAnual}></input></td>
-              <td><input type="number" name="consumo_factura_p2" step="any" min="0"  onChange={handleInputConsumo}></input></td>
+              <td><input type="number" name="consumo_factura_p2" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p2" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p2} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p2" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
               <td className='input_descuento'></td>
@@ -448,124 +502,122 @@ function TablaInputFactura({
 
             </tr>
           </tfoot>
-          
+
         </table>
       </section>
 
       <section>
         <table id='other_table' border="1">
           <tbody>
-          <tr>
-            <th>DIAS DE FACTURACION</th>
-            <td><input type="number" name="dias_facturacion" onChange={handleInputDiasFacturados}></input></td>
-          </tr>
-        </tbody>
+            <tr>
+              <th>DIAS DE FACTURACION</th>
+              <td><input type="number" name="dias_facturacion" onChange={handleInputDiasFacturados}></input></td>
+            </tr>
+          </tbody>
         </table>
 
         <table border="1">
           <tbody>
-          <tr>
-            <th>ENERGIA REACTIVA</th>
-            <td><input type="number" name="energia_reactiva"></input></td>
-          </tr>
-        </tbody>
+            <tr>
+              <th>ENERGIA REACTIVA</th>
+              <td><input type="number" name="energia_reactiva"></input></td>
+            </tr>
+          </tbody>
         </table>
 
         <table border="1">
           <tbody>
-          <tr>
-            <th>IMPUESTO ELÉCTRICO</th>
-            <td><input type="number" name="impuesto_electrico"></input> €</td>
-          </tr>
-        </tbody>
+            <tr>
+              <th>IMPUESTO ELÉCTRICO</th>
+              <td><input type="number" name="impuesto_electrico"></input> €</td>
+            </tr>
+          </tbody>
         </table>
 
         <table border="1">
           <tbody>
-          <tr>
-            <th>ALQUILER DE EQUIPO</th>
-            <td><input type="number" name="alquiler_equipo"></input> €</td>
-          </tr>
-        </tbody>
+            <tr>
+              <th>ALQUILER DE EQUIPO</th>
+              <td><input type="number" name="alquiler_equipo"></input> €</td>
+            </tr>
+          </tbody>
         </table>
 
         <table border="1">
           <tbody>
-          <tr>
-            <th>IMPORTE TOTAL FACTURA</th>
-            <td> €</td>
-          </tr>
-        </tbody>
+            <tr>
+              <th>IMPORTE TOTAL FACTURA</th>
+              <td> €</td>
+            </tr>
+          </tbody>
         </table>
 
       </section>
 
       <section>
-        <table border="1">
-          <tbody>
-          <tr>
-            <th>OTROS</th>
-            <th><input type="number" name="otros_a"></input> €</th>
-            <td>
-              <select name="otros_a_status01">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-            <td>
-              <select name="otros_a_status02">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-        </table>
 
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>OTROS</th>
-              <th><input type="number" name="otros_b"></input> €</th>
-              <td>
-                <select name="otros_b_status01">
-                  <option value="SI">SI</option>
-                  <option value="NO">NO</option>
-                </select>
-              </td>
-              <td>
-                <select name="otros_b_status02">
-                  <option value="SI">SI</option>
-                  <option value="NO">NO</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
 
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>IVA</th>
-              <td>
-                <select name="iva">
-                  <option value="21" >21%</option>
-                  <option value="10">10%</option>
-                  <option value="5">5%</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
 
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>TOTAL ANUAL ESTIMADO</th>
-              <td> €</td>
-            </tr>
-          </tbody>
-        </table>
+
+         <article> 
+        {cantidadOtros.map((_, index) => (
+          <table key={index} border="1">
+            <tbody>
+              <tr>
+                <th>OTROS</th>
+                <td>
+                  <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
+                </td>
+                <td>
+                  <select name={index} onChange={handleInputOtrosMes} >
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td>
+                  <select name={index} onChange={handleInputOtrosAnual}>
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td>
+                  <button onClick={generarOtros}>+</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        ))}
+        </article>
+
+        <article>
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>IVA</th>
+                <td>
+                  <select name="iva">
+                    <option value="21" >21%</option>
+                    <option value="10">10%</option>
+                    <option value="5">5%</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>TOTAL ANUAL ESTIMADO</th>
+                <td> €</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </article>
+
 
 
 
