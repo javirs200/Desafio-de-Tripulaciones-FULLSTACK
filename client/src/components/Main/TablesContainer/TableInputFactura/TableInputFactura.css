@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200&display=swap');
 *{
     font-family: Noto Sans;
-    font-size: 8px;
+    
 }
 
 input {
@@ -12,9 +12,15 @@ input {
     box-sizing: border-box;
     border: none;
     text-align: center;
+    
 }
 input[type="number"]:focus {
     outline-color: #867979;
+}
+input[type="number"]{
+    outline-color: #867979;
+    font-size: 8px;
+    
 }
 
 #first_table {
@@ -23,12 +29,16 @@ input[type="number"]:focus {
     text-align: center;
     margin-bottom: 40px;
    
+   
     
 }
+
+
 
 #first_table > th, td {
     width: 100px;
     word-wrap: break-word;
+    font-size: 8px;
 } 
 
 #company{
@@ -58,6 +68,7 @@ input[type="number"]:focus {
     border-left: 1px solid var(--Primary-Black, #0F0000);
     background: var(--secondary-secundario-rojo-8, rgba(193, 0, 0, 0.08));
     word-wrap: break-word;
+    font-size: 8px;
     
     
 }
