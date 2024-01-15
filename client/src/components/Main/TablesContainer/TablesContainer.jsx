@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
+import Nav from "../Nav/Nav"
+
 
 
 const TablesContainer = () => {
@@ -84,6 +86,7 @@ const TablesContainer = () => {
 
   return (
     <>
+    <Nav/>
       <TableInputFactura
         inputConsumoAnual={inputConsumoAnual} 
         setInputConsumoAnual={setInputConsumoAnual}
