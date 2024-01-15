@@ -79,7 +79,12 @@ const TablesContainer = () => {
     precio_potencia_p6 : 0
     
   });
-  
+
+
+  //__________________ ESTADOS OTROS CAMPOS DE LA FACTURA/PROPUESTA______________________________
+
+  const [valorOtrosMes, setValorOtrosMes] = useState(0)
+  const [valorOtrosAnual, setValorOtrosAnual] = useState(0)
 
 
   return (
@@ -98,7 +103,11 @@ const TablesContainer = () => {
         inputPotenciaFacturada={inputPotenciaFacturada}
         setPotenciaFacturada={setPotenciaFacturada}
         inputPrecioPotencia={inputPrecioPotencia}
-        setPrecioPotencia={setPrecioPotencia}     
+        setPrecioPotencia={setPrecioPotencia}
+        valorOtrosMes={valorOtrosMes}
+        setValorOtrosMes={setValorOtrosMes}
+        valorOtrosAnual ={valorOtrosAnual}
+        setValorOtrosAnual={setValorOtrosAnual}     
       />
       <SelectPropuesta/>
       <TablePropuesta
@@ -106,6 +115,8 @@ const TablesContainer = () => {
         inputConsumo={inputConsumo}
         inputPotenciaContratada={inputPotenciaContratada}
         inputPotenciaFacturada={inputPotenciaFacturada}
+        valorOtrosMes={valorOtrosMes}
+        valorOtrosAnual={valorOtrosAnual}
       />
       
     </>
