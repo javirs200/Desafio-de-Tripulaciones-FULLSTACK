@@ -83,8 +83,17 @@ const TablesContainer = () => {
 
   //__________________ ESTADOS OTROS CAMPOS DE LA FACTURA/PROPUESTA______________________________
 
-  const [valorOtrosMes, setValorOtrosMes] = useState(0)
-  const [valorOtrosAnual, setValorOtrosAnual] = useState(0)
+  const [restoDeCampos, setRestoDeCampos] = useState({
+    dias_facturacion: 0,
+    energia_reactiva: 0,
+    impuesto_electrico:0,
+    alquiler_equipo: 0,
+    iva: 5
+  }
+
+  );
+  const [valorOtrosMes, setValorOtrosMes] = useState(0);
+  const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
 
 
   return (
@@ -107,7 +116,10 @@ const TablesContainer = () => {
         valorOtrosMes={valorOtrosMes}
         setValorOtrosMes={setValorOtrosMes}
         valorOtrosAnual ={valorOtrosAnual}
-        setValorOtrosAnual={setValorOtrosAnual}     
+        setValorOtrosAnual={setValorOtrosAnual}
+        restoDeCampos={restoDeCampos}
+        setRestoDeCampos={setRestoDeCampos}
+   
       />
       <SelectPropuesta/>
       <TablePropuesta
@@ -117,6 +129,7 @@ const TablesContainer = () => {
         inputPotenciaFacturada={inputPotenciaFacturada}
         valorOtrosMes={valorOtrosMes}
         valorOtrosAnual={valorOtrosAnual}
+        restoDeCampos={restoDeCampos}
       />
       
     </>

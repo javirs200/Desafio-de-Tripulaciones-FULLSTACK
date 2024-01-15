@@ -5,7 +5,9 @@ const TablePropuesta = ({
   inputConsumo,
   inputPotenciaContratada,
   inputPotenciaFacturada,
-  valorOtros
+  valorOtrosMes,
+  valorOtrosAnual,
+  
 }) => {
   return (
     <>
@@ -219,7 +221,7 @@ const TablePropuesta = ({
             <tbody>
               <tr>
                 <th>OTROS</th>
-                <td> €</td>
+                <td>{valorOtrosMes} €</td>
               </tr>
             </tbody>
           </table>
@@ -228,7 +230,7 @@ const TablePropuesta = ({
             <tbody>
               <tr>
                 <th>OTROS ANUAL</th>
-                <td> €</td>
+                <td>{valorOtrosAnual} €</td>
               </tr>
             </tbody>
           </table>

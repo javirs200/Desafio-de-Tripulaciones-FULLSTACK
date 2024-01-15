@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLocation } from 'react'
+
 
 
 
@@ -17,11 +18,13 @@ function TablaInputFactura({
   setPotenciaFacturada,
   inputPrecioPotencia,
   setPrecioPotencia,
-  valorOtrosMes,
   setValorOtrosMes,
-  setValorOtrosAnual
+  setValorOtrosAnual,
+  restoDeCampos,
+  setRestoDeCampos
 }) {
 
+  // const{propuesta} = useLocation();
 
   //_______________________ ESTADOS ENERGIA __________________________________
 
@@ -84,10 +87,7 @@ function TablaInputFactura({
     p6: 0,
   });
 
-  //_________________ ESTADOS DE OTROS CAMPOS DE LA FACTURA___________________________
-  const [diasFacturados, setDiasFacturados] = useState(0);
-
-
+  //_________________ DEL RESTO DE OTROS CAMPOS DE LA FACTURA___________________________
   const [cantidadOtros, setCantidadOtros] = useState([[0, "", ""]]);
 
 
@@ -187,14 +187,6 @@ function TablaInputFactura({
   };
   //_________________ FUNCIONES DE OTROS CAMPOS DE LA FACTURA___________________________
 
-  const handleInputDiasFacturados = (e) => {
-
-    const valor = e.target.value;
-
-    // Actualizar el estado con el nuevo valor del input
-    setDiasFacturados(valor * 1);
-  };
-
   const generarOtros = () => {
     setCantidadOtros([...cantidadOtros, [0, "", ""]]);
   };
@@ -216,6 +208,18 @@ function TablaInputFactura({
     let array = cantidadOtros
     array[e.target.name * 1][2] = e.target.value;
     setCantidadOtros([...array]);
+  };
+
+  const handleInputRestoCampos = (e) => {
+    const { name, value } = e.target;
+
+    // Actualizar el estado con el nuevo valor del input
+    setRestoDeCampos({
+      ...restoDeCampos,
+      [name]: value * 1,
+    }
+
+    );
   };
 
   // SUMATORIOS
@@ -273,14 +277,14 @@ function TablaInputFactura({
 
   useEffect(() => {
     setTotalPagoFacturaPotencia({
-      p1: inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * diasFacturados,
-      p2: inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * diasFacturados,
-      p3: inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * diasFacturados,
-      p4: inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * diasFacturados,
-      p5: inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * diasFacturados,
-      p6: inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * diasFacturados
+      p1: inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * restoDeCampos.dias_facturacion,
+      p2: inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * restoDeCampos.dias_facturacion,
+      p3: inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * restoDeCampos.dias_facturacion,
+      p4: inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * restoDeCampos.dias_facturacion,
+      p5: inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * restoDeCampos.dias_facturacion,
+      p6: inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * restoDeCampos.dias_facturacion
     })
-  }, [inputPotenciaFacturada, precioPotenciaDescuento, diasFacturados]);
+  }, [inputPotenciaFacturada, precioPotenciaDescuento, restoDeCampos.dias_facturacion]);
 
   useEffect(() => {
     setTotalPagoAnualPotencia({
@@ -505,7 +509,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>DIAS DE FACTURACION</th>
-              <td><input type="number" name="dias_facturacion" onChange={handleInputDiasFacturados}></input></td>
+              <td><input type="number" name="dias_facturacion" onChange={handleInputRestoCampos}></input></td>
             </tr>
           </tbody>
         </table>
@@ -514,7 +518,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>ENERGIA REACTIVA</th>
-              <td><input type="number" name="energia_reactiva"></input></td>
+              <td><input type="number" name="energia_reactiva" onChange={handleInputRestoCampos}></input></td>
             </tr>
           </tbody>
         </table>
@@ -523,7 +527,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>IMPUESTO ELÉCTRICO</th>
-              <td><input type="number" name="impuesto_electrico"></input> €</td>
+              <td><input type="number" name="impuesto_electrico" onChange={handleInputRestoCampos}></input> €</td>
             </tr>
           </tbody>
         </table>
@@ -532,7 +536,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>ALQUILER DE EQUIPO</th>
-              <td><input type="number" name="alquiler_equipo"></input> €</td>
+              <td><input type="number" name="alquiler_equipo" onChange={handleInputRestoCampos}></input> €</td>
             </tr>
           </tbody>
         </table>
@@ -591,10 +595,11 @@ function TablaInputFactura({
               <tr>
                 <th>IVA</th>
                 <td>
-                  <select name="iva">
-                    <option value="21" >21%</option>
-                    <option value="10">10%</option>
+                  <select name="iva" onChange={handleInputRestoCampos}>
+                    <option value=""> </option>
                     <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="21" >21%</option>                    
                   </select>
                 </td>
               </tr>
