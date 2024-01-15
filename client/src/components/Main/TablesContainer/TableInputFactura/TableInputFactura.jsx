@@ -289,7 +289,7 @@ function TablaInputFactura({
               <th className='tr_inputs'>CONSUMO FACTURA ACTUAL (kWh)</th>
               <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
               <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
-              <th className='tr_inputs'>DESCUENTO(%)</th>
+              <th className='tr_inputs'>DESCUENTO (%)</th>
               <th className='tr_inputs'>PRECIO CON DESCUENTO </th>
               <th className='tr_inputs'>TOTAL PAGO EN FACTURA</th>
               <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
@@ -314,7 +314,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p1" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p1" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p1} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p1" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td><input type="number" name="descuento_actual" step="any" min="0" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
+              <td className='input_descuento'><input type="number" name="descuento_actual" step="any" min="0" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
               <td>{precioDescuentoActual.p1} €</td>
               <td>{totalPagoFactura.p1} €</td>
               <td>{totalPagoAnual.p1} €</td>
@@ -322,7 +322,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p1" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p1" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p1" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td><input type="number" name="descuento_potencia" step="any" min="0" max="100" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
+              <td className='input_descuento' ><input type="number" name="descuento_potencia" step="any" min="0" max="100" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
               <td>{precioPotenciaDescuento.p1} €</td>
               <td>{totalPagoFacturaPotencia.p1} €</td>
               <td>{totalPagoAnualPotencia.p1} €</td>
@@ -333,7 +333,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p2" step="any" min="0"  onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p2" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p2} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p2" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p2} €</td>
               <td>{totalPagoFactura.p2} €</td>
               <td>{totalPagoAnual.p2} €</td>
@@ -341,7 +341,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p2" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p2" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p2" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p2} €</td>
               <td>{totalPagoFacturaPotencia.p2} €</td>
               <td>{totalPagoAnualPotencia.p2} €</td>
@@ -352,7 +352,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p3" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p3" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p3} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p3" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p3} €</td>
               <td>{totalPagoFactura.p3} €</td>
               <td>{totalPagoAnual.p3} €</td>
@@ -360,7 +360,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p3" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p3" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p3" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p3} €</td>
               <td>{totalPagoFacturaPotencia.p3} €</td>
               <td>{totalPagoAnualPotencia.p3} €</td>
@@ -371,7 +371,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p4" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p4" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p4} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p4" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p4} €</td>
               <td>{totalPagoFactura.p4} €</td>
               <td>{totalPagoAnual.p4} €</td>
@@ -379,7 +379,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p4" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p4" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p4" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p4} €</td>
               <td>{totalPagoFacturaPotencia.p4} €</td>
               <td>{totalPagoAnualPotencia.p4} €</td>
@@ -390,7 +390,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p5" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p5" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p5} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p5" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p5} €</td>
               <td>{totalPagoFactura.p5} €</td>
               <td>{totalPagoAnual.p5} €</td>
@@ -398,7 +398,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p5" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p5" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p5" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p5} €</td>
               <td>{totalPagoFacturaPotencia.p5} €</td>
               <td>{totalPagoAnualPotencia.p5} €</td>
