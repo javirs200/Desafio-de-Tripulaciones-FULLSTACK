@@ -15,12 +15,13 @@ const Login = () => {
       // Simulo el login. ruta: /api/login
       // Añadir a parte una comprobación para el password (se hace en bbdd).
       setLoggedIn(true);
+
       navigate("/home");
     } else {
       alert(
         "Por favor, ingrese un correo electrónico y una contraseña válidos."
       );
-    } 
+    }
   };
 
   const isValidEmail = (email) => {
