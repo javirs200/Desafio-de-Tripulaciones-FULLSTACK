@@ -19,7 +19,6 @@ function TablaInputFactura({
   setPotenciaFacturada,
   inputPrecioPotencia,
   setPrecioPotencia,
-  showTable2,
   valorOtrosMes,
   setValorOtrosMes,
   valorOtrosAnual,
@@ -29,10 +28,8 @@ function TablaInputFactura({
   importeTotalFactura,
   setImporteTotalFactura,
   importeTotalAnual, 
-  setImporteTotalAnual
-
-
-
+  setImporteTotalAnual,
+  showTable2
 }) {
 
  
@@ -278,7 +275,6 @@ function TablaInputFactura({
     })
   }, [inputPotenciaContratada, inputPrecioPotencia]);
 
-
   //_________________ SUMATORIOS DE OTROS CAMPOS DE LA FACTURA___________________________
 
   useEffect(() => {
@@ -308,8 +304,6 @@ function TablaInputFactura({
   }, [totalPagoAnual,totalPagoAnualPotencia,restoDeCampos,valorOtrosAnual]);
 
 
-  
- 
 
 
   return (
@@ -550,73 +544,23 @@ function TablaInputFactura({
 
 
       <section className='other_section_2'>
-        <table className='other_table'>
-          <tbody>
-          <tr className='others_tr'>
-            <th className='other_title'>OTROS</th>
-            <td className='no_radius_td'><input type="number" name="otros_a"></input> €</td>
-            <td className='no_radius_td'>
-              <select name="otros_a_status01">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-            <td>
-              <select name="otros_a_status02">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-        </table>
-
- 
-
-        <table>
-          <tbody>
-            <tr>
-              <th id='iva_th'>IVA</th>
-              <td>
-                <select name="iva">
-                  <option value="21" >21%</option>
-                  <option value="10">10%</option>
-                  <option value="5">5%</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table>
-          <tbody>
-            <tr>
-              <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
-              <td> €</td>
-            </tr>
-          </tbody>
-        </table>
-
-
-
-      <section>
          <article> 
         {cantidadOtros.map((_, index) => (
-          <table key={index} border="1">
+          <table className='other_table' key={index} >
             <tbody>
-              <tr>
-                <th>OTROS</th>
-                <td>
+              <tr className='others_tr' >
+                <th className='other_title'>OTROS</th>
+                <td className='no_radius_td'>
                   <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
                 </td>
-                <td>
+                <td className='no_radius_td'>
                   <select name={index} onChange={handleInputOtrosMes} >
                     <option value=""> </option>
                     <option value="true">SI</option>
                     <option value="false">NO</option>
                   </select>
                 </td>
-                <td>
+                <td className='no_radius_td'>
                   <select name={index} onChange={handleInputOtrosAnual}>
                     <option value=""> </option>
                     <option value="true">SI</option>
@@ -633,7 +577,7 @@ function TablaInputFactura({
         </article>
 
         <article>
-          <table border="1">
+          <table >
             <tbody>
               <tr>
                 <th>IVA</th>
@@ -658,7 +602,6 @@ function TablaInputFactura({
             </tbody>
           </table>
         </article>
-
       </section >
 
       <section id='button_section'>
