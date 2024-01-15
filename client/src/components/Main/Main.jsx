@@ -20,7 +20,7 @@ const Main = () => {
           <Route path="/signup" element={<Register1 />} />
           <Route path="/signup/user" element={<Register2 />} />
 
-          <Route path="/*" element={<Navigate to={"/home"} />} />
+          <Route path="/*" element={<Navigate to={"/login"} />} />
         </Routes>
       </UserContext.Provider>
     </main>
