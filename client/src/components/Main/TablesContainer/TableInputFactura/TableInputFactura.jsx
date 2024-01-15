@@ -19,6 +19,16 @@ function TablaInputFactura({
   setPotenciaFacturada,
   inputPrecioPotencia,
   setPrecioPotencia,
+  valorOtrosMes,
+  setValorOtrosMes,
+  valorOtrosAnual,
+  setValorOtrosAnual,
+  restoDeCampos,
+  setRestoDeCampos,
+  importeTotalFactura,
+  setImporteTotalFactura,
+  importeTotalAnual, 
+  setImporteTotalAnual,
   showTable2
 }) {
 
@@ -265,6 +275,35 @@ function TablaInputFactura({
     })
   }, [inputPotenciaContratada, inputPrecioPotencia]);
 
+  //_________________ SUMATORIOS DE OTROS CAMPOS DE LA FACTURA___________________________
+
+  useEffect(() => {
+    setValorOtrosMes(0);
+    setValorOtrosAnual(0);
+    let suma1 = 0
+    let suma2 = 0
+    for (let i = 0; i < cantidadOtros.length; i++) {
+      cantidadOtros[i][1] == "true" ? suma1 += cantidadOtros[i][0] : "";
+      cantidadOtros[i][2] == "true" ? suma2 += cantidadOtros[i][0]: "";
+    };
+    setValorOtrosMes(suma1);
+    setValorOtrosAnual(suma2);
+
+  }, [cantidadOtros]);
+
+
+  useEffect(() => {
+    let importe= totalPagoAnual.p1 + totalPagoAnual.p2 + totalPagoAnual.p3 + totalPagoAnual.p4 + totalPagoAnual.p5 + totalPagoAnual.p6+totalPagoAnualPotencia.p1 + totalPagoAnualPotencia.p2 + totalPagoAnualPotencia.p3 + totalPagoAnualPotencia.p4 + totalPagoAnualPotencia.p5 + totalPagoAnualPotencia.p6
+    console.log(importe, 1.0051127, restoDeCampos.alquiler_equipo, restoDeCampos.dias_facturacion, (valorOtrosAnual/365) , restoDeCampos.dias_facturacion, restoDeCampos.iva)
+    setImporteTotalAnual(
+      (importe* 1.0051127 +
+        (restoDeCampos.alquiler_equipo / restoDeCampos.dias_facturacion) * 365 +
+        (valorOtrosAnual / restoDeCampos.dias_facturacion) * 365) * (1 + (restoDeCampos.iva/100))
+      )
+    console.log(importeTotalAnual)
+  }, [totalPagoAnual,totalPagoAnualPotencia,restoDeCampos,valorOtrosAnual]);
+
+
 
 
   return (
@@ -505,54 +544,64 @@ function TablaInputFactura({
 
 
       <section className='other_section_2'>
-        <table className='other_table'>
-          <tbody>
-          <tr className='others_tr'>
-            <th className='other_title'>OTROS</th>
-            <td className='no_radius_td'><input type="number" name="otros_a"></input> €</td>
-            <td className='no_radius_td'>
-              <select name="otros_a_status01">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-            <td>
-              <select name="otros_a_status02">
-                <option value="true">SI</option>
-                <option value="false">NO</option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-        </table>
+         <article> 
+        {cantidadOtros.map((_, index) => (
+          <table className='other_table' key={index} >
+            <tbody>
+              <tr className='others_tr' >
+                <th className='other_title'>OTROS</th>
+                <td className='no_radius_td'>
+                  <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
+                </td>
+                <td className='no_radius_td'>
+                  <select name={index} onChange={handleInputOtrosMes} >
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td className='no_radius_td'>
+                  <select name={index} onChange={handleInputOtrosAnual}>
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td>
+                  <button onClick={generarOtros}>+</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        ))}
+        </article>
 
- 
+        <article>
+          <table >
+            <tbody>
+              <tr>
+                <th>IVA</th>
+                <td>
+                  <select name="iva" onChange={handleInputRestoCampos}>
+                    <option value=""> </option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="21" >21%</option>                    
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <table>
-          <tbody>
-            <tr>
-              <th id='iva_th'>IVA</th>
-              <td>
-                <select name="iva">
-                  <option value="21" >21%</option>
-                  <option value="10">10%</option>
-                  <option value="5">5%</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table>
-          <tbody>
-            <tr>
-              <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
-              <td> €</td>
-            </tr>
-          </tbody>
-        </table>
-
-
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>TOTAL ANUAL ESTIMADO</th>
+                <td>{importeTotalAnual} €</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
       </section >
 
       <section id='button_section'>
