@@ -99,6 +99,18 @@ const TablesContainer = () => {
   const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
   const [importeTotalFactura, setImporteTotalFactura] = useState(0);
 
+  // OTROS ESTADOS
+  const [mostrarComponentes, setMostrarComponentes] = useState({
+    componente3: false,
+    componente4: false,
+  });
+
+  const handleMostrarComponentes = () => {
+    setMostrarComponentes({
+      componente3: true,
+      componente4: true,
+    });
+  };
 
   return (
     <>
@@ -126,12 +138,15 @@ const TablesContainer = () => {
         setRestoDeCampos={setRestoDeCampos}
         importeTotalFactura={importeTotalFactura}
         setImporteTotalFactura={setImporteTotalFactura}
+        showTable2={handleMostrarComponentes}
    
       />
-      <SelectPropuesta
+      {mostrarComponentes.componente3 && <SelectPropuesta
         importeTotalFactura={importeTotalFactura}
-      />
-      <TablePropuesta
+      /> } 
+      
+
+      {mostrarComponentes.componente4 && <TablePropuesta
         inputConsumoAnual={inputConsumoAnual} 
         inputConsumo={inputConsumo}
         inputPotenciaContratada={inputPotenciaContratada}
@@ -139,7 +154,8 @@ const TablesContainer = () => {
         valorOtrosMes={valorOtrosMes}
         valorOtrosAnual={valorOtrosAnual}
         restoDeCampos={restoDeCampos}
-      />
+      /> }
+      
       
     </>
   );
