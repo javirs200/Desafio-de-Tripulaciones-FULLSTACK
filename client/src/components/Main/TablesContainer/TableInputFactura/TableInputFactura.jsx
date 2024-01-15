@@ -324,13 +324,23 @@ function TablaInputFactura({
 
   return (
     <>
-      <section>
-        <article>
-          <p>ENERGIA</p>
-        </article>
-        <article>
-          <p>POTENCIA</p>
-        </article>
+
+    <section className='company'>
+      <h4>COMPANÍA ACTUAL - "INTRODUCIR A PARTIR DEL INPUT PANTALLA ANTERIOR"</h4>
+    </section>
+      <section >
+        
+        <table id='first_table'>
+          
+          <thead>
+           
+           
+           <tr>
+              <th></th>
+              <th className='article_title' colSpan={8}>Energía</th>
+              <th className='article_title' colSpan={7}>Potencia</th>
+            </tr>
+
 
       </section>
 
