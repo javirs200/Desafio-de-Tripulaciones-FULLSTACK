@@ -1,7 +1,6 @@
 const usersModel = require("../models/users.model");
 const { validationResult } = require('express-validator');
 let bcrypt = require('bcryptjs');
-require('dotenv').config()
 const uuidV4 = require('uuid')
 
 const getAllUsers = async (req, res) => {
