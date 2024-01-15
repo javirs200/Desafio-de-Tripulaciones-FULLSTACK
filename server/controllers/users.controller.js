@@ -4,12 +4,10 @@ let bcrypt = require('bcryptjs');
 require('dotenv').config()
 const uuidV4 = require('uuid')
 
-const salt = process.env.SALT
-
 const getAllUsers = async (req, res) => {
   try {
-    let user = await usersModel.findAll();
-    res.status(200).json(user);
+    const users = await usersModel.findAll();
+    res.status(200).json(users);
   } catch (error) {
     console.log(`ERROR: ${error}`);
     res.status(400).json({ msj: `ERROR: ${error}` });
@@ -27,7 +25,7 @@ const readUser = async (req, res) => {
     if (user) {
       res.status(200).json(user);
     } else {
-      res.status(400).json({ msg: "wrong credentials user not found" });
+      res.status(400).json({ msg: "Las credenciales proporcionadas son incorrectas" });
     }
   } catch (error) {
     console.log(`ERROR: ${error}`);
@@ -54,7 +52,7 @@ const createUser = async (req, res) => {
     const data = {id_usuario,nombre,apellido,email,password,rol}
 
     console.log('datos para guardar en dB ', data);
-    let answer = await usersModel.create(data);
+    const answer = await usersModel.create(data);
     res.status(201).json(answer);
   } catch (error) {
     console.log(`ERROR: ${error}`);
