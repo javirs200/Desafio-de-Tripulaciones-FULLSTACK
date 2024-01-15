@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 
@@ -6,7 +6,11 @@ import Logo from "../Logo/Logo";
 
 
 const Register1 = () => {
-  const navigate = useNavigate();
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [isMatch, setIsMatch] = useState(false);
+
+ 
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
@@ -24,33 +28,49 @@ const Register1 = () => {
 
   // }
 
-  const handleFakeSubmit = (event) =>{
-    event.preventDefault();
-    navigate("/login")
-  }
+  // onSubmit={handleSubmit}  PONER EN LA ETIQUETA FORM
+ 
+  useEffect(() => {
+    setIsMatch(password1 === password2);
+  }, [password1, password2]);
 
-  return <section className="form_logo_container">
+  const handlePasswordChange = (event) => {
+    const { name, value } = event.target;
 
+    if (name === 'password1') {
+      setPassword1(value);
+    } else if (name === 'password2') {
+      setPassword2(value);
+    }
+  };
+
+  return ( <section className="form_logo_container">
     <Logo/>
-   
-    
-    
-    <article className="form_section">
+    <form className="form_label">  
+      <input className="input_form" type="email" placeholder="Email" name="email" />
 
-      <p className="create_p">Crea una cuenta</p>
-      <form className="form_label" onClick={handleFakeSubmit}>
-        <input className="input_form" type="email" placeholder="Email" name="email"></input>
-        <input className="input_form" type="password" placeholder="Contraseña" name="password"></input>
-        <input className="input_form"   type="password" placeholder="Confirmar contraseña"></input>
-        <button className="form_button" type="click">Registrarse</button>
-        {/* <button type="click" onClick={handleSubmit}>Registrase</button> */}
-      </form>
+      <input
+        className="input_form"
+        type="password"
+        placeholder="Contraseña"
+        name="password1"
+        onChange={handlePasswordChange}
+      />
 
+      <input
+        className={isMatch ? 'input_form_match' : 'input_form'}
+        type="password"
+        placeholder="Confirmar contraseña"
+        name="password2"
+        onChange={handlePasswordChange}
+      />
 
-    </article>
-
-
-  </section>;
+      <button className="form_button" type="submit">
+        Registrarse
+      </button>
+    </form>
+    </section>
+  );
 };
 
 export default Register1;
