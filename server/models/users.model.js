@@ -6,8 +6,16 @@ const { DataTypes } = require('sequelize');
 const usuario = db.define("usuario", {
     id_usuario: {
         field: 'id_usuario',
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
+    },
+    nombre: {
+        field: 'nombre',
+        type: DataTypes.STRING(50)
+    },
+    apellido:{
+        field: 'apellido',
+        type: DataTypes.STRING(50)
     },
     email: {
         field: 'email',
@@ -15,9 +23,9 @@ const usuario = db.define("usuario", {
         type: DataTypes.STRING(50),
         primaryKey: true,
     },
-    contraseña:{ // esto tiene que estar en hash 
-        field: 'contraseña',
-        type: DataTypes.STRING(50)
+    password:{
+        field: 'password',
+        type: DataTypes.STRING()
     },
     rol: {
         field: 'rol',
