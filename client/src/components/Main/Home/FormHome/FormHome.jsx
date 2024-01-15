@@ -5,7 +5,7 @@ const FormHome = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate.push("/table");
+    navigate("/table");
 
   };
   return (

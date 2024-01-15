@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./Login.css";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import { UserContext } from "../../../context/userContext";
@@ -8,20 +9,32 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setLoggedIn } = useContext();
+  const { setLoggedIn } = useContext(UserContext);
 
   const handleButtonClick = () => {
-    if (isValidEmail(email) && isValidPassword(password)) {
-      // Simulo el login. ruta: /api/login
-      // Añadir a parte una comprobación para el password (se hace en bbdd).
-      setLoggedIn(true);
+    const fetchUsers = async () => {
+      const user = { email: email, password: password };
 
-      navigate("/home");
-    } else {
-      alert(
-        "Por favor, ingrese un correo electrónico y una contraseña válidos."
-      );
-    }
+      if (isValidEmail(email)) {
+        //peticion api para login con objeto usuario
+        const response = await fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        });
+        if (response.status === 200) {
+          setLoggedIn(true);
+          navigate("/home");
+        } else {
+          alert("datos de acceso incorrectos , intentelo de nuevo");
+        }
+      } else {
+        alert(
+          "Por favor, ingrese un correo electrónico y una contraseña válidos."
+        );
+      }
+    };
+    fetchUsers();
   };
 
   const isValidEmail = (email) => {
@@ -55,9 +68,7 @@ const Login = () => {
           />
         </form>
         <br />
-        <p id="register_link">
-          ¿No tienes cuenta? <a>Registrate</a>
-        </p>
+
         <button
           id="button_login"
           className="form_button"
@@ -70,5 +81,4 @@ const Login = () => {
     </section>
   );
 };
-
 export default Login;
