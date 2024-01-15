@@ -48,6 +48,7 @@ input[type="number"]{
     margin-bottom: 16px;
     text-align: center;
 }
+
 h4{
     padding: 5px;
 }
@@ -76,7 +77,7 @@ h4{
     
 }
 
-#total_title{
+.total_title{
     border-radius: 8px;
     border: 1px solid var(--Primary-Black, #0F0000);
     background: var(--secondary-secundario-rojo-8, rgba(193, 0, 0, 0.08));

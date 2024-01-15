@@ -13,7 +13,7 @@ const TablePropuesta = ({
      
 
       <section>
-        <table >
+        <table id='second_table' >
           <thead>
 
           <tr>
@@ -22,7 +22,7 @@ const TablePropuesta = ({
               <th className='article_title' colSpan={7}>Potencia</th>
              
           </tr>
-          <br />
+         
             <tr>
               <th className='tr_inputs'>FRANJA</th>
               <th className='tr_inputs'>CONSUMO ANUAL (kWh)</th>
@@ -148,44 +148,44 @@ const TablePropuesta = ({
             </tr>
 
             <tr>
-              <td>p6</td>
-              <td>{inputConsumoAnual.consumo_anual_p6}</td>
-              <td>{inputConsumo.consumo_factura_p6}</td>
-              <td> €</td>
-              <td> €</td>
-              <td></td>
-              <td> €</td>
-              <td> €</td>
-              <td> €</td>
+              <td className='td_radius'>p6</td>
+              <td className='td_radius'>{inputConsumoAnual.consumo_anual_p6}</td>
+              <td className='td_radius'>{inputConsumo.consumo_factura_p6}</td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'></td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'> €</td>
 
-              <td>{inputPotenciaContratada.potencia_contratada_p6}</td>
-              <td>{inputPotenciaFacturada.potencia_facturada_p6}</td>
-              <td> €</td>
-              <td></td>
-              <td> €</td>
-              <td> €</td>
-              <td> €</td>
+              <td className='td_radius' >{inputPotenciaContratada.potencia_contratada_p6}</td>
+              <td className='td_radius'>{inputPotenciaFacturada.potencia_facturada_p6}</td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'></td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'> €</td>
+              <td className='td_radius'> €</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td>TOTAL</td>
-              <td>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
-              <td>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='total_title'>TOTAL</td>
+              <td className='total_input'>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
+              <td className='total_input'>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='total_input' ></td>
+              <td className='total_input'></td>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td> €</td>
-              <td> €</td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='total_input'> €</td>
+              <td className='total_input'> €</td>
             </tr>
           </tfoot>
 

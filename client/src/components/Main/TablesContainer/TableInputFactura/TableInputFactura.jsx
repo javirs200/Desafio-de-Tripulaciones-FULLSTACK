@@ -283,8 +283,6 @@ function TablaInputFactura({
               <th className='article_title' colSpan={7}>Potencia</th>
             </tr>
 
-           <br />
-            
           
             
             {/* INPUTS ENERGIA */}
@@ -432,7 +430,7 @@ function TablaInputFactura({
 
           <tfoot>
             <tr>
-              <td id='total_title'>TOTAL</td>
+              <td className='total_title'>TOTAL</td>
               <td className='total_input'>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
               <td className='total_input'>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
               <td className='empty_input'></td>
