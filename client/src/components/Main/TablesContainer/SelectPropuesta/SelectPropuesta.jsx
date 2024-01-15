@@ -246,7 +246,7 @@ const SelectPropuesta = () => {
                     <option> </option>
                     <option value="PENINSULA">PENINSULA</option>
                     <option value="CANARIAS">CANARIAS</option>
-                    <option value="VALEARES">VALEARES</option>
+                    <option value="BALEARES">BALEARES</option>
                   </select>
                 </td>
                 <td>
