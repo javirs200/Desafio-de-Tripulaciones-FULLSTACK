@@ -41,7 +41,7 @@ input[type="number"]{
 
 } 
 
-#company{
+.company{
     border-radius: 8px;
     background: var(--Primary-Red-500, #C10000);
     color: #FDFCFC;
