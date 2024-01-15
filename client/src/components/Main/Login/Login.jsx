@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import { UserContext } from "../../../context/userContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const { setLoggedIn } = useContext();
 
   const handleButtonClick = () => {
     if (isValidEmail(email) && isValidPassword(password)) {
-      // Simulo el login.
+      // Simulo el login. ruta: /api/login
+      // Añadir a parte una comprobación para el password (se hace en bbdd).
       setLoggedIn(true);
       navigate("/home");
     } else {
-      alert("Por favor, ingrese un correo electrónico y una contraseña válidos.");
-    }
+      alert(
+        "Por favor, ingrese un correo electrónico y una contraseña válidos."
+      );
+    } 
   };
 
   const isValidEmail = (email) => {
@@ -24,8 +28,6 @@ const Login = () => {
     return emailRegex.test(email);
   };
 
-  // Para hablar la validación con Jaavi:
-  
   // const isValidPassword = (password) => {
   //   return password.length >= 6;
   // };
@@ -51,7 +53,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </form>
-        <br/>
+        <br />
         <p id="register_link">
           ¿No tienes cuenta? <a>Registrate</a>
         </p>
