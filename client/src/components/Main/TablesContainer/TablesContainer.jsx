@@ -98,6 +98,7 @@ const TablesContainer = () => {
   const [valorOtrosMes, setValorOtrosMes] = useState(0);
   const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
   const [importeTotalFactura, setImporteTotalFactura] = useState(0);
+  const [importeTotalAnual, setImporteTotalAnual] = useState(0);
 
   // OTROS ESTADOS
   const [mostrarComponentes, setMostrarComponentes] = useState({
@@ -138,7 +139,12 @@ const TablesContainer = () => {
         setRestoDeCampos={setRestoDeCampos}
         importeTotalFactura={importeTotalFactura}
         setImporteTotalFactura={setImporteTotalFactura}
+
         showTable2={handleMostrarComponentes}
+
+        importeTotalAnual={importeTotalAnual}
+        setImporteTotalAnual={setImporteTotalAnual}
+
    
       />
       {mostrarComponentes.componente3 && <SelectPropuesta
