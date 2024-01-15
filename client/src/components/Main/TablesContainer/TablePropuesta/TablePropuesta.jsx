@@ -12,14 +12,11 @@ const TablePropuesta = ({
 }) => {
   return (
     <>
-    <section className='company'>
-      <h4>PROPUESTA SEVERAL</h4>
-    </section>
-     
+      
 
       <section>
         <table id='second_table' >
-          <thead>
+        <thead>
 
           <tr>
               <th></th>
@@ -28,29 +25,29 @@ const TablePropuesta = ({
              
           </tr>
          
-            <tr>
-              <th className='tr_inputs'>FRANJA</th>
-              <th className='tr_inputs'>CONSUMO ANUAL (kWh)</th>
-              <th className='tr_inputs'>CONSUMO FACTURA ACTUAL (kWh)</th>
-              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
-              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
-              <th className='tr_inputs'>DESCUENTO(%)</th>
-              <th className='tr_inputs'>PRECIO CON DESCUENTO </th>
-              <th className='tr_inputs'>TOTAL PAGO EN FACTURA</th>
-              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
+          <tr>
+            <th className='tr_inputs'>FRANJA</th>
+            <th className='tr_inputs'>CONSUMO ANUAL (kWh)</th>
+            <th className='tr_inputs'>CONSUMO FACTURA ACTUAL (kWh)</th>
+            <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
+            <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
+            <th className='tr_inputs'>DESCUENTO(%)</th>
+            <th className='tr_inputs'>PRECIO CON DESCUENTO </th>
+            <th className='tr_inputs'>TOTAL PAGO EN FACTURA</th>
+            <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
 
 
 
-              <th className='tr_inputs'>POTENCIA CONTRATADA (kW)</th>
-              <th className='tr_inputs'>POTENCIA FACTURADA (kW)</th>
-              <th className='tr_inputs'>PRECIOS POTENCIA (€/kW/día)</th>
-              <th className='tr_inputs'>DESCUENTO (%)</th>
-              <th className='tr_inputs'>PRECIO CON DESCUENTO</th>
-              <th className='tr_inputs'>TOTAL PAGO EN FACTURA	</th>
-              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
+            <th className='tr_inputs'>POTENCIA CONTRATADA (kW)</th>
+            <th className='tr_inputs'>POTENCIA FACTURADA (kW)</th>
+            <th className='tr_inputs'>PRECIOS POTENCIA (€/kW/día)</th>
+            <th className='tr_inputs'>DESCUENTO (%)</th>
+            <th className='tr_inputs'>PRECIO CON DESCUENTO</th>
+            <th className='tr_inputs'>TOTAL PAGO EN FACTURA	</th>
+            <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
 
-            </tr>
-          </thead>
+          </tr>
+        </thead>
           <tbody>
             <tr>
               <td>P1</td>

@@ -225,6 +225,11 @@ const SelectPropuesta = () => {
 
   return (
     <>
+
+    <section className='company'>
+      <h4>PROPUESTA SEVERAL</h4>
+    </section>
+    
       <section>
         <article>
           <table border="1">
