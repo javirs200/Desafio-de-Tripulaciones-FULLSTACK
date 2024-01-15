@@ -8,7 +8,6 @@ input {
     width: 100%;
     height: 100%;
     position: relative;
-    padding: 10px 10px;
     box-sizing: border-box;
     border: none;
     text-align: center;
@@ -19,7 +18,8 @@ input[type="number"]:focus {
 }
 input[type="number"]{
     outline-color: #867979;
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: bold;
     
 }
 
@@ -28,9 +28,7 @@ input[type="number"]{
     width: 100%;
     text-align: center;
     margin-bottom: 40px;
-   
-   
-    
+ 
 }
 
 
@@ -39,14 +37,19 @@ input[type="number"]{
     width: 100px;
     word-wrap: break-word;
     font-size: 8px;
+    font-weight: bold;
+
 } 
 
 #company{
-    border-radius: 20px;
+    border-radius: 8px;
     background: var(--Primary-Red-500, #C10000);
     color: #FDFCFC;
-    padding: 10px;
-    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+h4{
+    padding: 5px;
 }
 
 .article_title{
@@ -56,7 +59,7 @@ input[type="number"]{
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    padding: 10px;
+    padding: 3px;
     
   
 }
@@ -82,6 +85,7 @@ input[type="number"]{
 .total_input{
     border-radius: 8px;
     border: 1px solid var(--Primary-Black, #0F0000);
+    padding: 8px;
     
 }
 
