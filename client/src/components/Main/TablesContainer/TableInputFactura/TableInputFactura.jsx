@@ -26,6 +26,8 @@ function TablaInputFactura({
   setRestoDeCampos,
   importeTotalFactura,
   setImporteTotalFactura,
+  importeTotalAnual, 
+  setImporteTotalAnual
 
 
 }) {
@@ -322,9 +324,6 @@ function TablaInputFactura({
     let suma1 = 0
     let suma2 = 0
     for (let i = 0; i < cantidadOtros.length; i++) {
-      console.log(suma1, suma2)
-      console.log(cantidadOtros[i][0])
-      console.log("entrando en array")
       cantidadOtros[i][1] == "true" ? suma1 += cantidadOtros[i][0] : "";
       cantidadOtros[i][2] == "true" ? suma2 += cantidadOtros[i][0]: "";
     };
@@ -332,6 +331,18 @@ function TablaInputFactura({
     setValorOtrosAnual(suma2);
 
   }, [cantidadOtros]);
+
+
+  useEffect(() => {
+    let importe= totalPagoAnual.p1 + totalPagoAnual.p2 + totalPagoAnual.p3 + totalPagoAnual.p4 + totalPagoAnual.p5 + totalPagoAnual.p6+totalPagoAnualPotencia.p1 + totalPagoAnualPotencia.p2 + totalPagoAnualPotencia.p3 + totalPagoAnualPotencia.p4 + totalPagoAnualPotencia.p5 + totalPagoAnualPotencia.p6
+    console.log(importe, 1.0051127, restoDeCampos.alquiler_equipo, restoDeCampos.dias_facturacion, (valorOtrosAnual/365) , restoDeCampos.dias_facturacion, restoDeCampos.iva)
+    setImporteTotalAnual(
+      (importe* 1.0051127 +
+        (restoDeCampos.alquiler_equipo / restoDeCampos.dias_facturacion) * 365 +
+        (valorOtrosAnual / restoDeCampos.dias_facturacion) * 365) * (1 + (restoDeCampos.iva/100))
+      )
+    console.log(importeTotalAnual)
+  }, [totalPagoAnual,totalPagoAnualPotencia,restoDeCampos,valorOtrosAnual]);
 
 
   
@@ -627,7 +638,7 @@ function TablaInputFactura({
             <tbody>
               <tr>
                 <th>TOTAL ANUAL ESTIMADO</th>
-                <td> €</td>
+                <td>{importeTotalAnual} €</td>
               </tr>
             </tbody>
           </table>
