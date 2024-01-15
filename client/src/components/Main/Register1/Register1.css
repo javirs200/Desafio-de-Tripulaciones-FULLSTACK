@@ -54,10 +54,21 @@
 }
 
 .input_form{
+    outline: none;
     border:none;
     border-bottom: 1px solid var(--Secondary-Red-300, #F53D3D);
     width: 301px;
     height: 40px;
     padding: 8px;
     gap: 16px;
+}
+
+.input_form_match {
+    border:none;
+    border-bottom: 1px solid var(--Secondary-Red-300, #0ac107);
+    width: 301px;
+    height: 40px;
+    padding: 8px;
+    gap: 16px;
+
 }
