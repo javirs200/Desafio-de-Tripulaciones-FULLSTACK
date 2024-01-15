@@ -428,7 +428,7 @@ function TablaInputFactura({
 
           <tfoot>
             <tr>
-              <td id='total_title'>TOTAL</td>
+              <td className='total_title'>TOTAL</td>
               <td className='total_input'>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
               <td className='total_input'>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
               <td className='empty_input'></td>
@@ -453,8 +453,8 @@ function TablaInputFactura({
         </table>
       </section>
 
-      <section>
-        <table id='other_table' border="1">
+      <section id='other_section'>
+        <table id='other_table'>
           <tbody>
           <tr>
             <th>DIAS DE FACTURACION</th>
@@ -463,7 +463,7 @@ function TablaInputFactura({
         </tbody>
         </table>
 
-        <table border="1">
+        <table>
           <tbody>
           <tr>
             <th>ENERGIA REACTIVA</th>
@@ -472,7 +472,7 @@ function TablaInputFactura({
         </tbody>
         </table>
 
-        <table border="1">
+        <table >
           <tbody>
           <tr>
             <th>IMPUESTO ELÉCTRICO</th>
@@ -481,7 +481,7 @@ function TablaInputFactura({
         </tbody>
         </table>
 
-        <table border="1">
+        <table >
           <tbody>
           <tr>
             <th>ALQUILER DE EQUIPO</th>
@@ -490,10 +490,10 @@ function TablaInputFactura({
         </tbody>
         </table>
 
-        <table border="1">
+        <table >
           <tbody>
           <tr>
-            <th>IMPORTE TOTAL FACTURA</th>
+            <th id='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
             <td> €</td>
           </tr>
         </tbody>
