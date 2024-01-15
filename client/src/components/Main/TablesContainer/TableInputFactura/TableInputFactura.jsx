@@ -18,10 +18,16 @@ function TablaInputFactura({
   setPotenciaFacturada,
   inputPrecioPotencia,
   setPrecioPotencia,
+  valorOtrosMes,
   setValorOtrosMes,
+  valorOtrosAnual,
   setValorOtrosAnual,
   restoDeCampos,
-  setRestoDeCampos
+  setRestoDeCampos,
+  importeTotalFactura,
+  setImporteTotalFactura,
+
+
 }) {
 
   // const{propuesta} = useLocation();
@@ -87,8 +93,10 @@ function TablaInputFactura({
     p6: 0,
   });
 
-  //_________________ DEL RESTO DE OTROS CAMPOS DE LA FACTURA___________________________
+  //_________________ EESTADOS DEL RESTO DE OTROS CAMPOS DE LA FACTURA___________________________
   const [cantidadOtros, setCantidadOtros] = useState([[0, "", ""]]);
+
+
 
 
 
@@ -185,6 +193,8 @@ function TablaInputFactura({
 
     );
   };
+
+  
   //_________________ FUNCIONES DE OTROS CAMPOS DE LA FACTURA___________________________
 
   const generarOtros = () => {
@@ -260,6 +270,13 @@ function TablaInputFactura({
     })
 
   }, [inputConsumoAnual, inputPrecioAnual, descuentoActual]);
+
+  useEffect(() => {
+    let importe= totalPagoFactura.p1 + totalPagoFactura.p2 + totalPagoFactura.p3 + totalPagoFactura.p4 + totalPagoFactura.p5 + totalPagoFactura.p6+totalPagoFacturaPotencia.p1 + totalPagoFacturaPotencia.p2 + totalPagoFacturaPotencia.p3 + totalPagoFacturaPotencia.p4 + totalPagoFacturaPotencia.p5 + totalPagoFacturaPotencia.p6
+    setImporteTotalFactura(
+      (importe + restoDeCampos.energia_reactiva + restoDeCampos.impuesto_electrico + restoDeCampos.alquiler_equipo + valorOtrosMes)*(1+(restoDeCampos.iva/100)))
+
+  }, [totalPagoFactura,totalPagoFacturaPotencia,restoDeCampos,valorOtrosMes]);
 
 
   //__________ SUMATORIOS POTENCIA___________________
@@ -545,7 +562,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>IMPORTE TOTAL FACTURA</th>
-              <td> €</td>
+              <td>{importeTotalFactura} €</td>
             </tr>
           </tbody>
         </table>
@@ -614,12 +631,7 @@ function TablaInputFactura({
               </tr>
             </tbody>
           </table>
-
         </article>
-
-
-
-
       </section >
 
     </>

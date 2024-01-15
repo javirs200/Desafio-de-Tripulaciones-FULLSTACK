@@ -94,6 +94,7 @@ const TablesContainer = () => {
   );
   const [valorOtrosMes, setValorOtrosMes] = useState(0);
   const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
+  const [importeTotalFactura, setImporteTotalFactura] = useState(0);
 
 
   return (
@@ -119,9 +120,13 @@ const TablesContainer = () => {
         setValorOtrosAnual={setValorOtrosAnual}
         restoDeCampos={restoDeCampos}
         setRestoDeCampos={setRestoDeCampos}
+        importeTotalFactura={importeTotalFactura}
+        setImporteTotalFactura={setImporteTotalFactura}
    
       />
-      <SelectPropuesta/>
+      <SelectPropuesta
+        importeTotalFactura={importeTotalFactura}
+      />
       <TablePropuesta
         inputConsumoAnual={inputConsumoAnual} 
         inputConsumo={inputConsumo}
