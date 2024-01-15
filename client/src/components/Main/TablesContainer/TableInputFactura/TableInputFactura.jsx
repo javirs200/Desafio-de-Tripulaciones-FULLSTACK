@@ -275,9 +275,7 @@ function TablaInputFactura({
         <table id='first_table'>
           
           <thead>
-            {/* <tr >
-              <th id='company' colSpan={16}>COMPANÍA ACTUAL - "INTRODUCIR A PARTIR DEL INPUT PANTALLA ANTERIOR"</th>
-            </tr>  */}
+           
            
            <tr>
               <th></th>
@@ -285,10 +283,10 @@ function TablaInputFactura({
               <th className='article_title' colSpan={7}>Potencia</th>
             </tr>
 
-           
+           <br />
             
           
-            <tr></tr>
+            
             {/* INPUTS ENERGIA */}
             <tr>
               <th className='tr_inputs'>FRANJA</th>
