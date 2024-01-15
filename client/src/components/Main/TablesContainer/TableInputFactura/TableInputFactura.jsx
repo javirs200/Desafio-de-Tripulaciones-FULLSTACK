@@ -453,8 +453,8 @@ function TablaInputFactura({
         </table>
       </section>
 
-      <section id='other_section'>
-        <table id='other_table'>
+      <section className='other_section'>
+        <table className='other_table'>
           <tbody>
           <tr>
             <th>DIAS DE FACTURACION</th>
@@ -493,7 +493,7 @@ function TablaInputFactura({
         <table >
           <tbody>
           <tr>
-            <th id='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
+            <th className='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
             <td> €</td>
           </tr>
         </tbody>
@@ -501,13 +501,13 @@ function TablaInputFactura({
 
       </section>
 
-      <section>
-        <table border="1">
+      <section className='other_section_2'>
+        <table className='other_table'>
           <tbody>
-          <tr>
-            <th>OTROS</th>
-            <th><input type="number" name="otros_a"></input> €</th>
-            <td>
+          <tr className='others_tr'>
+            <th className='other_title'>OTROS</th>
+            <td className='no_radius_td'><input type="number" name="otros_a"></input> €</td>
+            <td className='no_radius_td'>
               <select name="otros_a_status01">
                 <option value="true">SI</option>
                 <option value="false">NO</option>
@@ -523,31 +523,12 @@ function TablaInputFactura({
         </tbody>
         </table>
 
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>OTROS</th>
-              <th><input type="number" name="otros_b"></input> €</th>
-              <td>
-                <select name="otros_b_status01">
-                  <option value="SI">SI</option>
-                  <option value="NO">NO</option>
-                </select>
-              </td>
-              <td>
-                <select name="otros_b_status02">
-                  <option value="SI">SI</option>
-                  <option value="NO">NO</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+ 
 
-        <table border="1">
+        <table>
           <tbody>
             <tr>
-              <th>IVA</th>
+              <th id='iva_th'>IVA</th>
               <td>
                 <select name="iva">
                   <option value="21" >21%</option>
@@ -559,10 +540,10 @@ function TablaInputFactura({
           </tbody>
         </table>
 
-        <table border="1">
+        <table>
           <tbody>
             <tr>
-              <th>TOTAL ANUAL ESTIMADO</th>
+              <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
               <td> €</td>
             </tr>
           </tbody>
