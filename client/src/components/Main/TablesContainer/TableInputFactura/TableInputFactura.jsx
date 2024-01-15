@@ -1,5 +1,5 @@
-import { useState, useEffect, useLocation } from 'react'
-
+import { useState, useEffect } from 'react'
+import './TableInputFactura.css'
 
 
 
@@ -17,14 +17,9 @@ function TablaInputFactura({
   inputPotenciaFacturada,
   setPotenciaFacturada,
   inputPrecioPotencia,
-  setPrecioPotencia,
-  setValorOtrosMes,
-  setValorOtrosAnual,
-  restoDeCampos,
-  setRestoDeCampos
+  setPrecioPotencia
 }) {
 
-  // const{propuesta} = useLocation();
 
   //_______________________ ESTADOS ENERGIA __________________________________
 
@@ -87,10 +82,8 @@ function TablaInputFactura({
     p6: 0,
   });
 
-  //_________________ DEL RESTO DE OTROS CAMPOS DE LA FACTURA___________________________
-  const [cantidadOtros, setCantidadOtros] = useState([[0, "", ""]]);
-
-
+  //_________________ ESTADOS DE OTROS CAMPOS DE LA FACTURA___________________________
+  const [diasFacturados, setDiasFacturados] = useState(0);
 
 
   //_______________________ FUNCIONES ENERGIA __________________________________
@@ -145,7 +138,7 @@ function TablaInputFactura({
     const valor = e.target.value;
 
     // Actualizar el estado con el nuevo valor del input
-    setDescuentoActual(valor * 1);
+    setDescuentoActual(valor*1);
   };
 
   //_______________________ FUNCIONES POTENCIA __________________________________
@@ -187,39 +180,12 @@ function TablaInputFactura({
   };
   //_________________ FUNCIONES DE OTROS CAMPOS DE LA FACTURA___________________________
 
-  const generarOtros = () => {
-    setCantidadOtros([...cantidadOtros, [0, "", ""]]);
-  };
+  const handleInputDiasFacturados = (e) => {
 
-  const handleInputOtrosValue = (e) => {
-    let array = cantidadOtros
-    array[e.target.name * 1][0] = e.target.value * 1;
-    setCantidadOtros([...array]);
-
-  };
-
-  const handleInputOtrosMes = (e) => {
-    let array = cantidadOtros
-    array[e.target.name * 1][1] = e.target.value;
-    setCantidadOtros([...array]);
-  };
-
-  const handleInputOtrosAnual = (e) => {
-    let array = cantidadOtros
-    array[e.target.name * 1][2] = e.target.value;
-    setCantidadOtros([...array]);
-  };
-
-  const handleInputRestoCampos = (e) => {
-    const { name, value } = e.target;
+    const valor = e.target.value;
 
     // Actualizar el estado con el nuevo valor del input
-    setRestoDeCampos({
-      ...restoDeCampos,
-      [name]: value * 1,
-    }
-
-    );
+    setDiasFacturados(valor*1);
   };
 
   // SUMATORIOS
@@ -228,12 +194,12 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioDescuentoActual({
-      p1: inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual / 100),
-      p2: inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual / 100),
-      p3: inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual / 100),
-      p4: inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual / 100),
-      p5: inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual / 100),
-      p6: inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual / 100),
+      p1: inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual/100),
+      p2: inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual/100),
+      p3: inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual/100),
+      p4: inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual/100),
+      p5: inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual/100),
+      p6: inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual/100),
     })
   }, [inputPrecioMes, descuentoActual]);
 
@@ -251,12 +217,12 @@ function TablaInputFactura({
 
   useEffect(() => {
     setTotalPagoAnual({
-      p1: inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual / 100))),
-      p2: inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual / 100))),
-      p3: inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual / 100))),
-      p4: inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual / 100))),
-      p5: inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual / 100))),
-      p6: inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual / 100))),
+      p1: inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual/100))) ,
+      p2: inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual/100))),
+      p3: inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual/100))),
+      p4: inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual/100))),
+      p5: inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual/100))),
+      p6: inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual/100))),
     })
 
   }, [inputConsumoAnual, inputPrecioAnual, descuentoActual]);
@@ -266,25 +232,25 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioPotenciaDescuento({
-      p1: inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual / 100)),
-      p2: inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual / 100)),
-      p3: inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual / 100)),
-      p4: inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual / 100)),
-      p5: inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual / 100)),
-      p6: inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual / 100)),
+      p1: inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual/100)),
+      p2: inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual/100)),
+      p3: inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual/100)),
+      p4: inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual/100)),
+      p5: inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual/100)),
+      p6: inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual/100)),
     })
   }, [inputPrecioPotencia, descuentoActual]);
 
   useEffect(() => {
     setTotalPagoFacturaPotencia({
-      p1: inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * restoDeCampos.dias_facturacion,
-      p2: inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * restoDeCampos.dias_facturacion,
-      p3: inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * restoDeCampos.dias_facturacion,
-      p4: inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * restoDeCampos.dias_facturacion,
-      p5: inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * restoDeCampos.dias_facturacion,
-      p6: inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * restoDeCampos.dias_facturacion
+      p1: inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * diasFacturados,
+      p2: inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * diasFacturados,
+      p3: inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * diasFacturados,
+      p4: inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * diasFacturados,
+      p5: inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * diasFacturados,
+      p6: inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * diasFacturados
     })
-  }, [inputPotenciaFacturada, precioPotenciaDescuento, restoDeCampos.dias_facturacion]);
+  }, [inputPotenciaFacturada, precioPotenciaDescuento, diasFacturados]);
 
   useEffect(() => {
     setTotalPagoAnualPotencia({
@@ -297,88 +263,59 @@ function TablaInputFactura({
     })
   }, [inputPotenciaContratada, inputPrecioPotencia]);
 
-  //_________________ SUMATORIOS DE OTROS CAMPOS DE LA FACTURA___________________________
-
-  useEffect(() => {
-    setValorOtrosMes(0);
-    setValorOtrosAnual(0);
-    let suma1 = 0
-    let suma2 = 0
-    for (let i = 0; i < cantidadOtros.length; i++) {
-      console.log(suma1, suma2)
-      console.log(cantidadOtros[i][0])
-      console.log("entrando en array")
-      cantidadOtros[i][1] == "true" ? suma1 += cantidadOtros[i][0] : "";
-      cantidadOtros[i][2] == "true" ? suma2 += cantidadOtros[i][0]: "";
-    };
-    setValorOtrosMes(suma1);
-    setValorOtrosAnual(suma2);
-
-  }, [cantidadOtros]);
-
-
-  
- 
-
 
 
   return (
     <>
-
-    <section className='company'>
-      <h4>COMPANÍA ACTUAL - "INTRODUCIR A PARTIR DEL INPUT PANTALLA ANTERIOR"</h4>
+      <section className='company'>
+      <h4>COMPANÍA ACTUAL </h4>
     </section>
+
       <section >
-        
         <table id='first_table'>
           
           <thead>
-           
-           
-           <tr>
+                      
+            <tr>
               <th></th>
               <th className='article_title' colSpan={8}>Energía</th>
               <th className='article_title' colSpan={7}>Potencia</th>
             </tr>
-
-
-      </section>
-
-      <section>
-        <table border="1">
-          <thead>
+          
+            <tr></tr>
             {/* INPUTS ENERGIA */}
             <tr>
-              <th>FRANJA</th>
-              <th>CONSUMO ANUAL (kWh)</th>
-              <th>CONSUMO FACTURA ACTUAL (kWh)</th>
-              <th>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
-              <th>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
-              <th>DESCUENTO(%)</th>
-              <th>PRECIO CON DESCUENTO </th>
-              <th>TOTAL PAGO EN FACTURA</th>
-              <th>TOTAL PAGO ANUAL</th>
+              <th className='tr_inputs'>FRANJA</th>
+              <th className='tr_inputs'>CONSUMO ANUAL (kWh)</th>
+              <th className='tr_inputs'>CONSUMO FACTURA ACTUAL (kWh)</th>
+              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MEDIA ANUAL (€/kWh)</th>
+              <th className='tr_inputs'>PRECIOS ENERGIA ACTIVA MES DE FACTURACION (€/kWh)</th>
+              <th className='tr_inputs'>DESCUENTO (%)</th>
+              <th className='tr_inputs'>PRECIO CON DESCUENTO </th>
+              <th className='tr_inputs'>TOTAL PAGO EN FACTURA</th>
+              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
 
               {/* INPUTS POTENCIA */}
 
-              <th>POTENCIA CONTRATADA (kW)</th>
-              <th>POTENCIA FACTURADA (kW)</th>
-              <th>PRECIOS POTENCIA (€/kW/día)</th>
-              <th>DESCUENTO (%)</th>
-              <th>PRECIO CON DESCUENTO</th>
-              <th>TOTAL PAGO EN FACTURA	</th>
-              <th>TOTAL PAGO ANUAL</th>
+              <th className='tr_inputs'>POTENCIA CONTRATADA (kW)</th>
+              <th className='tr_inputs'>POTENCIA FACTURADA (kW)</th>
+              <th className='tr_inputs'>PRECIOS POTENCIA (€/kW/día)</th>
+              <th className='tr_inputs'>DESCUENTO (%)</th>
+              <th className='tr_inputs'>PRECIO CON DESCUENTO</th>
+              <th className='tr_inputs'>TOTAL PAGO EN FACTURA	</th>
+              <th className='tr_inputs'>TOTAL PAGO ANUAL</th>
 
             </tr>
           </thead>
+
           <tbody>
-            <tr>
+            <tr >
               <td>P1</td>
               <td><input type="number" name="consumo_anual_p1" step="0.000001" min="0" placeholder={inputConsumoAnual.consumo_anual_p1} onChange={handleInputConsumoAnual}></input></td>
               <td><input type="number" name="consumo_factura_p1" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p1" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p1} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p1" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td><input type="number" name="descuento_actual" step="any" min="0" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
+              <td className='input_descuento'><input type="number" name="descuento_actual" step="any" min="0" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
               <td>{precioDescuentoActual.p1} €</td>
               <td>{totalPagoFactura.p1} €</td>
               <td>{totalPagoAnual.p1} €</td>
@@ -386,7 +323,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p1" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p1" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p1" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td><input type="number" name="descuento_potencia" step="any" min="0" max="100" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
+              <td className='input_descuento' ><input type="number" name="descuento_potencia" step="any" min="0" max="100" placeholder={descuentoActual} onChange={handleInputDescuentoActual}></input></td>
               <td>{precioPotenciaDescuento.p1} €</td>
               <td>{totalPagoFacturaPotencia.p1} €</td>
               <td>{totalPagoAnualPotencia.p1} €</td>
@@ -394,10 +331,10 @@ function TablaInputFactura({
             <tr>
               <td>P2</td>
               <td><input type="number" name="consumo_anual_p2" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p2} onChange={handleInputConsumoAnual}></input></td>
-              <td><input type="number" name="consumo_factura_p2" step="any" min="0" onChange={handleInputConsumo}></input></td>
+              <td><input type="number" name="consumo_factura_p2" step="any" min="0"  onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p2" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p2} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p2" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p2} €</td>
               <td>{totalPagoFactura.p2} €</td>
               <td>{totalPagoAnual.p2} €</td>
@@ -405,7 +342,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p2" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p2" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p2" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p2} €</td>
               <td>{totalPagoFacturaPotencia.p2} €</td>
               <td>{totalPagoAnualPotencia.p2} €</td>
@@ -416,7 +353,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p3" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p3" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p3} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p3" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p3} €</td>
               <td>{totalPagoFactura.p3} €</td>
               <td>{totalPagoAnual.p3} €</td>
@@ -424,7 +361,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p3" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p3" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p3" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p3} €</td>
               <td>{totalPagoFacturaPotencia.p3} €</td>
               <td>{totalPagoAnualPotencia.p3} €</td>
@@ -435,7 +372,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p4" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p4" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p4} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p4" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p4} €</td>
               <td>{totalPagoFactura.p4} €</td>
               <td>{totalPagoAnual.p4} €</td>
@@ -443,7 +380,7 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p4" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p4" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p4" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p4} €</td>
               <td>{totalPagoFacturaPotencia.p4} €</td>
               <td>{totalPagoAnualPotencia.p4} €</td>
@@ -454,7 +391,7 @@ function TablaInputFactura({
               <td><input type="number" name="consumo_factura_p5" step="any" min="0" onChange={handleInputConsumo}></input></td>
               <td><input type="number" name="precio_anual_p5" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p5} onChange={handleInputPrecioAnual}></input> €</td>
               <td><input type="number" name="precio_factura_p5" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioDescuentoActual.p5} €</td>
               <td>{totalPagoFactura.p5} €</td>
               <td>{totalPagoAnual.p5} €</td>
@@ -462,64 +399,147 @@ function TablaInputFactura({
               <td><input type="number" name="potencia_contratada_p5" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
               <td><input type="number" name="potencia_facturada_p5" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
               <td><input type="number" name="precio_potencia_p5" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
+              <td className='input_descuento'></td>
               <td>{precioPotenciaDescuento.p5} €</td>
               <td>{totalPagoFacturaPotencia.p5} €</td>
               <td>{totalPagoAnualPotencia.p5} €</td>
             </tr>
             <tr>
-              <td>P6</td>
-              <td><input type="number" name="consumo_anual_p6" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p6} onChange={handleInputConsumoAnual}></input></td>
-              <td><input type="number" name="consumo_factura_p6" step="any" min="0" onChange={handleInputConsumo}></input></td>
-              <td><input type="number" name="precio_anual_p6" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p6} onChange={handleInputPrecioAnual}></input> €</td>
-              <td><input type="number" name="precio_factura_p6" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
-              <td></td>
-              <td>{precioDescuentoActual.p6} €</td>
-              <td>{totalPagoFactura.p6} €</td>
-              <td>{totalPagoAnual.p6} €</td>
+              <td className='td_radius'>P6</td>
+              <td className='td_radius'><input type="number" name="consumo_anual_p6" step="any" min="0" placeholder={inputConsumoAnual.consumo_anual_p6} onChange={handleInputConsumoAnual}></input></td>
+              <td className='td_radius'><input type="number" name="consumo_factura_p6" step="any" min="0" onChange={handleInputConsumo}></input></td>
+              <td className='td_radius'><input type="number" name="precio_anual_p6" step="any" min="0" placeholder={inputPrecioAnual.precio_anual_p6} onChange={handleInputPrecioAnual}></input> €</td>
+              <td className='td_radius'><input type="number" name="precio_factura_p6" step="any" min="0" onChange={handleInputPrecioMes}></input> €</td>
+              <td className='td_radius'></td>
+              <td className='td_radius'>{precioDescuentoActual.p6} €</td>
+              <td className='td_radius'>{totalPagoFactura.p6} €</td>
+              <td className='td_radius'>{totalPagoAnual.p6} €</td>
 
-              <td><input type="number" name="potencia_contratada_p6" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
-              <td><input type="number" name="potencia_facturada_p6" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
-              <td><input type="number" name="precio_potencia_p6" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
-              <td></td>
-              <td>{precioPotenciaDescuento.p6} €</td>
-              <td>{totalPagoFacturaPotencia.p6} €</td>
-              <td>{totalPagoAnualPotencia.p6} €</td>
+              <td className='td_radius'><input type="number" name="potencia_contratada_p6" step="any" min="0" onChange={handleInputPotenciaContratada}></input></td>
+              <td className='td_radius'><input type="number" name="potencia_facturada_p6" step="any" min="0" onChange={handleInputPotenciaFacturada}></input></td>
+              <td className='td_radius'><input type="number" name="precio_potencia_p6" step="any" min="0" onChange={handleInputPrecioPotencia}></input> €</td>
+              <td className='td_radius' ></td>
+              <td className='td_radius' >{precioPotenciaDescuento.p6} €</td>
+              <td className='td_radius'>{totalPagoFacturaPotencia.p6} €</td>
+              <td className='td_radius'>{totalPagoAnualPotencia.p6} €</td>
             </tr>
           </tbody>
+
+
           <tfoot>
             <tr>
-              <td>TOTAL</td>
-              <td>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
-              <td>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{totalPagoFactura.p1 + totalPagoFactura.p2 + totalPagoFactura.p3 + totalPagoFactura.p4 + totalPagoFactura.p5 + totalPagoFactura.p6} €</td>
-              <td>{totalPagoAnual.p1 + totalPagoAnual.p2 + totalPagoAnual.p3 + totalPagoAnual.p4 + totalPagoAnual.p5 + totalPagoAnual.p6} €</td>
+              <td id='total_title'>TOTAL</td>
+              <td className='total_input'>{inputConsumoAnual.consumo_anual_p1 + inputConsumoAnual.consumo_anual_p2 + inputConsumoAnual.consumo_anual_p3 + inputConsumoAnual.consumo_anual_p4 + inputConsumoAnual.consumo_anual_p5 + inputConsumoAnual.consumo_anual_p6}</td>
+              <td className='total_input'>{inputConsumo.consumo_factura_p1 + inputConsumo.consumo_factura_p2 + inputConsumo.consumo_factura_p3 + inputConsumo.consumo_factura_p4 + inputConsumo.consumo_factura_p5 + inputConsumo.consumo_factura_p6}</td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='total_input'>{totalPagoFactura.p1 + totalPagoFactura.p2 + totalPagoFactura.p3 + totalPagoFactura.p4 + totalPagoFactura.p5 + totalPagoFactura.p6} €</td>
+              <td className='total_input'>{totalPagoAnual.p1 + totalPagoAnual.p2 + totalPagoAnual.p3 + totalPagoAnual.p4 + totalPagoAnual.p5 + totalPagoAnual.p6} €</td>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{totalPagoFacturaPotencia.p1 + totalPagoFacturaPotencia.p2 + totalPagoFacturaPotencia.p3 + totalPagoFacturaPotencia.p4 + totalPagoFacturaPotencia.p5 + totalPagoFacturaPotencia.p6} €</td>
-              <td>{totalPagoAnualPotencia.p1 + totalPagoAnualPotencia.p2 + totalPagoAnualPotencia.p3 + totalPagoAnualPotencia.p4 + totalPagoAnualPotencia.p5 + totalPagoAnualPotencia.p6} €</td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='empty_input'></td>
+              <td className='total_input'>{totalPagoFacturaPotencia.p1 + totalPagoFacturaPotencia.p2 + totalPagoFacturaPotencia.p3 + totalPagoFacturaPotencia.p4 + totalPagoFacturaPotencia.p5 + totalPagoFacturaPotencia.p6} €</td>
+              <td className='total_input'>{totalPagoAnualPotencia.p1 + totalPagoAnualPotencia.p2 + totalPagoAnualPotencia.p3 + totalPagoAnualPotencia.p4 + totalPagoAnualPotencia.p5 + totalPagoAnualPotencia.p6} €</td>
 
 
             </tr>
           </tfoot>
-
+          
         </table>
+      </section>
+
+      <section>
+        <table id='other_table' border="1">
+          <tbody>
+          <tr>
+            <th>DIAS DE FACTURACION</th>
+            <td><input type="number" name="dias_facturacion" onChange={handleInputDiasFacturados}></input></td>
+          </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+          <tr>
+            <th>ENERGIA REACTIVA</th>
+            <td><input type="number" name="energia_reactiva"></input></td>
+          </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+          <tr>
+            <th>IMPUESTO ELÉCTRICO</th>
+            <td><input type="number" name="impuesto_electrico"></input> €</td>
+          </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+          <tr>
+            <th>ALQUILER DE EQUIPO</th>
+            <td><input type="number" name="alquiler_equipo"></input> €</td>
+          </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+          <tr>
+            <th>IMPORTE TOTAL FACTURA</th>
+            <td> €</td>
+          </tr>
+        </tbody>
+        </table>
+
       </section>
 
       <section>
         <table border="1">
           <tbody>
+          <tr>
+            <th>OTROS</th>
+            <th><input type="number" name="otros_a"></input> €</th>
+            <td>
+              <select name="otros_a_status01">
+                <option value="true">SI</option>
+                <option value="false">NO</option>
+              </select>
+            </td>
+            <td>
+              <select name="otros_a_status02">
+                <option value="true">SI</option>
+                <option value="false">NO</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
             <tr>
-              <th>DIAS DE FACTURACION</th>
-              <td><input type="number" name="dias_facturacion" onChange={handleInputRestoCampos}></input></td>
+              <th>OTROS</th>
+              <th><input type="number" name="otros_b"></input> €</th>
+              <td>
+                <select name="otros_b_status01">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+              <td>
+                <select name="otros_b_status02">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -527,8 +547,14 @@ function TablaInputFactura({
         <table border="1">
           <tbody>
             <tr>
-              <th>ENERGIA REACTIVA</th>
-              <td><input type="number" name="energia_reactiva" onChange={handleInputRestoCampos}></input></td>
+              <th>IVA</th>
+              <td>
+                <select name="iva">
+                  <option value="21" >21%</option>
+                  <option value="10">10%</option>
+                  <option value="5">5%</option>
+                </select>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -536,97 +562,11 @@ function TablaInputFactura({
         <table border="1">
           <tbody>
             <tr>
-              <th>IMPUESTO ELÉCTRICO</th>
-              <td><input type="number" name="impuesto_electrico" onChange={handleInputRestoCampos}></input> €</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>ALQUILER DE EQUIPO</th>
-              <td><input type="number" name="alquiler_equipo" onChange={handleInputRestoCampos}></input> €</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>IMPORTE TOTAL FACTURA</th>
+              <th>TOTAL ANUAL ESTIMADO</th>
               <td> €</td>
             </tr>
           </tbody>
         </table>
-
-      </section>
-
-      <section>
-
-
-
-
-         <article> 
-        {cantidadOtros.map((_, index) => (
-          <table key={index} border="1">
-            <tbody>
-              <tr>
-                <th>OTROS</th>
-                <td>
-                  <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
-                </td>
-                <td>
-                  <select name={index} onChange={handleInputOtrosMes} >
-                    <option value=""> </option>
-                    <option value="true">SI</option>
-                    <option value="false">NO</option>
-                  </select>
-                </td>
-                <td>
-                  <select name={index} onChange={handleInputOtrosAnual}>
-                    <option value=""> </option>
-                    <option value="true">SI</option>
-                    <option value="false">NO</option>
-                  </select>
-                </td>
-                <td>
-                  <button onClick={generarOtros}>+</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        ))}
-        </article>
-
-        <article>
-          <table border="1">
-            <tbody>
-              <tr>
-                <th>IVA</th>
-                <td>
-                  <select name="iva" onChange={handleInputRestoCampos}>
-                    <option value=""> </option>
-                    <option value="5">5%</option>
-                    <option value="10">10%</option>
-                    <option value="21" >21%</option>                    
-                  </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table border="1">
-            <tbody>
-              <tr>
-                <th>TOTAL ANUAL ESTIMADO</th>
-                <td> €</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </article>
-
 
 
 
