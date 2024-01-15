@@ -67,7 +67,7 @@ const getPreciosIndexados = async (req, res) => {
         sistema: data.sistema,
         cia: data.cia,
         tarifa: data.tarifa,
-        mes: fecha,
+        mes: new Date(fecha),
         fee: data.fee,
       }
 
