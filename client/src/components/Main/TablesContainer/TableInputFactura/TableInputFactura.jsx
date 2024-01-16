@@ -647,7 +647,7 @@ function TablaInputFactura({
           <table>
             <tbody>
               <tr>
-                <th>TOTAL ANUAL ESTIMADO</th>
+                <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
                 <td>{importeTotalAnual} €</td>
               </tr>
             </tbody>

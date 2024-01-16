@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import "./SelectPropuesta.css"
 
 const SelectPropuesta = () => {
 
@@ -230,23 +231,23 @@ const SelectPropuesta = () => {
       <h4>PROPUESTA SEVERAL</h4>
     </section>
     
-      <section>
+      <section id='select_section'>
         <article>
-          <table border="1">
+          <table>
             <thead>
               <tr>
-                <th>TIPO DE SISTEMA</th>
-                <th>TARIFA</th>
-                <th>CIA</th>
-                <th>METODO</th>
-                <th>PRODUCTO CIA (POT)</th>
-                <th>MES DE FACTURACION (INDEXADO)</th>
-                <th>FEE (ENERGIA)</th>
+                <th className='tr_inputs '>TIPO DE SISTEMA</th>
+                <th className='tr_inputs '>TARIFA</th>
+                <th className='tr_inputs'>CIA</th>
+                <th className='tr_inputs'>METODO</th>
+                <th className='tr_inputs'>PRODUCTO CIA (POT)</th>
+                <th className='tr_inputs'>MES DE FACTURACION (INDEXADO)</th>
+                <th className='tr_inputs'>FEE (ENERGIA)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
+                <td className='td_radius'>
                   <select name="sistema" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="PENINSULA">PENINSULA</option>
@@ -254,7 +255,7 @@ const SelectPropuesta = () => {
                     <option value="BALEARES">BALEARES</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="tarifa" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="2.0TD">2.0TD</option>
@@ -263,7 +264,7 @@ const SelectPropuesta = () => {
                     <option value="6.2TD">6.2TD</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="cia" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="ACCIONA">ACCIONA</option>
@@ -283,14 +284,14 @@ const SelectPropuesta = () => {
                     <option value="TOTAL">TOTAL</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="metodo" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="FIJO">FIJO</option>
                     <option value="INDEXADO">INDEXADO</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="producto" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
@@ -299,7 +300,7 @@ const SelectPropuesta = () => {
                     ))}
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="mes" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para MES DE FACTURACION (INDEXADO) */}
@@ -308,7 +309,7 @@ const SelectPropuesta = () => {
                     )) : ""};
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="fee" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
@@ -324,7 +325,7 @@ const SelectPropuesta = () => {
         </article>
 
         <article>
-          <button>CONFIRMAR</button>
+          <button id='confirmation_button'>Confirmar</button>
 
         </article>
 
