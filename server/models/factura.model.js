@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const Sips = require('./sips.model');
 const Cliente = require('./cliente.model');
 
-const Factura = sequelize.define('factura', {
+const factura = sequelize.define('factura', {
   id_factura: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,17 +11,9 @@ const Factura = sequelize.define('factura', {
   },
   id_sips: {
     type: DataTypes.INTEGER,
-    references: {
-      model: Sips,
-      key: 'id_sips',
-    },
   },
   cups: {
     type: DataTypes.STRING(30),
-    references: {
-      model: Cliente,
-      key: 'cups',
-    },
   },
   fecha_factura: {
     type: DataTypes.DATE,
@@ -50,18 +42,18 @@ const Factura = sequelize.define('factura', {
 },
 {
     db,
-    modelName: 'usuario',
-    tableName: 'usuario',
+    modelName: 'factura',
+    tableName: 'factura',
     timestamps:false,
 }
 );
 
-Factura.removeAttribute('id')
+factura.removeAttribute('id')
 
 // Definir las claves foráneas
-Factura.belongsTo(Sips, { foreignKey: 'id_sips', targetKey: 'id_sips' });
-Factura.belongsTo(Cliente, { foreignKey: 'cups', targetKey: 'cups' });
+factura.belongsTo(Sips, { foreignKey: 'id_sips'});
+factura.belongsTo(Cliente, { foreignKey: 'cups'});
 
-Factura.sync();
+factura.sync();
 
-module.exports = Factura;
+module.exports = factura;
