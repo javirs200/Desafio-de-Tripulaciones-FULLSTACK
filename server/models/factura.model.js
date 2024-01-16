@@ -2,7 +2,10 @@ const { DataTypes } = require('sequelize');
 const Sips = require('./sips.model');
 const Cliente = require('./cliente.model');
 
-const factura = sequelize.define('factura', {
+// Requires the object that represents our database
+const { db } = require('../config/db_pgsql');
+
+const factura = db.define('factura', {
   id_factura: {
     type: DataTypes.INTEGER,
     primaryKey: true,
