@@ -388,23 +388,36 @@ const TablePropuesta = ({
 
         </table>
       </section>
-      <section>
+
+      <section className="flex_end_section">
         <article>
-          <table border="1">
+          <table >
             <tbody>
               <tr>
-                <th>IMPUESTO ELÉCTRICO</th>
-                <td> €</td>
+                <th className="table3_pink">IMPUESTO ELÉCTRICO</th>
+                <td className='td_table3'> €</td>
               </tr>
             </tbody>
           </table>
         </article>
+
         <article>
-          <table border="1">
+        <table >
             <tbody>
               <tr>
-                <th>IMPORTE TOTAL FACTURA</th>
-                <td> €</td>
+                <th className="table3_pink">OTROS</th>
+                <td className='td_table3'>{valorOtrosMes} €</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article>
+          <table>
+            <tbody>
+              <tr>
+                <th className='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
+                <td className='td_table3'> €</td>
               </tr>
             </tbody>
           </table>
@@ -412,22 +425,13 @@ const TablePropuesta = ({
       </section>
 
 
-      <section>
+      <section className="flex_end_section">
         <article>
-          <table border="1">
+          <table >
             <tbody>
               <tr>
-                <th>OTROS</th>
-                <td>{valorOtrosMes} €</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table border="1">
-            <tbody>
-              <tr>
-                <th>OTROS ANUAL</th>
-                <td>{valorOtrosAnual} €</td>
+                <th className="table3_pink">OTROS ANUAL</th>
+                <td className='td_table3'>{valorOtrosAnual} €</td>
               </tr>
             </tbody>
           </table>
@@ -435,11 +439,11 @@ const TablePropuesta = ({
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <tbody>
               <tr>
-                <th>TOTAL ANUAL ESTIMADO</th>
-                <td> €</td>
+                <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
+                <td className='td_table3'> €</td>
               </tr>
             </tbody>
           </table>
