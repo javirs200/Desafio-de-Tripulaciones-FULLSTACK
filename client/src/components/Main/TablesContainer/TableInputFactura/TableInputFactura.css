@@ -126,14 +126,21 @@ td{
 
 .other_section_2{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-top: 2px;
-    
-    
+   
+        
 }
 
-.other_section_2 > table > tbody > tr>th{
+.other_article {
+    display: flex;
+}
+
+#other_table_padding{
+    margin-right: 125px;
+}
+
+.other_section_2 > article > table > tbody > tr>th{
     border-radius: 8px 0px 0px 8px;
     border-top: 1px solid var(--Primary-Black, #0F0000);
     border-right: 0.5px solid var(--Primary-Black, #0F0000);
@@ -145,6 +152,7 @@ td{
     font-style: normal;
     font-weight: bold;
     line-height: normal;
+    
 
 }
 
@@ -178,7 +186,7 @@ td{
     border-left: 0.5px solid var(--Primary-Black, #0F0000);
 
 }
-.other_section_2 > table > tbody > tr> td {
+.other_section_2 > article > table > tbody > tr> td {
 
     display: flex;
     width: 73px;
@@ -210,6 +218,12 @@ td{
 
 #iva_th{
     padding: 10px;
+}
+.plus_button{
+    border: none;
+    background-color: var(--secondary-secundario-rojo-8, rgba(193, 0, 0, 0.08));
+    border-radius: 8px;
+
 }
 
 .others_tr{

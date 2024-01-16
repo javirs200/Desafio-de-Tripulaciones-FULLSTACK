@@ -595,43 +595,43 @@ function TablaInputFactura({
 
 
       <section className='other_section_2'>
-        <article>
-          {cantidadOtros.map((_, index) => (
-            <table className='other_table' key={index} >
-              <tbody>
-                <tr className='others_tr' >
-                  <th className='other_title'>OTROS</th>
-                  <td className='no_radius_td'>
-                    <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
-                  </td>
-                  <td className='no_radius_td'>
-                    <select name={index} onChange={handleInputOtrosMes} >
-                      <option value=""> </option>
-                      <option value="true">SI</option>
-                      <option value="false">NO</option>
-                    </select>
-                  </td>
-                  <td className='no_radius_td'>
-                    <select name={index} onChange={handleInputOtrosAnual}>
-                      <option value=""> </option>
-                      <option value="true">SI</option>
-                      <option value="false">NO</option>
-                    </select>
-                  </td>
-                  <td>
-                    <button onClick={generarOtros}>+</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          ))}
+         <article > 
+        {cantidadOtros.map((_, index) => (
+          <table className='other_table' key={index} >
+            <tbody>
+              <tr className='others_tr' >
+                <th className='other_title'>OTROS</th>
+                <td className='no_radius_td'>
+                  <input type="number" name={index} onChange={handleInputOtrosValue} ></input> €
+                </td>
+                <td className='no_radius_td'>
+                  <select name={index} onChange={handleInputOtrosMes} >
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td className='no_radius_td'>
+                  <select name={index} onChange={handleInputOtrosAnual}>
+                    <option value=""> </option>
+                    <option value="true">SI</option>
+                    <option value="false">NO</option>
+                  </select>
+                </td>
+                <td>
+                  <button className='plus_button' onClick={generarOtros}>+</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        ))}
         </article>
 
-        <article>
-          <table >
+        <article className='other_article'>
+          <table id='other_table_padding' >
             <tbody>
               <tr>
-                <th>IVA</th>
+                <th id='iva_th'>IVA</th>
                 <td>
                   <select name="iva" onChange={handleInputRestoCampos}>
                     <option value=""> </option>
@@ -644,7 +644,7 @@ function TablaInputFactura({
             </tbody>
           </table>
 
-          <table border="1">
+          <table>
             <tbody>
               <tr>
                 <th>TOTAL ANUAL ESTIMADO</th>
