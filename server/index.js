@@ -4,7 +4,7 @@ const express = require('express');
 const error404 = require('./middleware/error404')
 const morgan = require('morgan')
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 // const path = require('path');
 const cors = require('cors');
 
