@@ -95,7 +95,7 @@ function TablaInputFactura({
   });
 
   //_________________ ESTADOS DE OTROS CAMPOS DE LA FACTURA___________________________
-  const [diasFacturados, setDiasFacturados] = useState(0);
+  const [cantidadOtros, setCantidadOtros] = useState([[0, "", ""]]);
 
 
   //_______________________ FUNCIONES ENERGIA __________________________________
