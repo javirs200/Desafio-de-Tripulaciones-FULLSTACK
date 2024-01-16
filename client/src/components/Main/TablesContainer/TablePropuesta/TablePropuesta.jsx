@@ -487,8 +487,8 @@ const TablePropuesta = ({
         <table >
             <tbody>
               <tr>
-                <th>IMPORTE TOTAL FACTURA</th>
-                <td>{importeTotalFactura_prop} €</td>
+                <th className="table3_pink">OTROS </th>
+                <td className='td_table3'>{valorOtrosMes} €</td>
               </tr>
             </tbody>
           </table>
