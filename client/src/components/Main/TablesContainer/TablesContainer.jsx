@@ -1,14 +1,16 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
 import Nav from "../Nav/Nav"
 
+
 import './TablesContainer.css'
 
 
 const TablesContainer = () => {
+
 
 //_________________________ ESTADOS ENERGIA ______________________________________
 
@@ -82,8 +84,36 @@ const TablesContainer = () => {
     precio_potencia_p6 : 0
     
   });
-  
 
+
+  //__________________ ESTADOS OTROS CAMPOS DE LA FACTURA/PROPUESTA______________________________
+
+  const [restoDeCampos, setRestoDeCampos] = useState({
+    dias_facturacion: 0,
+    energia_reactiva: 0,
+    impuesto_electrico:0,
+    alquiler_equipo: 0,
+    iva: 5
+  }
+
+  );
+  const [valorOtrosMes, setValorOtrosMes] = useState(0);
+  const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
+  const [importeTotalFactura, setImporteTotalFactura] = useState(0);
+  const [importeTotalAnual, setImporteTotalAnual] = useState(0);
+
+  // OTROS ESTADOS
+  const [mostrarComponentes, setMostrarComponentes] = useState({
+    componente3: false,
+    componente4: false,
+  });
+
+  const handleMostrarComponentes = () => {
+    setMostrarComponentes({
+      componente3: true,
+      componente4: true,
+    });
+  };
 
   return (
     <>
@@ -102,15 +132,38 @@ const TablesContainer = () => {
         inputPotenciaFacturada={inputPotenciaFacturada}
         setPotenciaFacturada={setPotenciaFacturada}
         inputPrecioPotencia={inputPrecioPotencia}
-        setPrecioPotencia={setPrecioPotencia}     
+        setPrecioPotencia={setPrecioPotencia}
+        valorOtrosMes={valorOtrosMes}
+        setValorOtrosMes={setValorOtrosMes}
+        valorOtrosAnual ={valorOtrosAnual}
+        setValorOtrosAnual={setValorOtrosAnual}
+        restoDeCampos={restoDeCampos}
+        setRestoDeCampos={setRestoDeCampos}
+        importeTotalFactura={importeTotalFactura}
+        setImporteTotalFactura={setImporteTotalFactura}
+
+        showTable2={handleMostrarComponentes}
+
+        importeTotalAnual={importeTotalAnual}
+        setImporteTotalAnual={setImporteTotalAnual}
+
+   
       />
-      <SelectPropuesta/>
-      <TablePropuesta
+      {mostrarComponentes.componente3 && <SelectPropuesta
+        importeTotalFactura={importeTotalFactura}
+      /> } 
+      
+
+      {mostrarComponentes.componente4 && <TablePropuesta
         inputConsumoAnual={inputConsumoAnual} 
         inputConsumo={inputConsumo}
         inputPotenciaContratada={inputPotenciaContratada}
         inputPotenciaFacturada={inputPotenciaFacturada}
-      />
+        valorOtrosMes={valorOtrosMes}
+        valorOtrosAnual={valorOtrosAnual}
+        restoDeCampos={restoDeCampos}
+      /> }
+      
       
     </>
   );

@@ -7,7 +7,7 @@ const usuario = db.define("usuario", {
     id_usuario: {
         field: 'id_usuario',
         type: DataTypes.UUID,
-        primaryKey: true,
+        primaryKey:true,
     },
     nombre: {
         field: 'nombre',
@@ -21,7 +21,6 @@ const usuario = db.define("usuario", {
         field: 'email',
         unique: 'true',
         type: DataTypes.STRING(50),
-        primaryKey: true,
     },
     password:{
         field: 'password',

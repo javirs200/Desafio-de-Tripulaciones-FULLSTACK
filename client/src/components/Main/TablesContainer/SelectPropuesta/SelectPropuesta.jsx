@@ -179,8 +179,8 @@ const SelectPropuesta = () => {
       },
     },
     mesesIndexados: [
-      '1/11/2023', '1/10/2023', '1/9/2023', '1/8/2023',
-      '1/6/2023', '1/5/2023', '1/4/2023', '1/3/2023', '1/2/2023', '1/1/2023'
+      '01/11/2023', '01/10/2023', '01/09/2023', '01/08/2023',
+      '01/06/2023', '01/05/2023', '01/04/2023', '01/03/2023', '01/02/2023', '01/01/2023'
     ],
   };
 
@@ -225,6 +225,11 @@ const SelectPropuesta = () => {
 
   return (
     <>
+
+    <section className='company'>
+      <h4>PROPUESTA SEVERAL</h4>
+    </section>
+    
       <section>
         <article>
           <table border="1">
@@ -324,7 +329,25 @@ const SelectPropuesta = () => {
         </article>
 
         <article>
+          <table border="1">
+            <thead>
+              <tr>AHORRO FACTURA ACTUAL</tr>
+            </thead>
+            <tbody>
+              <tr> €</tr>
+            </tbody>
+          </table>
+        </article>
 
+        <article>
+          <table border="1">
+            <thead>
+              <tr>AHORRO ANUAL</tr>
+            </thead>
+            <tbody>
+              <tr> €</tr>
+            </tbody>
+          </table>
         </article>
 
       </section>
