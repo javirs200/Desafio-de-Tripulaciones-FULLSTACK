@@ -580,7 +580,7 @@ function TablaInputFactura({
 
 
       <section className='other_section_2'>
-         <article> 
+         <article > 
         {cantidadOtros.map((_, index) => (
           <table className='other_table' key={index} >
             <tbody>
@@ -604,7 +604,7 @@ function TablaInputFactura({
                   </select>
                 </td>
                 <td>
-                  <button onClick={generarOtros}>+</button>
+                  <button className='plus_button' onClick={generarOtros}>+</button>
                 </td>
               </tr>
             </tbody>
@@ -612,11 +612,11 @@ function TablaInputFactura({
         ))}
         </article>
 
-        <article>
-          <table >
+        <article className='other_article'>
+          <table id='other_table_padding' >
             <tbody>
               <tr>
-                <th>IVA</th>
+                <th id='iva_th'>IVA</th>
                 <td>
                   <select name="iva" onChange={handleInputRestoCampos}>
                     <option value=""> </option>
@@ -629,7 +629,7 @@ function TablaInputFactura({
             </tbody>
           </table>
 
-          <table border="1">
+          <table>
             <tbody>
               <tr>
                 <th>TOTAL ANUAL ESTIMADO</th>
