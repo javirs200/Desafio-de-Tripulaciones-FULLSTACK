@@ -8,7 +8,7 @@ const adminRoutes = require('../middleware/adminRoutes');
 const clientRoutes = require('../middleware/clientRoutes');
 
 // GET /api/sips/  body-> {cups} return ca_p1
-sipsRouter.get('/',sipsController.getSips);
+sipsRouter.post('/',sipsController.getSips);
 
 
 module.exports = sipsRouter;
