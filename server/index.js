@@ -4,7 +4,7 @@ const express = require('express');
 const error404 = require('./middleware/error404')
 const morgan = require('morgan')
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 // const path = require('path');
 const cors = require('cors');
 
@@ -14,6 +14,8 @@ const loginRoutes = require('./routes/login.routes')
 const preciosRoutes = require('./routes/precios.routes')
 const sipsRoutes = require('./routes/sips.routes')
 const clientRoutes = require('./routes/cliente.routes')
+const facturaRoutes = require('./routes/factura.routes')
+
 
 //DB conection Startup
 const database = require('./config/db_pgsql')
@@ -34,6 +36,8 @@ app.use('/api/precios',preciosRoutes)
 app.use('/api/sips',sipsRoutes)
 
 app.use('/api/cliente',clientRoutes)
+
+app.use('/api/factura',facturaRoutes)
 
 app.use('*',error404);
   

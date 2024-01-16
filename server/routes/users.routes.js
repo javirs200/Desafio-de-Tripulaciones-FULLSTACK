@@ -11,8 +11,8 @@ const apiKeyValidator = require('../middleware/apiKeyValidator')
 // // POST // con api key para primer user
 // userRouter.post("/apiKey",apiKeyValidator, userController.createUser);
 
-// GET client asesor route demo
-userRouter.get("/", userController.readUser);
+// GET client asesor route demo by email
+userRouter.post("/", userController.readUser);
 
 //client /api/users/all asesor route demo // when definitive  add middlewares
 userRouter.get('/all',userController.getAllUsers);
