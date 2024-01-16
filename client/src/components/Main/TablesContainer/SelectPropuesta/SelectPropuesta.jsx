@@ -329,7 +329,25 @@ const SelectPropuesta = () => {
         </article>
 
         <article>
+          <table border="1">
+            <thead>
+              <tr>AHORRO FACTURA ACTUAL</tr>
+            </thead>
+            <tbody>
+              <tr> €</tr>
+            </tbody>
+          </table>
+        </article>
 
+        <article>
+          <table border="1">
+            <thead>
+              <tr>AHORRO ANUAL</tr>
+            </thead>
+            <tbody>
+              <tr> €</tr>
+            </tbody>
+          </table>
         </article>
 
       </section>
