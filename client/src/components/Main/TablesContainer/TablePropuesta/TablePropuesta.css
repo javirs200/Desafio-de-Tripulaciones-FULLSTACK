@@ -1,0 +1,21 @@
+#second_table > th{
+    width: 100px;
+    word-wrap: break-word;
+    font-size: 8px;
+    font-weight: bold;
+
+}
+#second_table > tbody > tr > td {
+    height: 24px;
+  
+
+}
+
+
+#second_table{
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+

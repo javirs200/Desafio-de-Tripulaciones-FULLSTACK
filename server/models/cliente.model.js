@@ -2,6 +2,7 @@
 const { db } = require('../config/db_pgsql');
 
 const { DataTypes } = require('sequelize');
+const usuarioModel = require('./users.model')
 
 const cliente = db.define("cliente", {
     cups: {
@@ -11,14 +12,14 @@ const cliente = db.define("cliente", {
     },
     id_usuario:{
         field:'id_usuario',
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
     },
     nombre_cliente:{
         field:'nombre_cliente',
         type: DataTypes.STRING(50),
     },
-    direccion:{
-        field:'direccion',
+    dirección:{
+        field:'dirección',
         type: DataTypes.STRING(50),
     }
 },
@@ -33,6 +34,7 @@ const cliente = db.define("cliente", {
 // This syncs our model with our database.
 // Users.sync({alter:true});
 cliente.removeAttribute('id')
+cliente.belongsTo(usuarioModel,{foreignKey:'id_usuario'})
 cliente.sync();
 
 module.exports = cliente;
