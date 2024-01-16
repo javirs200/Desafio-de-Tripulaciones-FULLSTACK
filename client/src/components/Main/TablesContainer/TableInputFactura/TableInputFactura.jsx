@@ -644,6 +644,9 @@ function TablaInputFactura({
             </tbody>
           </table>
 
+        </article>
+
+        <article>
           <table>
             <tbody>
               <tr>
@@ -651,8 +654,7 @@ function TablaInputFactura({
                 <td>{importeTotalAnual} €</td>
               </tr>
             </tbody>
-          </table>
-        </article>
+          </table></article>
       </section >
 
       <section id='button_section'>

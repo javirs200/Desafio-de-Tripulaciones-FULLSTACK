@@ -414,23 +414,23 @@ const SelectPropuesta = (
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <thead>
-              <tr>AHORRO FACTURA ACTUAL</tr>
+              <th className='tr_inputs bigger'>AHORRO FACTURA ACTUAL</th>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <td className='td_radius saving'> €</td>
             </tbody>
           </table>
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <thead>
-              <tr>AHORRO ANUAL</tr>
+              <th className='tr_inputs bigger'>AHORRO ANUAL</th>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <td className='td_radius saving'> €</td>
             </tbody>
           </table>
         </article>

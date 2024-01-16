@@ -27,12 +27,14 @@ select{
     
 }
 
-.larger{
-    width: 146px;
-
+.saving{
+    padding: 20px;  
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   
 }
 
-.smaller{
-    width: 72px;
+.bigger{
+    padding: 5px;
 }
-
