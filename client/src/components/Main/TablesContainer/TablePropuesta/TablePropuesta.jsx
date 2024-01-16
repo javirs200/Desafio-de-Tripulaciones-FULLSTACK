@@ -178,8 +178,8 @@ const TablePropuesta = ({
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
-              <td className='total_input' ></td>
-              <td className='total_input'></td>
+              <td className='total_input'> €</td>
+              <td className='total_input'> €</td>
 
               <td className='empty_input'></td>
               <td className='empty_input'></td>
