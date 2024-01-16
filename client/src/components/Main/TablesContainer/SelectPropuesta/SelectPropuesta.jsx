@@ -4,8 +4,11 @@ import "./SelectPropuesta.css"
 
 const SelectPropuesta = (
   {
-    preciosPropuesta,
-    setPreciosPropuesta
+    importeTotalFactura,
+    importeTotalAnual,
+    setPreciosPropuesta,
+    importeTotalFactura_prop,
+    importeTotalAnual_prop
   }
 ) => {
 
@@ -23,7 +26,7 @@ const SelectPropuesta = (
     fee: ""
   })
 
-
+  
 
   const opcionesProductos = {
     ACCIONA: {
@@ -301,6 +304,15 @@ const SelectPropuesta = (
 
     };
     fetchPrecios();
+    setSeleccion({
+      sistema: "",
+      tarifa: "",
+      cia: "",
+      metodo: "",
+      producto: "",
+      mes: "",
+      fee: ""
+    })
   }
 
 
@@ -419,7 +431,7 @@ const SelectPropuesta = (
               <tr>AHORRO FACTURA ACTUAL</tr>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <tr>{importeTotalFactura-importeTotalFactura_prop} €</tr>
             </tbody>
           </table>
         </article>
@@ -430,7 +442,7 @@ const SelectPropuesta = (
               <tr>AHORRO ANUAL</tr>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <tr>{importeTotalAnual - importeTotalAnual_prop} €</tr>
             </tbody>
           </table>
         </article>
