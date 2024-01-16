@@ -23,14 +23,14 @@ const login = async (req, res) => {
                     res.status(400).json({ msg: "Las credenciales proporcionadas son incorrectas" });
                 }
             }).catch((error) => {
-                res.status(500).json({ msg: "Internal server error" });
+                res.status(500).json({ msg: "Internal server error" , error:error });
             });
         }else{
             res.status(400).json({ msg: "Las credenciales proporcionadas son incorrectas" });
         }
         
     } catch (error) {
-        res.status(500).json({ msg: "Internal server error" });
+        res.status(500).json({ msg: "Internal server error " , error:error });
     }
 };
 
@@ -40,7 +40,7 @@ const logout = async (req, res) => {
             .cookie('access_token', "", { secure: true, httpOnly: true })
             .send();
     } catch (error) {
-        res.status(500).json({ msg: "Internal server error" });
+        res.status(500).json({ msg: "Internal server error " , error:error });
     }
 };
 

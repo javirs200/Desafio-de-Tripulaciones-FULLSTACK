@@ -1,11 +1,9 @@
 const express = require("express");
 const { validationResult } = require('express-validator');
 
-const node_env = process.env.NODE_ENV;
+    let apiKeyUSES = 100; // Ejemplo: establece los usos iniciales de la clave API, considera usar una base de datos para esto
 
-let apiKeyUSES = process.env.MY_API_KEY_USES; // Ejemplo: establece los usos iniciales de la clave API, considera usar una base de datos para esto
-
-const MY_API_KEY = process.env.MY_API_KEY;
+    const MY_API_KEY = 'MiApIkEy';
 
 const apiKeyValidator = express.Router();
 
@@ -16,7 +14,7 @@ apiKeyValidator.use(async (req, res, next) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    if (req.body.apiKey === MY_API_KEY && (apiKeyUSES > 0 || node_env === 'develop')) {
+    if (req.body.apiKey === MY_API_KEY && (apiKeyUSES > 0)) {
         console.log("ACCESO CON CLAVE API");
         apiKeyUSES --;
         next();

@@ -1,14 +1,16 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
 import Nav from "../Nav/Nav"
 
+
 import './TablesContainer.css'
 
 
 const TablesContainer = () => {
+
 
 //_________________________ ESTADOS ENERGIA ______________________________________
 
@@ -99,8 +101,27 @@ const TablesContainer = () => {
   const [valorOtrosAnual, setValorOtrosAnual] = useState(0);
   const [importeTotalFactura, setImporteTotalFactura] = useState(0);
   const [importeTotalAnual, setImporteTotalAnual] = useState(0);
+  
+  //__________________ ESTADOS DATOS FETCH PRECIOS________________
 
-  // OTROS ESTADOS
+  const[preciosPropuesta, setPreciosPropuesta] = useState({
+    p1_e:0,
+    p2_e:0,
+    p3_e:0,
+    p4_e:0,
+    p5_e:0,
+    p6_e:0,
+
+    p1_p:0,
+    p2_p:0,
+    p3_p:0,
+    p4_p:0,
+    p5_p:0,
+    p6_p:0,
+  })
+
+
+  // ____________________ OTROS ESTADOS___________________
   const [mostrarComponentes, setMostrarComponentes] = useState({
     componente3: false,
     componente4: false,
@@ -149,6 +170,7 @@ const TablesContainer = () => {
       />
       {mostrarComponentes.componente3 && <SelectPropuesta
         importeTotalFactura={importeTotalFactura}
+        setPreciosPropuesta={setPreciosPropuesta}
       /> } 
       
 
@@ -160,6 +182,7 @@ const TablesContainer = () => {
         valorOtrosMes={valorOtrosMes}
         valorOtrosAnual={valorOtrosAnual}
         restoDeCampos={restoDeCampos}
+        preciosPropuesta={preciosPropuesta}         
       /> }
       
       
