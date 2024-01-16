@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import "./Login.css";
-// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import { UserContext } from "../../../context/userContext";
