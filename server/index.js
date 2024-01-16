@@ -12,6 +12,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/users.routes')
 const loginRoutes = require('./routes/login.routes')
 const preciosRoutes = require('./routes/precios.routes')
+const sipsRoutes = require('./routes/sips.routes')
 
 //DB conection Startup
 const database = require('./config/db_pgsql')
@@ -28,6 +29,9 @@ app.use('/api/users',userRoutes)
 app.use('/api/login',loginRoutes)
 
 app.use('/api/precios',preciosRoutes)
+
+app.use('/api/sips',sipsRoutes)
+
 
 app.use('*',error404);
   
