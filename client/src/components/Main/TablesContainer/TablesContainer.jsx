@@ -1,14 +1,16 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
 import TablePropuesta from "./TablePropuesta/TablePropuesta"
 import Nav from "../Nav/Nav"
 
+
 import './TablesContainer.css'
 
 
 const TablesContainer = () => {
+
 
 //_________________________ ESTADOS ENERGIA ______________________________________
 
