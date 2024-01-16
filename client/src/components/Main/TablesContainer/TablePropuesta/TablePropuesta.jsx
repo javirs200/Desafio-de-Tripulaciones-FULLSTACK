@@ -10,7 +10,12 @@ const TablePropuesta = ({
   valorOtrosMes,
   valorOtrosAnual,
   restoDeCampos,
-  preciosPropuesta
+  preciosPropuesta,
+  importeTotalFactura_prop, 
+  setImporteTotalFactura_prop,
+  importeTotalAnual_prop, 
+  setImporteTotalAnual_prop
+  
 }) => {
 
   //_______________________ ESTADOS ENERGIA __________________________________
@@ -93,6 +98,10 @@ const TablePropuesta = ({
     p6: 0,
   });
 
+  //_______________________ ESTADOS  PARA OTROS CAMPOS DE LA FACTURA ______________
+
+  const [impuestoElectrico_prop, setImpuestoElectrico_prop] = useState(0);
+
   //_______________________ FUNCIONES ENERGIA __________________________________
  
   
@@ -139,6 +148,50 @@ const TablePropuesta = ({
 
     })
   }, [inputPotenciaContratada]);
+
+  //_______________________ FUNCIONES OTROS CAMPOS DE LA FACTURA __________________________________
+  useEffect(() => {
+    setImporteTotalFactura_prop (
+      (totalPagoFactura_prop.p1+
+      totalPagoFactura_prop.p2+
+      totalPagoFactura_prop.p3+
+      totalPagoFactura_prop.p4+
+      totalPagoFactura_prop.p5+
+      totalPagoFactura_prop.p6+
+      totalPagoFacturaPotencia_prop.p1+
+      totalPagoFacturaPotencia_prop.p2+
+      totalPagoFacturaPotencia_prop.p3+
+      totalPagoFacturaPotencia_prop.p4+
+      totalPagoFacturaPotencia_prop.p5+
+      totalPagoFacturaPotencia_prop.p6+
+      restoDeCampos.energia_reactiva+
+      impuestoElectrico_prop+
+      restoDeCampos.alquiler_equipo+
+      valorOtrosMes
+      )*(1+(restoDeCampos.iva/100))
+      )
+  }, [totalPagoFactura_prop, totalPagoFacturaPotencia_prop, valorOtrosMes, restoDeCampos, impuestoElectrico_prop]);
+
+  useEffect(() => {
+    setImporteTotalAnual_prop (
+      ((totalPagoAnual_prop.p1+
+        totalPagoAnual_prop.p2+
+        totalPagoAnual_prop.p3+
+        totalPagoAnual_prop.p4+
+        totalPagoAnual_prop.p5+
+        totalPagoAnual_prop.p6+
+        totalPagoAnualPotencia_prop.p1+
+        totalPagoAnualPotencia_prop.p2+
+        totalPagoAnualPotencia_prop.p3+
+        totalPagoAnualPotencia_prop.p4+
+        totalPagoAnualPotencia_prop.p5+
+        totalPagoAnualPotencia_prop.p6
+      )*1.005+
+      (restoDeCampos.alquiler_equipo/restoDeCampos.dias_facturacion)*365+
+      valorOtrosAnual)*
+      (1+(restoDeCampos.iva/100))
+      )
+  }, [totalPagoAnual_prop, totalPagoAnualPotencia_prop, restoDeCampos, valorOtrosAnual ]);
 
 
   // SUMATORIOS
@@ -204,6 +257,35 @@ const TablePropuesta = ({
     })
   }, [inputPotenciaContratada_prop, precioPotenciaDescuento_prop, restoDeCampos.dias_facturacion]);
 
+
+  useEffect(() => {
+    setTotalPagoAnualPotencia_prop({
+      p1: inputPotenciaContratada_prop.potencia_contratada_p1 * precioPotenciaDescuento_prop.p1 * 365,
+      p2: inputPotenciaContratada_prop.potencia_contratada_p2 * precioPotenciaDescuento_prop.p2 * 365,
+      p3: inputPotenciaContratada_prop.potencia_contratada_p3 * precioPotenciaDescuento_prop.p3 * 365,
+      p4: inputPotenciaContratada_prop.potencia_contratada_p4 * precioPotenciaDescuento_prop.p4 * 365,
+      p5: inputPotenciaContratada_prop.potencia_contratada_p5 * precioPotenciaDescuento_prop.p5 * 365,
+      p6: inputPotenciaContratada_prop.potencia_contratada_p6 * precioPotenciaDescuento_prop.p6 * 365
+    })
+  }, [inputPotenciaContratada_prop, precioPotenciaDescuento_prop]);
+
+  //________________________ SUMATORIOS OTROS CAMPOS DE LA FACTURA______________________________
+  useEffect(() => {
+    setImpuestoElectrico_prop (
+      (totalPagoFactura_prop.p1+
+      totalPagoFactura_prop.p2+
+      totalPagoFactura_prop.p3+
+      totalPagoFactura_prop.p4+
+      totalPagoFactura_prop.p5+
+      totalPagoFactura_prop.p6+
+      totalPagoFacturaPotencia_prop.p1+
+      totalPagoFacturaPotencia_prop.p2+
+      totalPagoFacturaPotencia_prop.p3+
+      totalPagoFacturaPotencia_prop.p4+
+      totalPagoFacturaPotencia_prop.p5+
+      totalPagoFacturaPotencia_prop.p6)*0.005
+      )
+  }, [totalPagoFactura_prop, totalPagoFacturaPotencia_prop]);
 
   return (
     <>
@@ -373,16 +455,16 @@ const TablePropuesta = ({
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
-              <td className='total_input'> €</td>
-              <td className='total_input'> €</td>
+              <td className='total_input'>{totalPagoFactura_prop.p1+totalPagoFactura_prop.p2+totalPagoFactura_prop.p3+totalPagoFactura_prop.p4+totalPagoFactura_prop.p5+totalPagoFactura_prop.p6} €</td>
+              <td className='total_input'>{totalPagoAnual_prop.p1+totalPagoAnual_prop.p2+totalPagoAnual_prop.p3+totalPagoAnual_prop.p4+totalPagoAnual_prop.p5+totalPagoAnual_prop.p6} €</td>
 
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
-              <td className='total_input'> €</td>
-              <td className='total_input'> €</td>
+              <td className='total_input'>{totalPagoFacturaPotencia_prop.p1+totalPagoFacturaPotencia_prop.p2+totalPagoFacturaPotencia_prop.p3+totalPagoFacturaPotencia_prop.p4+totalPagoFacturaPotencia_prop.p5+totalPagoFacturaPotencia_prop.p6} €</td>
+              <td className='total_input'>{totalPagoAnualPotencia_prop.p1+totalPagoAnualPotencia_prop.p2+totalPagoAnualPotencia_prop.p3+totalPagoAnualPotencia_prop.p4+totalPagoAnualPotencia_prop.p5+totalPagoAnualPotencia_prop.p6} €</td>
             </tr>
           </tfoot>
 
@@ -395,7 +477,7 @@ const TablePropuesta = ({
             <tbody>
               <tr>
                 <th className="table3_pink">IMPUESTO ELÉCTRICO</th>
-                <td className='td_table3'> €</td>
+                <td className='td_table3'>{impuestoElectrico_prop} €</td>
               </tr>
             </tbody>
           </table>
@@ -405,8 +487,8 @@ const TablePropuesta = ({
         <table >
             <tbody>
               <tr>
-                <th className="table3_pink">OTROS</th>
-                <td className='td_table3'>{valorOtrosMes} €</td>
+                <th>IMPORTE TOTAL FACTURA</th>
+                <td>{importeTotalFactura_prop} €</td>
               </tr>
             </tbody>
           </table>
@@ -443,7 +525,7 @@ const TablePropuesta = ({
             <tbody>
               <tr>
                 <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
-                <td className='td_table3'> €</td>
+                <td className='td_table3'>{importeTotalAnual_prop} €</td>
               </tr>
             </tbody>
           </table>
