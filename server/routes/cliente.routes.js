@@ -8,7 +8,7 @@ const adminRoutes = require('../middleware/adminRoutes');
 const clientRoutes = require('../middleware/clientRoutes');
 const apiKeyValidator = require('../middleware/apiKeyValidator')
 
-// POST // con api key para primer user
-clienteRouter.get("/", clienteController.readCliente);
+// POST // cliente by cups
+clienteRouter.post("/", clienteController.readCliente);
 
 module.exports = clienteRouter;

@@ -12,7 +12,7 @@ const cliente = db.define("cliente", {
     },
     id_usuario:{
         field:'id_usuario',
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
     },
     nombre_cliente:{
         field:'nombre_cliente',
