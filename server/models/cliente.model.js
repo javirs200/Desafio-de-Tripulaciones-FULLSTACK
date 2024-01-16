@@ -12,7 +12,7 @@ const cliente = db.define("cliente", {
     },
     id_usuario:{
         field:'id_usuario',
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
     },
     nombre_cliente:{
         field:'nombre_cliente',
@@ -34,7 +34,11 @@ const cliente = db.define("cliente", {
 // This syncs our model with our database.
 // Users.sync({alter:true});
 cliente.removeAttribute('id')
-cliente.belongsTo(usuarioModel,{foreignKey:'id_usuario'})
+
+// 1:M
+usuarioModel.hasMany(cliente, { foreignKey: 'id_usuario' });
+cliente.belongsTo(usuarioModel, { foreignKey: 'id_usuario' });
+
 cliente.sync();
 
 module.exports = cliente;
