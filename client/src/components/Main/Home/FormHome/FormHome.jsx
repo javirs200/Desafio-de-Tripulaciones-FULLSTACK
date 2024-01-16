@@ -10,7 +10,13 @@ const FormHome = () => {
   const [cups, setCups] = useState("");
 
   const handleButtonClick = () => {
-    // Pasa el objeto a traves del navigate.
+
+    if (!name || !address || !company) {
+      alert("Por favor, rellena todos los campos.");
+      return;
+    }
+
+    // Pasa el objeto a través del navigate.
     navigate("/table", { state: { name, address, company, cups } });
   };
 
@@ -52,7 +58,6 @@ const FormHome = () => {
             value={cups}
             onChange={(e) => setCups(e.target.value)}
           ></input>
-          <p>Inserta un archivo</p>
 
           <button
             id="button_login"
