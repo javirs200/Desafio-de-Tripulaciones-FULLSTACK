@@ -1,7 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import "./SelectPropuesta.css"
 
-const SelectPropuesta = () => {
+const SelectPropuesta = (
+  {
+    preciosPropuesta,
+    setPreciosPropuesta
+  }
+) => {
 
   const [productos, setProductos] = useState([]);
 
@@ -29,15 +35,15 @@ const SelectPropuesta = () => {
           'ADI CLARA<10KW', 'RESIDENCIAL ESPECIAL'],
       },
       INDEXADO: {
-        productos:['CIERZO', 'LEVANTE', 'LEVANTE+', 'PONIENTE', 'PONIENTE+', 'TRAMONTANA',
-        'TRAMONTANA+'],
-        fee:['Cierzo','Levante','Levante+','Poniente','Poniente+','Tramontana','Tramontana+']
+        productos: ['CIERZO', 'LEVANTE', 'LEVANTE+', 'PONIENTE', 'PONIENTE+', 'TRAMONTANA',
+          'TRAMONTANA+'],
+        fee: ['Cierzo', 'Levante', 'Levante+', 'Poniente', 'Poniente+', 'Tramontana', 'Tramontana+']
       }
     },
-    ADI:{
-      FIJO:{
-        productos: ['PROFESIONAL', 'ADI SENCILLA', 'ADI CLARA','ECO ADI','LOVE PLANA 24H' , 'PLANA 24H','RESIDENCIAL PROMOCIONAL SVE','ADI CLARA<10KW'
-        ,'RESIDENCIAL ESPECIAL']
+    ADI: {
+      FIJO: {
+        productos: ['PROFESIONAL', 'ADI SENCILLA', 'ADI CLARA', 'ECO ADI', 'LOVE PLANA 24H', 'PLANA 24H', 'RESIDENCIAL PROMOCIONAL SVE', 'ADI CLARA<10KW'
+          , 'RESIDENCIAL ESPECIAL']
       }
     },
     AEQ: {
@@ -46,14 +52,14 @@ const SelectPropuesta = () => {
         fee: [1.5, 3, 4, 5, 6, 8, 10, 15, 20, 25, 30]
       },
       INDEXADO: {
-        productos:['ARMONIA', 'EQUILIBRIO', 'SIMETRIA'],
-        fee:[1.5, 3, 4, 5, 6, 8, 10, 15, 20, 25, 30]
+        productos: ['ARMONIA', 'EQUILIBRIO', 'SIMETRIA'],
+        fee: [1.5, 3, 4, 5, 6, 8, 10, 15, 20, 25, 30]
       }
     },
-    CANDELA:{
-      INDEXADO:{
-        productos:['AMPERE','FARAD','HENRY','LUMEN','LUX'],
-        fee:['01 / Bi0,035','02 / Bi0,03', '02 / Bi0,025', '04 / Bi0,02', '05 / Bi0,018', '06 / Bi0,015', '07 / Bi0,012', '08 / Bi0,1' ]
+    CANDELA: {
+      INDEXADO: {
+        productos: ['AMPERE', 'FARAD', 'HENRY', 'LUMEN', 'LUX'],
+        fee: ['01 / Bi0,035', '02 / Bi0,03', '02 / Bi0,025', '04 / Bi0,02', '05 / Bi0,018', '06 / Bi0,015', '07 / Bi0,012', '08 / Bi0,1']
       }
     },
     ELIA: {
@@ -70,7 +76,7 @@ const SelectPropuesta = () => {
       },
 
       INDEXADO: {
-        fee:['TDE0','TDE1', 'TDE2', 'TDE3', 'TEE0', 'TEE1', 'TEE2', 'TEE3']
+        fee: ['TDE0', 'TDE1', 'TDE2', 'TDE3', 'TEE0', 'TEE1', 'TEE2', 'TEE3']
       }
     },
     ENDESA: {
@@ -85,7 +91,7 @@ const SelectPropuesta = () => {
         productos: ['EXCELLENT+ 1P', 'EXCELLENT+ 3P', 'EXCELLENT+'],
       },
       INDEXADO: {
-        productos:['BASIC', 'EXCELLENT', 'PREMIUM'],
+        productos: ['BASIC', 'EXCELLENT', 'PREMIUM'],
       }
     },
     EVOLVE: {
@@ -103,11 +109,11 @@ const SelectPropuesta = () => {
         ],
       },
       INDEXADO: {
-        productos:['DOMESTICO_EXTRA1P', 'DOMESTICO_EXTRA3P', 'DOMESTICO_MINI', 'DOMESTICO_Precio WEB3P',
-        'DOMESTICO_PRIME', 'NEGOCIO_AHORRO', 'NEGOCIO_AHORRO1P', 'NEGOCIO_EXTRA',
-        'NEGOCIO_EXTRA1P', 'NEGOCIO_EXTRAPLUS', 'NEGOCIO_EXTRAPLUS1P', 'NEGOCIO_EXTRATOP',
-        'NEGOCIO_EXTRATOP1P', 'NEGOCIO_MINI1P', 'NEGOCIO_PROFESIONAL', 'NEGOCIO_PROFESIONAL1P',],
-        fee:[4.00, 6.00, 7.50, 8.50, 9.50, 11.50, 13.50, 15.50, 17.50, 19.50, 21.50, 23.50, 25.50, 29.50]
+        productos: ['DOMESTICO_EXTRA1P', 'DOMESTICO_EXTRA3P', 'DOMESTICO_MINI', 'DOMESTICO_Precio WEB3P',
+          'DOMESTICO_PRIME', 'NEGOCIO_AHORRO', 'NEGOCIO_AHORRO1P', 'NEGOCIO_EXTRA',
+          'NEGOCIO_EXTRA1P', 'NEGOCIO_EXTRAPLUS', 'NEGOCIO_EXTRAPLUS1P', 'NEGOCIO_EXTRATOP',
+          'NEGOCIO_EXTRATOP1P', 'NEGOCIO_MINI1P', 'NEGOCIO_PROFESIONAL', 'NEGOCIO_PROFESIONAL1P',],
+        fee: [4.00, 6.00, 7.50, 8.50, 9.50, 11.50, 13.50, 15.50, 17.50, 19.50, 21.50, 23.50, 25.50, 29.50]
       }
     },
     GANA: {
@@ -115,13 +121,13 @@ const SelectPropuesta = () => {
         productos: ['ONLINE TG', 'PRECIO ESTABLE TG', 'TARIFA 24 HORAS', 'TARIFA TRAMOS HORARIOS']
       },
       INDEXADO: {
-        productos:['SIN MAS'],
+        productos: ['SIN MAS'],
       }
     },
-    IGNIS:{
-      INDEXADO:{
-        productos:['MARE KIT 1', 'MARE KIT 2', 'MARE KIT 3', 'MARE PLUS 1', 'MARE PLUS 2', 'MARE PLUS 3', 'MARE ZEN 1', 'MARE ZEN 2', 'MARE ZEN 3',],
-        fee:['10 MARE ZEN 2', '15 MARE ZEN 1', '20 MARE PLUS 3','25 MARE PLUS 2', '30 MARE PLUS 1', '4 MARE KIT 2', '4 MARE KIT 1', '8 MARE KIT 3', '2.5 MARE KIT 3']
+    IGNIS: {
+      INDEXADO: {
+        productos: ['MARE KIT 1', 'MARE KIT 2', 'MARE KIT 3', 'MARE PLUS 1', 'MARE PLUS 2', 'MARE PLUS 3', 'MARE ZEN 1', 'MARE ZEN 2', 'MARE ZEN 3',],
+        fee: ['10 MARE ZEN 2', '15 MARE ZEN 1', '20 MARE PLUS 3', '25 MARE PLUS 2', '30 MARE PLUS 1', '4 MARE KIT 2', '4 MARE KIT 1', '8 MARE KIT 3', '2.5 MARE KIT 3']
       }
     },
     IBERDROLA: {
@@ -139,10 +145,10 @@ const SelectPropuesta = () => {
         ]
       }
     },
-    MAX:{
-      INDEXADO:{
-        productos:['MAYOR A', 'MAYOR B', 'MAYOR C'],
-        fee:[3.00, 6.00, 8.00, 10.00, 12.00, 15.00, 18.00, 20.00, 25.00, 30.00, 35.00, 40.00]
+    MAX: {
+      INDEXADO: {
+        productos: ['MAYOR A', 'MAYOR B', 'MAYOR C'],
+        fee: [3.00, 6.00, 8.00, 10.00, 12.00, 15.00, 18.00, 20.00, 25.00, 30.00, 35.00, 40.00]
       }
     },
     NATURGY: {
@@ -159,7 +165,7 @@ const SelectPropuesta = () => {
         ]
       },
       INDEXADO: {
-        productos:['MILAN', 'NAPOLES', 'ROMA', 'VENECIA'],
+        productos: ['MILAN', 'NAPOLES', 'ROMA', 'VENECIA'],
       }
     },
     TOTAL: {
@@ -219,7 +225,83 @@ const SelectPropuesta = () => {
     }
   };
 
+  //_________________ LLAMADAS A API PRECIOS ____________________
+  const handlePropuesta = () => {
+    const fetchPrecios = async () => {
 
+      // LLAMADA FIJO
+      if (seleccion.metodo === "FIJO") {
+        const parametrosFetch = {
+          sistema: seleccion.sistema,
+          tarifa: seleccion.tarifa,
+          cia: seleccion.cia,
+          producto: seleccion.producto
+        }
+
+        const response = await fetch("http://localhost:3000/api/precios/fijos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(parametrosFetch)
+        });
+        let precios = await response.json()
+
+        setPreciosPropuesta({
+          p1_e: precios.p1_e,
+          p2_e: precios.p2_e,
+          p3_e: precios.p3_e,
+          p4_e: precios.p4_e,
+          p5_e: precios.p5_e,
+          p6_e: precios.p6_e,
+
+          p1_p: precios.p1,
+          p2_p: precios.p2,
+          p3_p: precios.p3,
+          p4_p: precios.p4,
+          p5_p: precios.p5,
+          p6_p: precios.p6,
+        })
+      };
+      //_______________LLAMADA INDEXADO__________
+      if (seleccion.metodo === "INDEXADO") {
+        const parametrosFetch = {
+          sistema: seleccion.sistema,
+          tarifa: seleccion.tarifa,
+          cia: seleccion.cia,
+          producto: seleccion.producto,
+          mes: seleccion.mes,
+          fee: seleccion.fee
+        }
+
+        console.log('parametros',parametrosFetch);
+
+        const response = await fetch("http://localhost:3000/api/precios/indexados", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(parametrosFetch)
+        });
+        let precios = await response.json()
+        console.log(precios)
+        setPreciosPropuesta({
+          p1_e: precios[1].p1_e,
+          p2_e: precios[1].p2_e,
+          p3_e: precios[1].p3_e,
+          p4_e: precios[1].p4_e,
+          p5_e: precios[1].p5_e,
+          p6_e: precios[1].p6_e,
+
+          p1_p: precios[0].p1,
+          p2_p: precios[0].p2,
+          p3_p: precios[0].p3,
+          p4_p: precios[0].p4,
+          p5_p: precios[0].p5,
+          p6_p: precios[0].p6,
+        })
+      }
+
+
+    };
+    fetchPrecios();
+  }
 
 
 
@@ -230,23 +312,24 @@ const SelectPropuesta = () => {
       <h4>PROPUESTA SEVERAL</h4>
     </section>
     
-      <section>
+      <section id='select_section'>
+
         <article>
-          <table border="1">
+          <table>
             <thead>
               <tr>
-                <th>TIPO DE SISTEMA</th>
-                <th>TARIFA</th>
-                <th>CIA</th>
-                <th>METODO</th>
-                <th>PRODUCTO CIA (POT)</th>
-                <th>MES DE FACTURACION (INDEXADO)</th>
-                <th>FEE (ENERGIA)</th>
+                <th className='tr_inputs '>TIPO DE SISTEMA</th>
+                <th className='tr_inputs '>TARIFA</th>
+                <th className='tr_inputs'>CIA</th>
+                <th className='tr_inputs'>METODO</th>
+                <th className='tr_inputs'>PRODUCTO CIA (POT)</th>
+                <th className='tr_inputs'>MES DE FACTURACION (INDEXADO)</th>
+                <th className='tr_inputs'>FEE (ENERGIA)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
+                <td className='td_radius'>
                   <select name="sistema" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="PENINSULA">PENINSULA</option>
@@ -254,7 +337,7 @@ const SelectPropuesta = () => {
                     <option value="BALEARES">BALEARES</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="tarifa" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="2.0TD">2.0TD</option>
@@ -263,7 +346,7 @@ const SelectPropuesta = () => {
                     <option value="6.2TD">6.2TD</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="cia" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="ACCIONA">ACCIONA</option>
@@ -283,14 +366,14 @@ const SelectPropuesta = () => {
                     <option value="TOTAL">TOTAL</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="metodo" onChange={handleInputSeleccion}>
                     <option> </option>
                     <option value="FIJO">FIJO</option>
                     <option value="INDEXADO">INDEXADO</option>
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="producto" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
@@ -299,16 +382,16 @@ const SelectPropuesta = () => {
                     ))}
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="mes" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para MES DE FACTURACION (INDEXADO) */}
-                    {seleccion.metodo == "INDEXADO" && fee.length>0 ? opcionesProductos.mesesIndexados.map((mes, index) => (
+                    {seleccion.metodo == "INDEXADO" && fee.length > 0 ? opcionesProductos.mesesIndexados.map((mes, index) => (
                       <option key={index} value={mes}>{mes}</option>
                     )) : ""};
                   </select>
                 </td>
-                <td>
+                <td className='td_radius'>
                   <select name="fee" onChange={handleInputSeleccion}>
                     <option> </option>
                     {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
@@ -324,7 +407,9 @@ const SelectPropuesta = () => {
         </article>
 
         <article>
-          <button>CONFIRMAR</button>
+
+          <button id='confirmation_button' onClick={handlePropuesta}>Confirmar</button>
+
 
         </article>
 

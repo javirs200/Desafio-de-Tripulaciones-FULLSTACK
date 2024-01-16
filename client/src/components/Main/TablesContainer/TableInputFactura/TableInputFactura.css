@@ -120,7 +120,7 @@ td{
 .other_section{
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
+    justify-content:space-between;
     gap: 76px;
 }
 
@@ -219,6 +219,7 @@ td{
 #iva_th{
     padding: 10px;
 }
+
 .plus_button{
     border: none;
     background-color: var(--secondary-secundario-rojo-8, rgba(193, 0, 0, 0.08));
@@ -264,6 +265,7 @@ select{
     width: 240px;
     height: 40px;
     cursor:pointer;
+    margin-bottom: 50px;
 }
 
 #section_open_button:hover{
