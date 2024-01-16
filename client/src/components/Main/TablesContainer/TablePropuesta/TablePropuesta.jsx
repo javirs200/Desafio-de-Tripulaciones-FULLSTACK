@@ -470,19 +470,21 @@ const TablePropuesta = ({
 
         </table>
       </section>
-      <section>
+
+      <section className="flex_end_section">
         <article>
-          <table border="1">
+          <table >
             <tbody>
               <tr>
-                <th>IMPUESTO ELÉCTRICO</th>
-                <td>{impuestoElectrico_prop} €</td>
+                <th className="table3_pink">IMPUESTO ELÉCTRICO</th>
+                <td className='td_table3'>{impuestoElectrico_prop} €</td>
               </tr>
             </tbody>
           </table>
         </article>
+
         <article>
-          <table border="1">
+        <table >
             <tbody>
               <tr>
                 <th>IMPORTE TOTAL FACTURA</th>
@@ -491,25 +493,27 @@ const TablePropuesta = ({
             </tbody>
           </table>
         </article>
-      </section>
 
-
-      <section>
         <article>
-          <table border="1">
+          <table>
             <tbody>
               <tr>
-                <th>OTROS</th>
-                <td>{valorOtrosMes} €</td>
+                <th className='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
+                <td className='td_table3'> €</td>
               </tr>
             </tbody>
           </table>
+        </article>
+      </section>
 
-          <table border="1">
+
+      <section className="flex_end_section">
+        <article>
+          <table >
             <tbody>
               <tr>
-                <th>OTROS ANUAL</th>
-                <td>{valorOtrosAnual} €</td>
+                <th className="table3_pink">OTROS ANUAL</th>
+                <td className='td_table3'>{valorOtrosAnual} €</td>
               </tr>
             </tbody>
           </table>
@@ -517,11 +521,11 @@ const TablePropuesta = ({
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <tbody>
               <tr>
-                <th>TOTAL ANUAL ESTIMADO</th>
-                <td>{importeTotalAnual_prop} €</td>
+                <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
+                <td className='td_table3'>{importeTotalAnual_prop} €</td>
               </tr>
             </tbody>
           </table>

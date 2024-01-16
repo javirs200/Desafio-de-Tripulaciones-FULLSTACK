@@ -39,7 +39,7 @@ app.use('/api/cliente',clientRoutes)
 
 app.use('/api/factura',facturaRoutes)
 
-app.use('*',error404);
+app.use('/api/*',error404);
   
 app.listen(port, () => {
     console.log(`listening on port:${port}`);
