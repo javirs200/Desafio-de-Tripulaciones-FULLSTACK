@@ -17,8 +17,8 @@ const cliente = db.define("cliente", {
         field:'nombre_cliente',
         type: DataTypes.STRING(50),
     },
-    direccion:{
-        field:'direccion',
+    dirección:{
+        field:'dirección',
         type: DataTypes.STRING(50),
     }
 },
