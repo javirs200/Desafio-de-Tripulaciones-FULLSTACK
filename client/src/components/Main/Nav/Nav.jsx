@@ -1,5 +1,6 @@
 import React from "react";
 import "./Nav.css";
+import { Link } from 'react-router-dom'
 import foto from "../../../assets/img/several_negro.png";
 
 const Nav = () => {
@@ -9,7 +10,7 @@ const Nav = () => {
     <ul>
       <li>Inicio</li>
       <li>Propuestas</li>
-      <li>Usuario</li>
+      <li><Link className={'link'} to='/users'>Usuarios</Link></li>
       <li>Perfil</li>
     </ul>
     <p>Candela</p>

@@ -2,8 +2,8 @@ import React from "react";
 import { useState} from 'react'
 import TableInputFactura from "./TableInputFactura/TableInputFactura"
 import SelectPropuesta from "./SelectPropuesta/SelectPropuesta";
-import TablePropuesta from "./TablePropuesta/TablePropuesta"
-import Nav from "../Nav/Nav"
+import TablePropuesta from "./TablePropuesta/TablePropuesta";
+import Nav from "../Nav/Nav";
 
 
 import './TablesContainer.css'
@@ -194,7 +194,6 @@ const TablesContainer = () => {
         importeTotalAnual_prop={importeTotalAnual_prop}
         setImporteTotalAnual_prop={setImporteTotalAnual_prop}        
       /> }
-      
       
     </>
   );

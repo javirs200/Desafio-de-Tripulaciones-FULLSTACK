@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react'
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PDF from "../PDF";
 import './TablePropuesta.css'
 
 const TablePropuesta = ({
@@ -11,11 +13,11 @@ const TablePropuesta = ({
   valorOtrosAnual,
   restoDeCampos,
   preciosPropuesta,
-  importeTotalFactura_prop, 
+  importeTotalFactura_prop,
   setImporteTotalFactura_prop,
-  importeTotalAnual_prop, 
+  importeTotalAnual_prop,
   setImporteTotalAnual_prop
-  
+
 }) => {
 
   //_______________________ ESTADOS ENERGIA __________________________________
@@ -103,8 +105,8 @@ const TablePropuesta = ({
   const [impuestoElectrico_prop, setImpuestoElectrico_prop] = useState(0);
 
   //_______________________ FUNCIONES ENERGIA __________________________________
- 
-  
+
+
   const handleInputPrecioAnual_prop = (e) => {
     const { name, value } = e.target;
 
@@ -137,61 +139,61 @@ const TablePropuesta = ({
     );
   };
 
-  useEffect (() => {
+  useEffect(() => {
     setPotenciaContratada_prop({
-      potencia_contratada_p1:inputPotenciaContratada.potencia_contratada_p1,
-      potencia_contratada_p2:inputPotenciaContratada.potencia_contratada_p2,
-      potencia_contratada_p3:inputPotenciaContratada.potencia_contratada_p3,
-      potencia_contratada_p4:inputPotenciaContratada.potencia_contratada_p4,
-      potencia_contratada_p5:inputPotenciaContratada.potencia_contratada_p5,
-      potencia_contratada_p6:inputPotenciaContratada.potencia_contratada_p6,
+      potencia_contratada_p1: inputPotenciaContratada.potencia_contratada_p1,
+      potencia_contratada_p2: inputPotenciaContratada.potencia_contratada_p2,
+      potencia_contratada_p3: inputPotenciaContratada.potencia_contratada_p3,
+      potencia_contratada_p4: inputPotenciaContratada.potencia_contratada_p4,
+      potencia_contratada_p5: inputPotenciaContratada.potencia_contratada_p5,
+      potencia_contratada_p6: inputPotenciaContratada.potencia_contratada_p6,
 
     })
   }, [inputPotenciaContratada]);
 
   //_______________________ FUNCIONES OTROS CAMPOS DE LA FACTURA __________________________________
   useEffect(() => {
-    setImporteTotalFactura_prop (
-      (totalPagoFactura_prop.p1+
-      totalPagoFactura_prop.p2+
-      totalPagoFactura_prop.p3+
-      totalPagoFactura_prop.p4+
-      totalPagoFactura_prop.p5+
-      totalPagoFactura_prop.p6+
-      totalPagoFacturaPotencia_prop.p1+
-      totalPagoFacturaPotencia_prop.p2+
-      totalPagoFacturaPotencia_prop.p3+
-      totalPagoFacturaPotencia_prop.p4+
-      totalPagoFacturaPotencia_prop.p5+
-      totalPagoFacturaPotencia_prop.p6+
-      restoDeCampos.energia_reactiva+
-      impuestoElectrico_prop+
-      restoDeCampos.alquiler_equipo+
-      valorOtrosMes
-      )*(1+(restoDeCampos.iva/100))
-      )
+    setImporteTotalFactura_prop(
+      (totalPagoFactura_prop.p1 +
+        totalPagoFactura_prop.p2 +
+        totalPagoFactura_prop.p3 +
+        totalPagoFactura_prop.p4 +
+        totalPagoFactura_prop.p5 +
+        totalPagoFactura_prop.p6 +
+        totalPagoFacturaPotencia_prop.p1 +
+        totalPagoFacturaPotencia_prop.p2 +
+        totalPagoFacturaPotencia_prop.p3 +
+        totalPagoFacturaPotencia_prop.p4 +
+        totalPagoFacturaPotencia_prop.p5 +
+        totalPagoFacturaPotencia_prop.p6 +
+        restoDeCampos.energia_reactiva +
+        impuestoElectrico_prop +
+        restoDeCampos.alquiler_equipo +
+        valorOtrosMes
+      ) * (1 + (restoDeCampos.iva / 100))
+    )
   }, [totalPagoFactura_prop, totalPagoFacturaPotencia_prop, valorOtrosMes, restoDeCampos, impuestoElectrico_prop]);
 
   useEffect(() => {
-    setImporteTotalAnual_prop (
-      ((totalPagoAnual_prop.p1+
-        totalPagoAnual_prop.p2+
-        totalPagoAnual_prop.p3+
-        totalPagoAnual_prop.p4+
-        totalPagoAnual_prop.p5+
-        totalPagoAnual_prop.p6+
-        totalPagoAnualPotencia_prop.p1+
-        totalPagoAnualPotencia_prop.p2+
-        totalPagoAnualPotencia_prop.p3+
-        totalPagoAnualPotencia_prop.p4+
-        totalPagoAnualPotencia_prop.p5+
+    setImporteTotalAnual_prop(
+      ((totalPagoAnual_prop.p1 +
+        totalPagoAnual_prop.p2 +
+        totalPagoAnual_prop.p3 +
+        totalPagoAnual_prop.p4 +
+        totalPagoAnual_prop.p5 +
+        totalPagoAnual_prop.p6 +
+        totalPagoAnualPotencia_prop.p1 +
+        totalPagoAnualPotencia_prop.p2 +
+        totalPagoAnualPotencia_prop.p3 +
+        totalPagoAnualPotencia_prop.p4 +
+        totalPagoAnualPotencia_prop.p5 +
         totalPagoAnualPotencia_prop.p6
-      )*1.005+
-      (restoDeCampos.alquiler_equipo/restoDeCampos.dias_facturacion)*365+
-      valorOtrosAnual)*
-      (1+(restoDeCampos.iva/100))
-      )
-  }, [totalPagoAnual_prop, totalPagoAnualPotencia_prop, restoDeCampos, valorOtrosAnual ]);
+      ) * 1.005 +
+        (restoDeCampos.alquiler_equipo / restoDeCampos.dias_facturacion) * 365 +
+        valorOtrosAnual) *
+      (1 + (restoDeCampos.iva / 100))
+    )
+  }, [totalPagoAnual_prop, totalPagoAnualPotencia_prop, restoDeCampos, valorOtrosAnual]);
 
 
   // SUMATORIOS
@@ -251,7 +253,7 @@ const TablePropuesta = ({
       p1: inputPotenciaContratada_prop.potencia_contratada_p1 * precioPotenciaDescuento_prop.p1 * restoDeCampos.dias_facturacion,
       p2: inputPotenciaContratada_prop.potencia_contratada_p2 * precioPotenciaDescuento_prop.p2 * restoDeCampos.dias_facturacion,
       p3: inputPotenciaContratada_prop.potencia_contratada_p3 * precioPotenciaDescuento_prop.p3 * restoDeCampos.dias_facturacion,
-      p4: inputPotenciaContratada_prop.potencia_contratada_p4  * precioPotenciaDescuento_prop.p4 * restoDeCampos.dias_facturacion,
+      p4: inputPotenciaContratada_prop.potencia_contratada_p4 * precioPotenciaDescuento_prop.p4 * restoDeCampos.dias_facturacion,
       p5: inputPotenciaContratada_prop.potencia_contratada_p5 * precioPotenciaDescuento_prop.p5 * restoDeCampos.dias_facturacion,
       p6: inputPotenciaContratada_prop.potencia_contratada_p6 * precioPotenciaDescuento_prop.p6 * restoDeCampos.dias_facturacion
     })
@@ -271,20 +273,20 @@ const TablePropuesta = ({
 
   //________________________ SUMATORIOS OTROS CAMPOS DE LA FACTURA______________________________
   useEffect(() => {
-    setImpuestoElectrico_prop (
-      (totalPagoFactura_prop.p1+
-      totalPagoFactura_prop.p2+
-      totalPagoFactura_prop.p3+
-      totalPagoFactura_prop.p4+
-      totalPagoFactura_prop.p5+
-      totalPagoFactura_prop.p6+
-      totalPagoFacturaPotencia_prop.p1+
-      totalPagoFacturaPotencia_prop.p2+
-      totalPagoFacturaPotencia_prop.p3+
-      totalPagoFacturaPotencia_prop.p4+
-      totalPagoFacturaPotencia_prop.p5+
-      totalPagoFacturaPotencia_prop.p6)*0.005
-      )
+    setImpuestoElectrico_prop(
+      (totalPagoFactura_prop.p1 +
+        totalPagoFactura_prop.p2 +
+        totalPagoFactura_prop.p3 +
+        totalPagoFactura_prop.p4 +
+        totalPagoFactura_prop.p5 +
+        totalPagoFactura_prop.p6 +
+        totalPagoFacturaPotencia_prop.p1 +
+        totalPagoFacturaPotencia_prop.p2 +
+        totalPagoFacturaPotencia_prop.p3 +
+        totalPagoFacturaPotencia_prop.p4 +
+        totalPagoFacturaPotencia_prop.p5 +
+        totalPagoFacturaPotencia_prop.p6) * 0.005
+    )
   }, [totalPagoFactura_prop, totalPagoFacturaPotencia_prop]);
 
   return (
@@ -455,16 +457,16 @@ const TablePropuesta = ({
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
-              <td className='total_input'>{totalPagoFactura_prop.p1+totalPagoFactura_prop.p2+totalPagoFactura_prop.p3+totalPagoFactura_prop.p4+totalPagoFactura_prop.p5+totalPagoFactura_prop.p6} €</td>
-              <td className='total_input'>{totalPagoAnual_prop.p1+totalPagoAnual_prop.p2+totalPagoAnual_prop.p3+totalPagoAnual_prop.p4+totalPagoAnual_prop.p5+totalPagoAnual_prop.p6} €</td>
+              <td className='total_input'>{totalPagoFactura_prop.p1 + totalPagoFactura_prop.p2 + totalPagoFactura_prop.p3 + totalPagoFactura_prop.p4 + totalPagoFactura_prop.p5 + totalPagoFactura_prop.p6} €</td>
+              <td className='total_input'>{totalPagoAnual_prop.p1 + totalPagoAnual_prop.p2 + totalPagoAnual_prop.p3 + totalPagoAnual_prop.p4 + totalPagoAnual_prop.p5 + totalPagoAnual_prop.p6} €</td>
 
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
               <td className='empty_input'></td>
-              <td className='total_input'>{totalPagoFacturaPotencia_prop.p1+totalPagoFacturaPotencia_prop.p2+totalPagoFacturaPotencia_prop.p3+totalPagoFacturaPotencia_prop.p4+totalPagoFacturaPotencia_prop.p5+totalPagoFacturaPotencia_prop.p6} €</td>
-              <td className='total_input'>{totalPagoAnualPotencia_prop.p1+totalPagoAnualPotencia_prop.p2+totalPagoAnualPotencia_prop.p3+totalPagoAnualPotencia_prop.p4+totalPagoAnualPotencia_prop.p5+totalPagoAnualPotencia_prop.p6} €</td>
+              <td className='total_input'>{totalPagoFacturaPotencia_prop.p1 + totalPagoFacturaPotencia_prop.p2 + totalPagoFacturaPotencia_prop.p3 + totalPagoFacturaPotencia_prop.p4 + totalPagoFacturaPotencia_prop.p5 + totalPagoFacturaPotencia_prop.p6} €</td>
+              <td className='total_input'>{totalPagoAnualPotencia_prop.p1 + totalPagoAnualPotencia_prop.p2 + totalPagoAnualPotencia_prop.p3 + totalPagoAnualPotencia_prop.p4 + totalPagoAnualPotencia_prop.p5 + totalPagoAnualPotencia_prop.p6} €</td>
             </tr>
           </tfoot>
 
@@ -484,7 +486,7 @@ const TablePropuesta = ({
         </article>
 
         <article>
-        <table >
+          <table >
             <tbody>
               <tr>
                 <th className="table3_pink">OTROS </th>
@@ -531,8 +533,13 @@ const TablePropuesta = ({
           </table>
 
         </article>
+        <PDFDownloadLink document={<PDF />} fileName="Propuesta Several">
+          <button>Descargar</button>
+        </PDFDownloadLink>
 
       </section>
+
+
     </>
   );
 };
