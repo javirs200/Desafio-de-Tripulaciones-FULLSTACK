@@ -34,13 +34,20 @@ function TablaInputFactura({
 }) {
   //____________________ DATOS INTRODUCIDOS EN FORMULARIO DE HOME_____________
   const { state } = useLocation()
-  console.log(state.cups)
+  console.log(state)
 
 
   //_____________________ FETCH A API WEBSCRAPING_____________________________
   useEffect(() => {
     const fetchConsumoAnual = async () => {
       const CupsFetch = state.cups
+      function validarFormato(cadena) {
+        var regex = /^ES\d{16}[A-Z0-9]{2}$/;
+        
+        return regex.test(cadena);
+      }
+      console.log(validarFormato(CupsFetch))
+      if (validarFormato(CupsFetch) === true){
       const response = await fetch('https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/sips/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,6 +67,7 @@ function TablaInputFactura({
         consumo_anual_p5 : consumo.ca_p5,
         consumo_anual_p6 : consumo.ca_p6,
       })
+    }
   };
   fetchConsumoAnual();
 
