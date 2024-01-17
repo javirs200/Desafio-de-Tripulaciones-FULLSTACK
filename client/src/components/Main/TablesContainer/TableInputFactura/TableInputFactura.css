@@ -273,3 +273,13 @@ select{
 
 }
 
+#header_section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+#header_section > article>p{
+    padding-bottom: 4px;
+
+}
