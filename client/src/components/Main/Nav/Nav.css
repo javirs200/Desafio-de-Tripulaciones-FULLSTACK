@@ -27,6 +27,11 @@ nav {
     margin-right: 20px;
     cursor: pointer;
   }
+
+  a.link{
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
   
   li:hover {
     color: red; /* Cambia el color al hacer hover */

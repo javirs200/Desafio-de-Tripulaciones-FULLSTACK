@@ -250,19 +250,19 @@ const SelectPropuesta = (
         let precios = await response.json()
 
         setPreciosPropuesta({
-          p1_e: precios.p1_e,
-          p2_e: precios.p2_e,
-          p3_e: precios.p3_e,
-          p4_e: precios.p4_e,
-          p5_e: precios.p5_e,
-          p6_e: precios.p6_e,
+          p1_e: (precios.p1_e).toFixed(6)*1,
+          p2_e: (precios.p2_e).toFixed(6)*1,
+          p3_e: (precios.p3_e).toFixed(6)*1,
+          p4_e: (precios.p4_e).toFixed(6)*1,
+          p5_e: (precios.p5_e).toFixed(6)*1,
+          p6_e: (precios.p6_e).toFixed(6)*1,
 
-          p1_p: precios.p1,
-          p2_p: precios.p2,
-          p3_p: precios.p3,
-          p4_p: precios.p4,
-          p5_p: precios.p5,
-          p6_p: precios.p6,
+          p1_p: (precios.p1).toFixed(6)*1,
+          p2_p: (precios.p2).toFixed(6)*1,
+          p3_p: (precios.p3).toFixed(6)*1,
+          p4_p: (precios.p4).toFixed(6)*1,
+          p5_p: (precios.p5).toFixed(6)*1,
+          p6_p: (precios.p6).toFixed(6)*1,
         })
       };
       //_______________LLAMADA INDEXADO__________

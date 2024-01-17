@@ -1,66 +1,37 @@
 import React from "react";
 import Nav from "../Nav/Nav";
-import foto_user from "../../../assets/img_offer/user.svg";
-import estado_pendiente from "../../../assets/img_offer/EstadoPendiente.svg";
-import estado_aceptada from "../../../assets/img_offer/EstadoAceptada.svg";
-import estado_rechazada from "../../../assets/img_offer/EstadoRechazada.svg"
-// import lupa
+import search_bar from "../../../assets/img_offer/Search.svg";
 import download from "../../../assets/img_offer/download.svg";
 import trash from "../../../assets/img_offer/trash.svg";
+import filtro_propuestas from "../../../assets/img_offer/FiltroPropuestas.svg";
+import propuesta1 from "../../../assets/img_offer/PropuestaListado.svg";
+import propuesta2 from "../../../assets/img_offer/PropuestaListado1.svg";
+import propuesta3 from "../../../assets/img_offer/PropuestaListado2.svg";
+import propuesta4 from "../../../assets/img_offer/PropuestaListado3.svg";
+import selector_propuesta from "../../../assets/img_offer/SelectorPropuestas.svg";
 import "./Offer_View.css";
 
 const Offer_View = () => {
   return (
-    <div>
+    <div className="offer_view">
       <Nav />
-      <section>
-        <article className="search_bar"></article>
-        <article className="filter-offers">
-          <p>Todas las propuestas</p>
-          <p>Mis propuestas</p>
-        </article>
+      <section className="search_bar">
+        <img src={search_bar} alt="search" />
+        <img className="selector" src={selector_propuesta} alt="selector" />
       </section>
-      <section>
-        <article className="filters_options">
-          <input type="checkbox" />
-          {/* <input type="text" src={lupa}> */}
-          <p>Todas</p>
-          <p>Aceptadas</p>
-          <p>Rechazadas</p>
-          <p>Pendientes</p>
-        </article>
-        <img src={download} alt="download" />
-        <img src={trash} alt="trash" />
+      <section className="filters">
+        <input type="checkbox" />
+        <img src={filtro_propuestas} alt="filtro" />
+        <section>
+          <img className="boton" src={download} alt="download" />
+          <img className="boton" src={trash} alt="trash" />
+        </section>
       </section>
-      <section>
-        <article>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Jorge Fernandez-19/01/24</p>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Paloma Ocanha</p>
-          <img src={estado_pendiente} alt="estado" />
-        </article>
-        <article>
-          <img src={foto_user} alt="perfil_user" />
-          <p>María Rodríguez-19/01/24</p>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Andrea Deskovic</p>
-          <img src={estado_rechazada} alt="estado" />
-        </article>
-        <article>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Francisco Vivas-19/01/24</p>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Andrea Deskovic</p>
-          <img src={estado_rechazada} alt="estado" />
-        </article>
-        <article>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Lucía Fontana- 18/01/24</p>
-          <img src={foto_user} alt="perfil_user" />
-          <p>Paloma Ocanha</p>
-          <img src={estado_aceptada} alt="estado" />
-        </article>
+      <section className="offers">
+        <img className="offer1" src={propuesta1} alt="perfil_1" />
+        <img className="offer1" src={propuesta2} alt="perfil_2" />
+        <img className="offer1" src={propuesta3} alt="perfil_3" />
+        <img className="offer1" src={propuesta4} alt="perfil_4" />
       </section>
     </div>
   );
