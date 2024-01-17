@@ -11,6 +11,7 @@ const SelectPropuesta = (
     importeTotalAnual_prop
   }
 ) => {
+  const [mostrarTabla, setMostrarTabla] = useState(true);
 
   const [productos, setProductos] = useState([]);
 
@@ -26,7 +27,7 @@ const SelectPropuesta = (
     fee: ""
   })
 
-  
+
 
   const opcionesProductos = {
     ACCIONA: {
@@ -275,7 +276,7 @@ const SelectPropuesta = (
           fee: seleccion.fee
         }
 
-        console.log('parametros',parametrosFetch);
+        console.log('parametros', parametrosFetch);
 
         const response = await fetch("http://localhost:3000/api/precios/indexados", {
           method: "POST",
@@ -312,7 +313,15 @@ const SelectPropuesta = (
       producto: "",
       mes: "",
       fee: ""
-    })
+    });
+    setTimeout(() => {
+      setMostrarTabla(false);
+
+      // Después de 0.3 segundos, vuelve a mostrar la tabla
+      setTimeout(() => {
+        setMostrarTabla(true);
+      }, 100);
+    }, 100);
   }
 
 
@@ -320,102 +329,103 @@ const SelectPropuesta = (
   return (
     <>
 
-    <section className='company'>
-      <h4>PROPUESTA SEVERAL</h4>
-    </section>
-    
+      <section className='company'>
+        <h4>PROPUESTA SEVERAL</h4>
+      </section>
+
       <section id='select_section'>
 
         <article>
-          <table>
-            <thead>
-              <tr>
-                <th className='tr_inputs '>TIPO DE SISTEMA</th>
-                <th className='tr_inputs '>TARIFA</th>
-                <th className='tr_inputs'>CIA</th>
-                <th className='tr_inputs'>METODO</th>
-                <th className='tr_inputs'>PRODUCTO CIA (POT)</th>
-                <th className='tr_inputs'>MES DE FACTURACION (INDEXADO)</th>
-                <th className='tr_inputs'>FEE (ENERGIA)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className='td_radius'>
-                  <select name="sistema" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    <option value="PENINSULA">PENINSULA</option>
-                    <option value="CANARIAS">CANARIAS</option>
-                    <option value="BALEARES">BALEARES</option>
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="tarifa" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    <option value="2.0TD">2.0TD</option>
-                    <option value="3.0TD">3.0TD</option>
-                    <option value="6.1TD">6.1TD</option>
-                    <option value="6.2TD">6.2TD</option>
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="cia" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    <option value="ACCIONA">ACCIONA</option>
-                    <option value="ADI">ADI</option>
-                    <option value="AEQ">AEQ</option>
-                    <option value="CANDELA">CANDELA</option>
-                    <option value="ELEIA">ELEIA</option>
-                    <option value="ENDESA">ENDESA</option>
-                    <option value="EVOLVE">EVOLVE</option>
-                    <option value="FACTOR">FACTOR</option>
-                    <option value="GANA">GANA</option>
-                    <option value="IBERDROLA">IBERDROLA</option>
-                    <option value="IGNIS">IGNIS</option>
-                    <option value="MAX">MAX</option>
-                    <option value="NATURGY">NATURGY</option>
-                    <option value="PLENITUDE">PLENITUDE</option>
-                    <option value="TOTAL">TOTAL</option>
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="metodo" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    <option value="FIJO">FIJO</option>
-                    <option value="INDEXADO">INDEXADO</option>
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="producto" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
-                    {productos.map((producto, index) => (
-                      <option key={index} value={producto}>{producto}</option>
-                    ))}
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="mes" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    {/* Opciones para MES DE FACTURACION (INDEXADO) */}
-                    {seleccion.metodo == "INDEXADO" && fee.length > 0 ? opcionesProductos.mesesIndexados.map((mes, index) => (
-                      <option key={index} value={mes}>{mes}</option>
-                    )) : ""};
-                  </select>
-                </td>
-                <td className='td_radius'>
-                  <select name="fee" onChange={handleInputSeleccion}>
-                    <option> </option>
-                    {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
-                    {fee.map((fee, index) => (
-                      <option key={index} value={fee}>{fee}</option>
-                    ))}
-                  </select>
+          {mostrarTabla && (
+            <table>
+              <thead>
+                <tr>
+                  <th className='tr_inputs '>TIPO DE SISTEMA</th>
+                  <th className='tr_inputs '>TARIFA</th>
+                  <th className='tr_inputs'>CIA</th>
+                  <th className='tr_inputs'>METODO</th>
+                  <th className='tr_inputs'>PRODUCTO CIA (POT)</th>
+                  <th className='tr_inputs'>MES DE FACTURACION (INDEXADO)</th>
+                  <th className='tr_inputs'>FEE (ENERGIA)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='td_radius'>
+                    <select name="sistema" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      <option value="PENINSULA">PENINSULA</option>
+                      <option value="CANARIAS">CANARIAS</option>
+                      <option value="BALEARES">BALEARES</option>
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="tarifa" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      <option value="2.0TD">2.0TD</option>
+                      <option value="3.0TD">3.0TD</option>
+                      <option value="6.1TD">6.1TD</option>
+                      <option value="6.2TD">6.2TD</option>
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="cia" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      <option value="ACCIONA">ACCIONA</option>
+                      <option value="ADI">ADI</option>
+                      <option value="AEQ">AEQ</option>
+                      <option value="CANDELA">CANDELA</option>
+                      <option value="ELEIA">ELEIA</option>
+                      <option value="ENDESA">ENDESA</option>
+                      <option value="EVOLVE">EVOLVE</option>
+                      <option value="FACTOR">FACTOR</option>
+                      <option value="GANA">GANA</option>
+                      <option value="IBERDROLA">IBERDROLA</option>
+                      <option value="IGNIS">IGNIS</option>
+                      <option value="MAX">MAX</option>
+                      <option value="NATURGY">NATURGY</option>
+                      <option value="PLENITUDE">PLENITUDE</option>
+                      <option value="TOTAL">TOTAL</option>
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="metodo" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      <option value="FIJO">FIJO</option>
+                      <option value="INDEXADO">INDEXADO</option>
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="producto" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
+                      {productos.map((producto, index) => (
+                        <option key={index} value={producto}>{producto}</option>
+                      ))}
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="mes" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      {/* Opciones para MES DE FACTURACION (INDEXADO) */}
+                      {seleccion.metodo == "INDEXADO" && fee.length > 0 ? opcionesProductos.mesesIndexados.map((mes, index) => (
+                        <option key={index} value={mes}>{mes}</option>
+                      )) : ""};
+                    </select>
+                  </td>
+                  <td className='td_radius'>
+                    <select name="fee" onChange={handleInputSeleccion}>
+                      <option> </option>
+                      {/* Opciones para PRODUCTO CIA (POT) basadas en las elecciones de CIA y METODO */}
+                      {fee.map((fee, index) => (
+                        <option key={index} value={fee}>{fee}</option>
+                      ))}
+                    </select>
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>)}
         </article>
 
         <article>
@@ -431,7 +441,7 @@ const SelectPropuesta = (
               <th className='tr_inputs bigger'>AHORRO FACTURA ACTUAL</th>
             </thead>
             <tbody>
-              <td className='td_radius saving'>{importeTotalFactura-importeTotalFactura_prop} €</td>
+              <td className='td_radius saving'>{importeTotalFactura - importeTotalFactura_prop} €</td>
             </tbody>
           </table>
         </article>
