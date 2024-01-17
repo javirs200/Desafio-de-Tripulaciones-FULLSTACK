@@ -21,7 +21,12 @@ const facturaRoutes = require('./routes/factura.routes')
 const database = require('./config/db_pgsql')
 database.connectSQL()
 
-app.use(cors());
+// enabling CORS for some specific origins only. 
+let corsOptions = { 
+  origin : ['https://cloudbuilds-client-folgybvrpq-ew.a.run.app'], 
+} 
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
