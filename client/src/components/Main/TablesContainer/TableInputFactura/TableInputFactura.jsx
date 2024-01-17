@@ -34,6 +34,39 @@ function TablaInputFactura({
 }) {
   //____________________ DATOS INTRODUCIDOS EN FORMULARIO DE HOME_____________
   const { state } = useLocation()
+  console.log(state.cups)
+
+
+  //_____________________ FETCH A API WEBSCRAPING_____________________________
+  useEffect(() => {
+    const fetchConsumoAnual = async () => {
+      const CupsFetch = state.cups
+      const response = await fetch('https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/sips/', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "cups": CupsFetch
+        }
+
+        )
+      });
+      let consumo = await response.json()
+      console.log(consumo);
+      setInputConsumoAnual({
+        consumo_anual_p1 : consumo.ca_p1,
+        consumo_anual_p2 : consumo.ca_p2,
+        consumo_anual_p3 : consumo.ca_p3,
+        consumo_anual_p4 : consumo.ca_p4,
+        consumo_anual_p5 : consumo.ca_p5,
+        consumo_anual_p6 : consumo.ca_p6,
+      })
+  };
+  fetchConsumoAnual();
+
+
+  }, [state.cups]);
+
+ 
   
   //_______________________ ESTADOS ENERGIA __________________________________
 
