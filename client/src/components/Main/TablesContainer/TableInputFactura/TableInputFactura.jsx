@@ -30,10 +30,15 @@ function TablaInputFactura({
   setImporteTotalFactura,
   importeTotalAnual,
   setImporteTotalAnual,
-  showTable2
+  showTable2,
+  setInputHome
 }) {
   //____________________ DATOS INTRODUCIDOS EN FORMULARIO DE HOME_____________
-  const { state } = useLocation()
+  const { state } = useLocation();
+  useEffect(() => {
+    setInputHome(state);
+  }, []);
+  
   
   //_______________________ ESTADOS ENERGIA __________________________________
 

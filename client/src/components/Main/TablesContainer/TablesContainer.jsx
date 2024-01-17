@@ -130,14 +130,19 @@ const TablesContainer = () => {
   const [mostrarComponentes, setMostrarComponentes] = useState({
     componente3: false,
     componente4: false,
+    componente5: false,
+
   });
 
   const handleMostrarComponentes = () => {
     setMostrarComponentes({
       componente3: true,
       componente4: true,
+      componente5: true
     });
   };
+
+  const  [inputHome, setInputHome] = useState();
 
   return (
     <>
@@ -170,6 +175,7 @@ const TablesContainer = () => {
 
         importeTotalAnual={importeTotalAnual}
         setImporteTotalAnual={setImporteTotalAnual}
+        setInputHome={setInputHome}
 
 
       />
@@ -197,7 +203,8 @@ const TablesContainer = () => {
         setImporteTotalAnual_prop={setImporteTotalAnual_prop}
       />}
 
-      <section id="download_section">
+
+      {mostrarComponentes.componente5 && <section id="download_section">
         <PDFDownloadLink document={<Pdf
           inputConsumoAnual={inputConsumoAnual}
           inputConsumo={inputConsumo} 
@@ -214,7 +221,7 @@ const TablesContainer = () => {
           importeTotalFactura_prop={importeTotalFactura_prop}
           importeTotalAnual_prop={importeTotalAnual_prop}
           preciosPropuesta={preciosPropuesta}
-         
+          inputHome={inputHome}
         
         />} fileName="Propuesta Several">
           <button id="download_button">
@@ -222,7 +229,8 @@ const TablesContainer = () => {
           </button>
         </PDFDownloadLink>
       </section>
-
+}
+      
     </>
   );
 };

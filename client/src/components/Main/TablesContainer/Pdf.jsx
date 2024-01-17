@@ -1,5 +1,5 @@
 import React from "react";
-import { Page, Text, View, Document, StyleSheet, Image } from "@react-pdf/renderer";
+import { Page, Text, View, Document, StyleSheet, Font } from "@react-pdf/renderer";
 
 
 const Pdf = ({
@@ -21,12 +21,18 @@ const Pdf = ({
   importeTotalAnual
 
 }) => {
- 
 
+
+
+ 
+  const inputHomeArray = [inputHome];
+  
+  
+  
   
   // Datos para la tabla
   const tableData = [
-    ['Datos de la factura actual','','','','',`${inputHome.company}`,],
+    
     
     ['','P1','P2','P3','P4','P5','P6'],
 
@@ -51,7 +57,7 @@ const Pdf = ({
   ]
   
   const tableData2 = [
-    ['Oferta Several','','','','','',],
+    
     ['','P1','P2','P3','P4','P5','P6'],
     
     ['Precio energía (mes de factura)',`${preciosPropuesta.p1_e}`,`${preciosPropuesta.p2_e}`,`${preciosPropuesta.p3_e}`,`${preciosPropuesta.p4_e}`,`${preciosPropuesta.p5_e}`,`${preciosPropuesta.p6_e}`],
@@ -62,14 +68,14 @@ const Pdf = ({
   ]
 
   const tableData3 = [
-    ['Ahorro','',''],
+    
     ['','Factura actual','Anual estimado'],
     ['',`${importeTotalFactura - importeTotalFactura_prop}`,`${importeTotalAnual - importeTotalAnual_prop}`]
     
 
   ]
 
-  const inputHome = [inputHome];
+  
 
   // Estilos para la tabla
   const styles = StyleSheet.create({
@@ -82,14 +88,17 @@ const Pdf = ({
       margin: 10,
       padding: 10,
       flexGrow: 1,
-      borderStyle: 'solid',
-      borderWidth: 1,
+      
     },
     table: {
       display: 'table',
       width: 'auto',
-      
-
+      borderWidth: 0.5,
+      borderLeftWidth: 0.5,
+      borderTopWidth: 1,
+      marginTop:20,
+      borderRadius:8
+     
     },
     tableRow: { margin: 'auto', flexDirection: 'row' },
     tableCol: {
@@ -100,7 +109,30 @@ const Pdf = ({
       borderTopWidth: 0,
     },
     cell: { margin: 6, fontSize: 8 },
-    image: { width: 100, height: 50 },
+    title:{
+      margin:10,
+      color:'#C10000',
+      textAlign: 'center',
+      marginBottom:30
+     
+    },
+    title2:{
+      margin:10,
+      color:'#C10000',
+      textAlign: 'center',
+      fontSize:10,
+     
+    },
+    text:{
+      fontSize:10,
+      flexDirection: 'row',
+
+    },
+    personalData:{
+      flexDirection: 'row',
+
+    }
+    
   });
 
   return (
@@ -109,18 +141,19 @@ const Pdf = ({
         <View style={styles.section}>
 
         <View>
-          <Text>oferta de contratación de suministro eléctrico</Text>
-          <Image src="../../../assets/img/several_negro.png"></Image>
-            
-          </View>
+          <Text style={styles.title}>Oferta de contratación de suministro eléctrico</Text>
+        </View>
 
     
-          <View style={styles.table}>
-            {inputHome.map((obj, index) => (
+          <View style={styles.personalData}>
+            
+            {inputHomeArray.map((obj, index) => (
               <View key={index} >
-               <Text>Nombre/Razón: {inputHome.name}</Text>
-               <Text>Dirección {inputHome.address}</Text>
-               <Text>CUPS{inputHome.cups}</Text>
+               <Text style={styles.text}>Nombre/Razón: {obj.name}</Text>
+               <Text style={styles.text}>Dirección:{obj.address}</Text>
+               <Text style={styles.text}>CUPS{obj.cups}</Text>
+               <Text style={styles.text}>Empresa actual:{obj.company}</Text>
+
               
               </View>
             ))}
@@ -129,6 +162,7 @@ const Pdf = ({
         
           
           <View style={styles.table}>
+          <Text style={styles.title2}>Datos factura actual</Text>
             {tableData.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
@@ -138,10 +172,11 @@ const Pdf = ({
                 ))}
               </View>
             ))}
-            <Text>La comisión anual ha sido realizada utilizando datos históricos de consumo energético publicado del último año en SIPS y considerando la proyección anual del perfil de consumo así como los precios fijos facilitados por el cliente en su última factura de luz</Text>
+            
           </View>
           
           <View style={styles.table}>
+          <Text style={styles.title2}>Propuesta Several</Text>
             {tableData2.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
@@ -154,6 +189,7 @@ const Pdf = ({
           </View>
 
           <View style={styles.table}>
+          <Text style={styles.title2}>Ahorro</Text>
             {tableData3.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
