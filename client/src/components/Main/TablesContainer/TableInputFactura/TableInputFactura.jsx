@@ -34,7 +34,7 @@ function TablaInputFactura({
 }) {
   //____________________ DATOS INTRODUCIDOS EN FORMULARIO DE HOME_____________
   const { state } = useLocation()
-  console.log(state)
+  
 
 
   //_____________________ FETCH A API WEBSCRAPING_____________________________
@@ -46,7 +46,7 @@ function TablaInputFactura({
         
         return regex.test(cadena);
       }
-      console.log(validarFormato(CupsFetch))
+      
       if (validarFormato(CupsFetch) === true){
       const response = await fetch('https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/sips/', {
         method: "POST",
@@ -277,35 +277,35 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioDescuentoActual({
-      p1: inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual / 100),
-      p2: inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual / 100),
-      p3: inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual / 100),
-      p4: inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual / 100),
-      p5: inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual / 100),
-      p6: inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual / 100),
+      p1: (inputPrecioMes.precio_factura_p1 - inputPrecioMes.precio_factura_p1 * (descuentoActual / 100)).toFixed(6)*1,
+      p2: (inputPrecioMes.precio_factura_p2 - inputPrecioMes.precio_factura_p2 * (descuentoActual / 100)).toFixed(6)*1,
+      p3: (inputPrecioMes.precio_factura_p3 - inputPrecioMes.precio_factura_p3 * (descuentoActual / 100)).toFixed(6)*1,
+      p4: (inputPrecioMes.precio_factura_p4 - inputPrecioMes.precio_factura_p4 * (descuentoActual / 100)).toFixed(6)*1,
+      p5: (inputPrecioMes.precio_factura_p5 - inputPrecioMes.precio_factura_p5 * (descuentoActual / 100)).toFixed(6)*1,
+      p6: (inputPrecioMes.precio_factura_p6 - inputPrecioMes.precio_factura_p6 * (descuentoActual / 100)).toFixed(6)*1,
     })
   }, [inputPrecioMes, descuentoActual]);
 
   useEffect(() => {
     setTotalPagoFactura({
-      p1: inputConsumo.consumo_factura_p1 * precioDescuentoActual.p1,
-      p2: inputConsumo.consumo_factura_p2 * precioDescuentoActual.p2,
-      p3: inputConsumo.consumo_factura_p3 * precioDescuentoActual.p3,
-      p4: inputConsumo.consumo_factura_p4 * precioDescuentoActual.p4,
-      p5: inputConsumo.consumo_factura_p5 * precioDescuentoActual.p5,
-      p6: inputConsumo.consumo_factura_p6 * precioDescuentoActual.p6,
+      p1: (inputConsumo.consumo_factura_p1 * precioDescuentoActual.p1).toFixed(2)*1,
+      p2: (inputConsumo.consumo_factura_p2 * precioDescuentoActual.p2).toFixed(2)*1,
+      p3: (inputConsumo.consumo_factura_p3 * precioDescuentoActual.p3).toFixed(2)*1,
+      p4: (inputConsumo.consumo_factura_p4 * precioDescuentoActual.p4).toFixed(2)*1,
+      p5: (inputConsumo.consumo_factura_p5 * precioDescuentoActual.p5).toFixed(2)*1,
+      p6: (inputConsumo.consumo_factura_p6 * precioDescuentoActual.p6).toFixed(2)*1,
     })
 
   }, [inputConsumo, precioDescuentoActual]);
 
   useEffect(() => {
     setTotalPagoAnual({
-      p1: inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual / 100))),
-      p2: inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual / 100))),
-      p3: inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual / 100))),
-      p4: inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual / 100))),
-      p5: inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual / 100))),
-      p6: inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual / 100))),
+      p1: (inputConsumoAnual.consumo_anual_p1 * (inputPrecioAnual.precio_anual_p1 - (inputPrecioAnual.precio_anual_p1 * (descuentoActual / 100)))).toFixed(2)*1,
+      p2: (inputConsumoAnual.consumo_anual_p2 * (inputPrecioAnual.precio_anual_p2 - (inputPrecioAnual.precio_anual_p2 * (descuentoActual / 100)))).toFixed(2)*1,
+      p3: (inputConsumoAnual.consumo_anual_p3 * (inputPrecioAnual.precio_anual_p3 - (inputPrecioAnual.precio_anual_p3 * (descuentoActual / 100)))).toFixed(2)*1,
+      p4: (inputConsumoAnual.consumo_anual_p4 * (inputPrecioAnual.precio_anual_p4 - (inputPrecioAnual.precio_anual_p4 * (descuentoActual / 100)))).toFixed(2)*1,
+      p5: (inputConsumoAnual.consumo_anual_p5 * (inputPrecioAnual.precio_anual_p5 - (inputPrecioAnual.precio_anual_p5 * (descuentoActual / 100)))).toFixed(2)*1,
+      p6: (inputConsumoAnual.consumo_anual_p6 * (inputPrecioAnual.precio_anual_p6 - (inputPrecioAnual.precio_anual_p6 * (descuentoActual / 100)))).toFixed(2)*1,
     })
 
   }, [inputConsumoAnual, inputPrecioAnual, descuentoActual]);
@@ -323,34 +323,34 @@ function TablaInputFactura({
 
   useEffect(() => {
     setPrecioPotenciaDescuento({
-      p1: inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual / 100)),
-      p2: inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual / 100)),
-      p3: inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual / 100)),
-      p4: inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual / 100)),
-      p5: inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual / 100)),
-      p6: inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual / 100)),
+      p1: (inputPrecioPotencia.precio_potencia_p1 * (1 - (descuentoActual / 100))).toFixed(6)*1,
+      p2: (inputPrecioPotencia.precio_potencia_p2 * (1 - (descuentoActual / 100))).toFixed(6)*1,
+      p3: (inputPrecioPotencia.precio_potencia_p3 * (1 - (descuentoActual / 100))).toFixed(6)*1,
+      p4: (inputPrecioPotencia.precio_potencia_p4 * (1 - (descuentoActual / 100))).toFixed(6)*1,
+      p5: (inputPrecioPotencia.precio_potencia_p5 * (1 - (descuentoActual / 100))).toFixed(6)*1,
+      p6: (inputPrecioPotencia.precio_potencia_p6 * (1 - (descuentoActual / 100))).toFixed(6)*1,
     })
   }, [inputPrecioPotencia, descuentoActual]);
 
   useEffect(() => {
     setTotalPagoFacturaPotencia({
-      p1: inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * restoDeCampos.dias_facturacion,
-      p2: inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * restoDeCampos.dias_facturacion,
-      p3: inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * restoDeCampos.dias_facturacion,
-      p4: inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * restoDeCampos.dias_facturacion,
-      p5: inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * restoDeCampos.dias_facturacion,
-      p6: inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * restoDeCampos.dias_facturacion
+      p1: (inputPotenciaFacturada.potencia_facturada_p1 * precioPotenciaDescuento.p1 * restoDeCampos.dias_facturacion).toFixed(2)*1,
+      p2: (inputPotenciaFacturada.potencia_facturada_p2 * precioPotenciaDescuento.p2 * restoDeCampos.dias_facturacion).toFixed(6)*1,
+      p3: (inputPotenciaFacturada.potencia_facturada_p3 * precioPotenciaDescuento.p3 * restoDeCampos.dias_facturacion).toFixed(2)*1,
+      p4: (inputPotenciaFacturada.potencia_facturada_p4 * precioPotenciaDescuento.p4 * restoDeCampos.dias_facturacion).toFixed(2)*1,
+      p5: (inputPotenciaFacturada.potencia_facturada_p5 * precioPotenciaDescuento.p5 * restoDeCampos.dias_facturacion).toFixed(2)*1,
+      p6: (inputPotenciaFacturada.potencia_facturada_p6 * precioPotenciaDescuento.p6 * restoDeCampos.dias_facturacion).toFixed(2)*1
     })
   }, [inputPotenciaFacturada, precioPotenciaDescuento, restoDeCampos.dias_facturacion]);
 
   useEffect(() => {
     setTotalPagoAnualPotencia({
-      p1: inputPotenciaContratada.potencia_contratada_p1 * inputPrecioPotencia.precio_potencia_p1 * 365,
-      p2: inputPotenciaContratada.potencia_contratada_p2 * inputPrecioPotencia.precio_potencia_p2 * 365,
-      p3: inputPotenciaContratada.potencia_contratada_p3 * inputPrecioPotencia.precio_potencia_p3 * 365,
-      p4: inputPotenciaContratada.potencia_contratada_p4 * inputPrecioPotencia.precio_potencia_p4 * 365,
-      p5: inputPotenciaContratada.potencia_contratada_p5 * inputPrecioPotencia.precio_potencia_p5 * 365,
-      p6: inputPotenciaContratada.potencia_contratada_p6 * inputPrecioPotencia.precio_potencia_p6 * 365
+      p1: (inputPotenciaContratada.potencia_contratada_p1 * inputPrecioPotencia.precio_potencia_p1 * 365).toFixed(2)*1,
+      p2: (inputPotenciaContratada.potencia_contratada_p2 * inputPrecioPotencia.precio_potencia_p2 * 365).toFixed(2)*1,
+      p3: (inputPotenciaContratada.potencia_contratada_p3 * inputPrecioPotencia.precio_potencia_p3 * 365).toFixed(2)*1,
+      p4: (inputPotenciaContratada.potencia_contratada_p4 * inputPrecioPotencia.precio_potencia_p4 * 365).toFixed(2)*1,
+      p5: (inputPotenciaContratada.potencia_contratada_p5 * inputPrecioPotencia.precio_potencia_p5 * 365).toFixed(2)*1,
+      p6: (inputPotenciaContratada.potencia_contratada_p6 * inputPrecioPotencia.precio_potencia_p6 * 365).toFixed(2)*1,
     })
   }, [inputPotenciaContratada, inputPrecioPotencia]);
 
@@ -377,7 +377,7 @@ function TablaInputFactura({
     setImporteTotalAnual(
       (importe * 1.0051127 +
         (restoDeCampos.alquiler_equipo / restoDeCampos.dias_facturacion) * 365 +
-        (valorOtrosAnual / restoDeCampos.dias_facturacion) * 365) * (1 + (restoDeCampos.iva / 100))
+        (valorOtrosAnual / restoDeCampos.dias_facturacion) * 365) * (1 + (restoDeCampos.iva / 100)).toFixed(2)*1,
     )
 
   }, [totalPagoAnual, totalPagoAnualPotencia, restoDeCampos, valorOtrosAnual]);
@@ -627,7 +627,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th className='other_table_total_title'>IMPORTE TOTAL FACTURA</th>
-              <td>{importeTotalFactura} €</td>
+              <td>{(importeTotalFactura).toFixed(2)*1} €</td>
             </tr>
           </tbody>
         </table>
@@ -675,7 +675,7 @@ function TablaInputFactura({
                 <th id='iva_th'>IVA</th>
                 <td>
                   <select name="iva" onChange={handleInputRestoCampos}>
-                    <option value=""> </option>
+                    <option value=""> %</option>
                     <option value="5">5%</option>
                     <option value="10">10%</option>
                     <option value="21" >21%</option>
@@ -692,7 +692,7 @@ function TablaInputFactura({
             <tbody>
               <tr>
                 <th className='other_table_total_title'>TOTAL ANUAL ESTIMADO</th>
-                <td>{importeTotalAnual} €</td>
+                <td>{(importeTotalAnual).toFixed(2)*1} €</td>
               </tr>
             </tbody>
           </table></article>
