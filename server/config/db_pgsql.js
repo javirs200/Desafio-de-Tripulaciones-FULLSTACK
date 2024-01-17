@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 require('dotenv').config()
 //?sslmode=require
-const dbURI = `postgres://${process.env.SQL_USER}:${process.env.SQL_PASSWORD}@${process.env.SQL_HOST}/${process.env.SQL_NAME}?slmode=prefer`
+const dbURI = `postgres://${process.env.SQL_USER}:${process.env.SQL_PASSWORD}@${process.env.SQL_HOST}/${process.env.SQL_NAME}`
 
 const db = new Sequelize(dbURI, {logging:false});
 
