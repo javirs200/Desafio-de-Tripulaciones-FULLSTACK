@@ -89,7 +89,7 @@ const TablesContainer = () => {
   //__________________ ESTADOS OTROS CAMPOS DE LA FACTURA/PROPUESTA______________________________
 
   const [restoDeCampos, setRestoDeCampos] = useState({
-    dias_facturacion: 0,
+    dias_facturacion: 31,
     energia_reactiva: 0,
     impuesto_electrico:0,
     alquiler_equipo: 0,
@@ -102,6 +102,9 @@ const TablesContainer = () => {
   const [importeTotalFactura, setImporteTotalFactura] = useState(0);
   const [importeTotalAnual, setImporteTotalAnual] = useState(0);
   
+  const [importeTotalFactura_prop, setImporteTotalFactura_prop] = useState(0);
+  const [importeTotalAnual_prop, setImporteTotalAnual_prop] = useState(0);
+
   //__________________ ESTADOS DATOS FETCH PRECIOS________________
 
   const[preciosPropuesta, setPreciosPropuesta] = useState({
@@ -170,7 +173,10 @@ const TablesContainer = () => {
       />
       {mostrarComponentes.componente3 && <SelectPropuesta
         importeTotalFactura={importeTotalFactura}
+        importeTotalAnual={importeTotalAnual}
         setPreciosPropuesta={setPreciosPropuesta}
+        importeTotalFactura_prop={importeTotalFactura_prop}
+        importeTotalAnual_prop={importeTotalAnual_prop}
       /> } 
       
 
@@ -182,7 +188,11 @@ const TablesContainer = () => {
         valorOtrosMes={valorOtrosMes}
         valorOtrosAnual={valorOtrosAnual}
         restoDeCampos={restoDeCampos}
-        preciosPropuesta={preciosPropuesta}         
+        preciosPropuesta={preciosPropuesta}
+        importeTotalFactura_prop={importeTotalFactura_prop}
+        setImporteTotalFactura_prop={setImporteTotalFactura_prop}
+        importeTotalAnual_prop={importeTotalAnual_prop}
+        setImporteTotalAnual_prop={setImporteTotalAnual_prop}        
       /> }
       
       

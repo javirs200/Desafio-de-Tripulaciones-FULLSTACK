@@ -4,8 +4,11 @@ import "./SelectPropuesta.css"
 
 const SelectPropuesta = (
   {
-    preciosPropuesta,
-    setPreciosPropuesta
+    importeTotalFactura,
+    importeTotalAnual,
+    setPreciosPropuesta,
+    importeTotalFactura_prop,
+    importeTotalAnual_prop
   }
 ) => {
 
@@ -23,7 +26,7 @@ const SelectPropuesta = (
     fee: ""
   })
 
-
+  
 
   const opcionesProductos = {
     ACCIONA: {
@@ -301,6 +304,15 @@ const SelectPropuesta = (
 
     };
     fetchPrecios();
+    setSeleccion({
+      sistema: "",
+      tarifa: "",
+      cia: "",
+      metodo: "",
+      producto: "",
+      mes: "",
+      fee: ""
+    })
   }
 
 
@@ -414,23 +426,23 @@ const SelectPropuesta = (
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <thead>
-              <tr>AHORRO FACTURA ACTUAL</tr>
+              <th className='tr_inputs bigger'>AHORRO FACTURA ACTUAL</th>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <td className='td_radius saving'>{importeTotalFactura-importeTotalFactura_prop} €</td>
             </tbody>
           </table>
         </article>
 
         <article>
-          <table border="1">
+          <table>
             <thead>
-              <tr>AHORRO ANUAL</tr>
+              <th className='tr_inputs bigger'>AHORRO ANUAL</th>
             </thead>
             <tbody>
-              <tr> €</tr>
+              <td className='td_radius saving'>{importeTotalAnual - importeTotalAnual_prop} €</td>
             </tbody>
           </table>
         </article>

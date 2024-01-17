@@ -34,7 +34,7 @@ function TablaInputFactura({
 }) {
   //____________________ DATOS INTRODUCIDOS EN FORMULARIO DE HOME_____________
   const { state } = useLocation()
-  console.log(state)
+  
   //_______________________ ESTADOS ENERGIA __________________________________
 
   const [descuentoActual, setDescuentoActual] = useState(0);
@@ -332,13 +332,13 @@ function TablaInputFactura({
 
   useEffect(() => {
     let importe = totalPagoAnual.p1 + totalPagoAnual.p2 + totalPagoAnual.p3 + totalPagoAnual.p4 + totalPagoAnual.p5 + totalPagoAnual.p6 + totalPagoAnualPotencia.p1 + totalPagoAnualPotencia.p2 + totalPagoAnualPotencia.p3 + totalPagoAnualPotencia.p4 + totalPagoAnualPotencia.p5 + totalPagoAnualPotencia.p6
-    console.log(importe, 1.0051127, restoDeCampos.alquiler_equipo, restoDeCampos.dias_facturacion, (valorOtrosAnual / 365), restoDeCampos.dias_facturacion, restoDeCampos.iva)
+    
     setImporteTotalAnual(
       (importe * 1.0051127 +
         (restoDeCampos.alquiler_equipo / restoDeCampos.dias_facturacion) * 365 +
         (valorOtrosAnual / restoDeCampos.dias_facturacion) * 365) * (1 + (restoDeCampos.iva / 100))
     )
-    console.log(importeTotalAnual)
+
   }, [totalPagoAnual, totalPagoAnualPotencia, restoDeCampos, valorOtrosAnual]);
 
 
@@ -550,7 +550,7 @@ function TablaInputFactura({
           <tbody>
             <tr>
               <th>DIAS DE FACTURACION</th>
-              <td><input type="number" name="dias_facturacion" onChange={handleInputRestoCampos}></input></td>
+              <td><input type="number" name="dias_facturacion" onChange={handleInputRestoCampos} placeholder={31}></input></td>
             </tr>
           </tbody>
         </table>
@@ -644,6 +644,9 @@ function TablaInputFactura({
             </tbody>
           </table>
 
+        </article>
+
+        <article>
           <table>
             <tbody>
               <tr>
@@ -651,8 +654,7 @@ function TablaInputFactura({
                 <td>{importeTotalAnual} €</td>
               </tr>
             </tbody>
-          </table>
-        </article>
+          </table></article>
       </section >
 
       <section id='button_section'>
