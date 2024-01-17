@@ -16,13 +16,18 @@ const Pdf = ({
   importeTotalFactura,
   importeTotalFactura_prop,
   importeTotalAnual_prop,
-  preciosPropuesta
+  preciosPropuesta,
+  inputHome,
+  importeTotalAnual
 
 }) => {
  
+
   
   // Datos para la tabla
   const tableData = [
+    ['Datos de la factura actual','','','','',`${inputHome.company}`,],
+    
     ['','P1','P2','P3','P4','P5','P6'],
 
     ['Precio energía (mes de factura)',`${inputPrecioMes.precio_factura_p1}`,`${inputPrecioMes.precio_factura_p2}`,`${inputPrecioMes.precio_factura_p3}`,`${inputPrecioMes.precio_factura_p4}`,`${inputPrecioMes.precio_factura_p5}`,`${inputPrecioMes.precio_factura_p6}`],
@@ -39,11 +44,14 @@ const Pdf = ({
 
     ['Potencia facturada (kWh)',`${inputPotenciaFacturada.potencia_facturada_p1}`,`${inputPotenciaFacturada.potencia_facturada_p2}`,`${inputPotenciaFacturada.potencia_facturada_p3}`,`${inputPotenciaFacturada.potencia_facturada_p4}`,`${inputPotenciaFacturada.potencia_facturada_p5}`,`${inputPotenciaFacturada.potencia_facturada_p6}`,],
 
+
     ['Potencia contratada (kWh)',`${inputPotenciaContratada.potencia_contratada_p1}`,`${inputPotenciaContratada.potencia_contratada_p2}`,`${inputPotenciaContratada.potencia_contratada_p3}`,`${inputPotenciaContratada.potencia_contratada_p4}`,`${inputPotenciaContratada.potencia_contratada_p5}`,`${inputPotenciaContratada.potencia_contratada_p6}`,],
+
 
   ]
   
   const tableData2 = [
+    ['Oferta Several','','','','','',],
     ['','P1','P2','P3','P4','P5','P6'],
     
     ['Precio energía (mes de factura)',`${preciosPropuesta.p1_e}`,`${preciosPropuesta.p2_e}`,`${preciosPropuesta.p3_e}`,`${preciosPropuesta.p4_e}`,`${preciosPropuesta.p5_e}`,`${preciosPropuesta.p6_e}`],
@@ -53,25 +61,35 @@ const Pdf = ({
 
   ]
 
+  const tableData3 = [
+    ['Ahorro','',''],
+    ['','Factura actual','Anual estimado'],
+    ['',`${importeTotalFactura - importeTotalFactura_prop}`,`${importeTotalAnual - importeTotalAnual_prop}`]
+    
+
+  ]
+
+  const inputHome = [inputHome];
+
   // Estilos para la tabla
   const styles = StyleSheet.create({
     page: {
       flexDirection: 'row',
-      backgroundColor: '#E4E4E4',
+      backgroundColor: '#FDFCFC',
       padding: 10,
     },
     section: {
       margin: 10,
       padding: 10,
       flexGrow: 1,
+      borderStyle: 'solid',
+      borderWidth: 1,
     },
     table: {
       display: 'table',
       width: 'auto',
-      borderStyle: 'solid',
-      borderWidth: 0,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
+      
+
     },
     tableRow: { margin: 'auto', flexDirection: 'row' },
     tableCol: {
@@ -82,14 +100,34 @@ const Pdf = ({
       borderTopWidth: 0,
     },
     cell: { margin: 6, fontSize: 8 },
-    image: { width: 50, height: 50 },
+    image: { width: 100, height: 50 },
   });
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text>Datos de la factura actual</Text>
+
+        <View>
+          <Text>oferta de contratación de suministro eléctrico</Text>
+          <Image src="../../../assets/img/several_negro.png"></Image>
+            
+          </View>
+
+    
+          <View style={styles.table}>
+            {inputHome.map((obj, index) => (
+              <View key={index} >
+               <Text>Nombre/Razón: {inputHome.name}</Text>
+               <Text>Dirección {inputHome.address}</Text>
+               <Text>CUPS{inputHome.cups}</Text>
+              
+              </View>
+            ))}
+          </View>
+
+        
+          
           <View style={styles.table}>
             {tableData.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
@@ -100,8 +138,9 @@ const Pdf = ({
                 ))}
               </View>
             ))}
+            <Text>La comisión anual ha sido realizada utilizando datos históricos de consumo energético publicado del último año en SIPS y considerando la proyección anual del perfil de consumo así como los precios fijos facilitados por el cliente en su última factura de luz</Text>
           </View>
-          <Text>Oferta several</Text>
+          
           <View style={styles.table}>
             {tableData2.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
@@ -113,11 +152,20 @@ const Pdf = ({
               </View>
             ))}
           </View>
+
+          <View style={styles.table}>
+            {tableData3.map((row, rowIndex) => (
+              <View key={rowIndex} style={styles.tableRow}>
+                {row.map((cell, colIndex) => (
+                  <View key={colIndex} style={styles.tableCol}>
+                    <Text style={styles.cell}>{cell}</Text>
+                  </View>
+                ))}
+              </View>
+            ))}
+          </View>
         </View>
-        <View style={styles.section}>
-         
-          <Image style={styles.image} src="https://media.istockphoto.com/id/513133900/es/foto/oro-retriever-sentado-en-frente-de-un-fondo-blanco.jpg?s=612x612&w=0&k=20&c=0lRWImB8Y4p6X6YGt06c6q8I3AqBgKD-OGQxjLCI5EY=" />
-        </View>
+        
       </Page>
     </Document>
   );
