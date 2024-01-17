@@ -16,7 +16,8 @@ const Pdf = ({
   importeTotalFactura,
   importeTotalFactura_prop,
   importeTotalAnual_prop,
-  preciosPropuesta
+  preciosPropuesta,
+  inputHome
 
 }) => {
  

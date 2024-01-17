@@ -139,6 +139,8 @@ const TablesContainer = () => {
     });
   };
 
+  const  [inputHome, setInputHome] = useState();
+
   return (
     <>
       <Nav />
@@ -170,6 +172,7 @@ const TablesContainer = () => {
 
         importeTotalAnual={importeTotalAnual}
         setImporteTotalAnual={setImporteTotalAnual}
+        setInputHome={setInputHome}
 
 
       />
@@ -214,7 +217,7 @@ const TablesContainer = () => {
           importeTotalFactura_prop={importeTotalFactura_prop}
           importeTotalAnual_prop={importeTotalAnual_prop}
           preciosPropuesta={preciosPropuesta}
-         
+          inputHome={inputHome}
         
         />} fileName="Propuesta Several">
           <button id="download_button">
