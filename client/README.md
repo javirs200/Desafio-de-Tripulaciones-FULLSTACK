@@ -33,7 +33,7 @@ Este proyecto fue desarrollado como parte del programa Fullstack en The Bridge p
 Asegúrese de tener una base de datos configurada y actualice la información de conexión en el archivo de configuración correspondiente.
 
 3. **Acceso a la Aplicación:**
-Abra su navegador y visite http://localhost:3000 para acceder a la aplicación.
+Abra su navegador y visite https://cloudbuilds-client-folgybvrpq-ew.a.run.app/ para acceder a la aplicación. (Se necesitarán credenciales para acceder)
 
 ## Contribuyentes
 -Javier
