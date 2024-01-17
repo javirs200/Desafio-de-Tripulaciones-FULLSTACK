@@ -22,8 +22,10 @@ const Offer_View = () => {
       <section className="filters">
         <input type="checkbox" />
         <img src={filtro_propuestas} alt="filtro" />
-        <img className="boton" src={download} alt="download" />
-        <img className="boton" src={trash} alt="trash" />
+        <section>
+          <img className="boton" src={download} alt="download" />
+          <img className="boton" src={trash} alt="trash" />
+        </section>
       </section>
       <section className="offers">
         <img className="offer1" src={propuesta1} alt="perfil_1" />
