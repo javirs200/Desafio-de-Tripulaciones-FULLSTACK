@@ -69,8 +69,8 @@ const Login = () => {
         <br />
 
         <button
-          id="button_login"
-          className="form_button"
+          
+          className="form_button login"
           type="button"
           onClick={handleButtonClick}
         >
