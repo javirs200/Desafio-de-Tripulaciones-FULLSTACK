@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react'
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDF from "../PDF";
+import PDF from "../Pdf";
 import './TablePropuesta.css'
 
 const TablePropuesta = ({
