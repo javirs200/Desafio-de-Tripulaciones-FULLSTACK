@@ -798,14 +798,6 @@ const TablePropuesta = ({
         </article>
       </section>
 
-      <section id="download_section">
-          <PDFDownloadLink document={<PDF/>} fileName="Propuesta Several">
-            <button id="download_button">
-              Descargar PDF 
-            </button>
-          </PDFDownloadLink>
-      </section>           
-      
     </>
   );
 };

@@ -213,6 +213,7 @@ const TablesContainer = () => {
           importeTotalAnual={importeTotalAnual}
           importeTotalFactura_prop={importeTotalFactura_prop}
           importeTotalAnual_prop={importeTotalAnual_prop}
+          preciosPropuesta={preciosPropuesta}
          
         
         />} fileName="Propuesta Several">
