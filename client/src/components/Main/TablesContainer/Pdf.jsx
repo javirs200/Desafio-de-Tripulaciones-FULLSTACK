@@ -1,6 +1,24 @@
 import React from "react";
 import { Page, Text, View, Document, StyleSheet, Image } from "@react-pdf/renderer";
-const Pdf = () => {
+import { useLocation } from "react-router-dom";
+
+const Pdf = ({
+  inputConsumoAnual,
+  inputPrecioAnual,
+  inputPrecioMes,
+  inputPotenciaContratada,
+  inputPotenciaFacturada,
+  valorOtrosMes,
+  valorOtrosAnual,
+  restoDeCampos,
+  importeTotalFactura, 
+  importeTotalAnual,
+  importeTotalFactura_prop,
+  importeTotalAnual_prop
+
+}) => {
+  const { state } = useLocation()
+
   // Datos para la tabla
   const tableData = [
     ['Celda 1-1', 'Celda 1-2', 'Celda 1-3'],
