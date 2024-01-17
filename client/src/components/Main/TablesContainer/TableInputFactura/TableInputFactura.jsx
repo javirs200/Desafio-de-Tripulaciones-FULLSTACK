@@ -346,7 +346,7 @@ function TablaInputFactura({
 
   return (
     <>
-      <section>
+      <section id='header_section'>
         <article>
           <p><b>Nombre: </b>{state.name}</p>
           <p><b>Dirección: </b>{state.address}</p>
