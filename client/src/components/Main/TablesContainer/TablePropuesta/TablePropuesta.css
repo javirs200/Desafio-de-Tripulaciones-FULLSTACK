@@ -52,3 +52,33 @@
     justify-content: flex-end;
     gap: 50px;
 }
+
+
+#download_button{
+    color: var(--Primary-White, #FDFCFC);
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 8px;
+    background: var(--Primary-Red-500, #C10000);
+    width: 240px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    
+
+}
+
+#download_section{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+#download_button:hover{
+    background-color: #F53D3D;
+    cursor: pointer;
+
+}
