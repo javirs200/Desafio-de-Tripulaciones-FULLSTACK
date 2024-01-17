@@ -10,22 +10,11 @@ const FormHome = () => {
   const [cups, setCups] = useState("");
 
   const handleButtonClick = () => {
-    function validarFormato(cadena) {
-      var regex = /^ES\d{16}[A-Z0-9]{2}$/;
-      
-      return regex.test(cadena);
-    }
 
     if (!name || !address || !company) {
       alert("Por favor, rellena todos los campos.");
       return;
     }
-
-    if (validarFormato(cups) ==false) {
-      alert("Por favor, introduce un formato válido para el CUPS.");
-      return;
-    }
-
 
     // Pasa el objeto a través del navigate.
     navigate("/table", { state: { name, address, company, cups } });
