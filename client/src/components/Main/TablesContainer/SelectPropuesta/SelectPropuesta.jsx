@@ -19,15 +19,7 @@ const SelectPropuesta = (
 
   const [fee, setFee] = useState([])
 
-  const [seleccion, setSeleccion] = useState({
-    sistema: "",
-    tarifa: "",
-    cia: "",
-    metodo: "",
-    producto: "",
-    mes: "",
-    fee: ""
-  })
+
 
 
 
