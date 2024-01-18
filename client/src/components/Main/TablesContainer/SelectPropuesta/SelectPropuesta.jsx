@@ -8,24 +8,19 @@ const SelectPropuesta = (
     importeTotalAnual,
     setPreciosPropuesta,
     importeTotalFactura_prop,
-    importeTotalAnual_prop
+    importeTotalAnual_prop,
+    seleccion,
+    setSeleccion
   }
 ) => {
+  const [confirmar, setConfirmar] = useState(true);
   const [mostrarTabla, setMostrarTabla] = useState(true);
 
   const [productos, setProductos] = useState([]);
 
   const [fee, setFee] = useState([])
 
-  const [seleccion, setSeleccion] = useState({
-    sistema: "",
-    tarifa: "",
-    cia: "",
-    metodo: "",
-    producto: "",
-    mes: "",
-    fee: ""
-  })
+
 
 
 
@@ -250,19 +245,19 @@ const SelectPropuesta = (
         let precios = await response.json()
 
         setPreciosPropuesta({
-          p1_e: (precios.p1_e).toFixed(6)*1,
-          p2_e: (precios.p2_e).toFixed(6)*1,
-          p3_e: (precios.p3_e).toFixed(6)*1,
-          p4_e: (precios.p4_e).toFixed(6)*1,
-          p5_e: (precios.p5_e).toFixed(6)*1,
-          p6_e: (precios.p6_e).toFixed(6)*1,
+          p1_e: (precios.p1_e).toFixed(6) * 1,
+          p2_e: (precios.p2_e).toFixed(6) * 1,
+          p3_e: (precios.p3_e).toFixed(6) * 1,
+          p4_e: (precios.p4_e).toFixed(6) * 1,
+          p5_e: (precios.p5_e).toFixed(6) * 1,
+          p6_e: (precios.p6_e).toFixed(6) * 1,
 
-          p1_p: (precios.p1).toFixed(6)*1,
-          p2_p: (precios.p2).toFixed(6)*1,
-          p3_p: (precios.p3).toFixed(6)*1,
-          p4_p: (precios.p4).toFixed(6)*1,
-          p5_p: (precios.p5).toFixed(6)*1,
-          p6_p: (precios.p6).toFixed(6)*1,
+          p1_p: (precios.p1).toFixed(6) * 1,
+          p2_p: (precios.p2).toFixed(6) * 1,
+          p3_p: (precios.p3).toFixed(6) * 1,
+          p4_p: (precios.p4).toFixed(6) * 1,
+          p5_p: (precios.p5).toFixed(6) * 1,
+          p6_p: (precios.p6).toFixed(6) * 1,
         })
       };
       //_______________LLAMADA INDEXADO__________
@@ -305,6 +300,10 @@ const SelectPropuesta = (
 
     };
     fetchPrecios();
+    setConfirmar(false)
+  }
+
+  const handleRefresh = () => {
     setSeleccion({
       sistema: "",
       tarifa: "",
@@ -314,6 +313,22 @@ const SelectPropuesta = (
       mes: "",
       fee: ""
     });
+    setPreciosPropuesta({
+      p1_e: 0,
+      p2_e: 0,
+      p3_e: 0,
+      p4_e: 0,
+      p5_e: 0,
+      p6_e: 0,
+
+      p1_p: 0,
+      p2_p: 0,
+      p3_p: 0,
+      p4_p: 0,
+      p5_p: 0,
+      p6_p: 0,
+    });
+    
     setTimeout(() => {
       setMostrarTabla(false);
 
@@ -321,7 +336,8 @@ const SelectPropuesta = (
       setTimeout(() => {
         setMostrarTabla(true);
       }, 100);
-    }, 100);
+    });
+    setConfirmar(true)
   }
 
 
@@ -429,8 +445,11 @@ const SelectPropuesta = (
         </article>
 
         <article>
+          {confirmar == true ?
+            <button id='confirmation_button' onClick={handlePropuesta}>Confirmar</button> :
+            <button id='confirmation_button' onClick={handleRefresh}>Refresh</button>
+          }
 
-          <button id='confirmation_button' onClick={handlePropuesta}>Confirmar</button>
 
 
         </article>
@@ -441,7 +460,7 @@ const SelectPropuesta = (
               <th className='tr_inputs bigger'>AHORRO FACTURA ACTUAL</th>
             </thead>
             <tbody>
-              <td className='td_radius saving'>{importeTotalFactura - importeTotalFactura_prop} €</td>
+              <td className='td_radius saving'>{(importeTotalFactura - importeTotalFactura_prop).toFixed(2) * 1} €</td>
             </tbody>
           </table>
         </article>
@@ -452,7 +471,7 @@ const SelectPropuesta = (
               <th className='tr_inputs bigger'>AHORRO ANUAL</th>
             </thead>
             <tbody>
-              <td className='td_radius saving'>{importeTotalAnual - importeTotalAnual_prop} €</td>
+              <td className='td_radius saving'>{(importeTotalAnual - importeTotalAnual_prop).toFixed(2) * 1} €</td>
             </tbody>
           </table>
         </article>
