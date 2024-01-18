@@ -8,7 +8,9 @@ const SelectPropuesta = (
     importeTotalAnual,
     setPreciosPropuesta,
     importeTotalFactura_prop,
-    importeTotalAnual_prop
+    importeTotalAnual_prop,
+    seleccion,
+    setSeleccion
   }
 ) => {
   const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -441,7 +443,7 @@ const SelectPropuesta = (
               <th className='tr_inputs bigger'>AHORRO FACTURA ACTUAL</th>
             </thead>
             <tbody>
-              <td className='td_radius saving'>{importeTotalFactura - importeTotalFactura_prop} €</td>
+              <td className='td_radius saving'>{(importeTotalFactura - importeTotalFactura_prop).toFixed(2)*1} €</td>
             </tbody>
           </table>
         </article>
@@ -452,7 +454,7 @@ const SelectPropuesta = (
               <th className='tr_inputs bigger'>AHORRO ANUAL</th>
             </thead>
             <tbody>
-              <td className='td_radius saving'>{importeTotalAnual - importeTotalAnual_prop} €</td>
+              <td className='td_radius saving'>{(importeTotalAnual - importeTotalAnual_prop).toFixed(2)*1} €</td>
             </tbody>
           </table>
         </article>
