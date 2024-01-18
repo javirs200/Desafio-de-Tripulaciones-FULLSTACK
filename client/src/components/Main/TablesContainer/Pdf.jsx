@@ -1,5 +1,6 @@
 import React from "react";
-import { Page, Text, View, Document, StyleSheet, Font } from "@react-pdf/renderer";
+import { Page, Text, View, Document, StyleSheet, Image} from "@react-pdf/renderer";
+import foto from "../../../assets/img/several_negro.png"
 
 
 const Pdf = ({
@@ -18,11 +19,14 @@ const Pdf = ({
   importeTotalAnual_prop,
   preciosPropuesta,
   inputHome,
-  importeTotalAnual
+  importeTotalAnual,
+  seleccion
 
 }) => {
 
 
+  const{ sistema, tarifa, cia, metodo, producto, mes, fee} = seleccion
+  
 
  
   const inputHomeArray = [inputHome];
@@ -113,7 +117,9 @@ const Pdf = ({
       margin:10,
       color:'#C10000',
       textAlign: 'center',
-      marginBottom:30
+      marginBottom:30,
+      fontSize:15,
+      
      
     },
     title2:{
@@ -126,29 +132,75 @@ const Pdf = ({
     text:{
       fontSize:10,
       flexDirection: 'row',
+      paddingBottom:5
 
     },
     personalData:{
-      flexDirection: 'row',
-
-    }
+      display: "flex",
+      flexDirection:'column',
+      justifyContent:"space-around",
+      borderBottomWidth:0.5,
+      borderBottomColor:'#CFC9C9',
+      marginTop:5
     
-  });
+    },
+    
+    image:{
+      width:150,
+      height:50
+    },
+
+    headerSection:{
+      display: "flex",
+      flexDirection:'row',
+      justifyContent:"space-around",
+      borderBottomWidth:0.5,
+      borderBottomColor:'#CFC9C9',
+      paddingBottom:15
+     
+            
+    },
+
+    titleSection2:{
+      display: "flex",
+      flexDirection:'row',
+      justifyContent:"space-around",
+      borderBottomColor:'#CFC9C9',
+      borderBottomWidth:0.5,
+      borderRadius:8,
+      paddingBottom:5
+      
+    
+    },
+    titleSection:{
+      display: "flex",
+      flexDirection:'row',
+      justifyContent:"flex-start",
+      borderBottomColor:'#CFC9C9',
+      borderBottomWidth:0.5,
+      borderRadius:8,
+      paddingBottom:5
+    }
+
+    
+  })
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
 
-        <View>
+        <View style={styles.headerSection}>
+          <Image style={styles.image} src={foto}></Image>
           <Text style={styles.title}>Oferta de contratación de suministro eléctrico</Text>
+          
         </View>
 
     
-          <View style={styles.personalData}>
+          <View >
             
             {inputHomeArray.map((obj, index) => (
-              <View key={index} >
+              <View key={index} style={styles.personalData} >
                <Text style={styles.text}>Nombre/Razón: {obj.name}</Text>
                <Text style={styles.text}>Dirección:{obj.address}</Text>
                <Text style={styles.text}>CUPS{obj.cups}</Text>
@@ -162,7 +214,10 @@ const Pdf = ({
         
           
           <View style={styles.table}>
-          <Text style={styles.title2}>Datos factura actual</Text>
+            <View style={styles.titleSection}>
+            <Text style={styles.title2}>Datos factura actual</Text>
+            </View>
+          
             {tableData.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
@@ -176,7 +231,13 @@ const Pdf = ({
           </View>
           
           <View style={styles.table}>
-          <Text style={styles.title2}>Propuesta Several</Text>
+            <View style={styles.titleSection2}>
+            <Text style={styles.title2}>Propuesta Several</Text>
+          <Text style={styles.title2}>Empresa: {cia}</Text>
+            </View>
+          
+          
+
             {tableData2.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
@@ -189,7 +250,9 @@ const Pdf = ({
           </View>
 
           <View style={styles.table}>
-          <Text style={styles.title2}>Ahorro</Text>
+          <View style={styles.titleSection}>
+            <Text style={styles.title2}>Ahorro</Text>
+            </View>
             {tableData3.map((row, rowIndex) => (
               <View key={rowIndex} style={styles.tableRow}>
                 {row.map((cell, colIndex) => (
