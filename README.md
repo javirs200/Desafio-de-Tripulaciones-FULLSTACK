@@ -32,7 +32,7 @@ Este proyecto fue desarrollado como parte del programa Fullstack en The Bridge p
 
 ## 🌐 Acceso a la Aplicación:
 
-Abra su navegador y visite https://cloudbuilds-client-folgybvrpq-ew.a.run.app/ para acceder a la aplicación. (solicite las credenciales de aceso a cualciera de nuestros devs)
+Abra su navegador y visite https://cloudbuilds-client-folgybvrpq-ew.a.run.app/ para acceder a la aplicación. (email admin@admin.com contraseña admin123)
 
 ## 🤝 Developers
 - Javier

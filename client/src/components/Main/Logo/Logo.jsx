@@ -1,11 +1,11 @@
 import React from "react";
-import foto from '../../../assets/img/several_rojo.png'
+import foto from '../../../assets/img/several_negro.png'
 import "./Logo.css";
 
 const Logo = () => {
   return <article id="red_logo_container">
     
- <img id="red_logo"src={foto} alt="logo" />
+ <img id="black_logo"src={foto} alt="logo" />
 
 </article>;
 };

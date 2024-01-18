@@ -109,6 +109,17 @@ const TablesContainer = () => {
 
   //__________________ ESTADOS DATOS FETCH PRECIOS________________
 
+  const [seleccion, setSeleccion] = useState({
+    sistema: "",
+    tarifa: "",
+    cia: "",
+    metodo: "",
+    producto: "",
+    mes: "",
+    fee: ""
+  })
+
+
   const [preciosPropuesta, setPreciosPropuesta] = useState({
     p1_e: 0,
     p2_e: 0,
@@ -185,6 +196,8 @@ const TablesContainer = () => {
         setPreciosPropuesta={setPreciosPropuesta}
         importeTotalFactura_prop={importeTotalFactura_prop}
         importeTotalAnual_prop={importeTotalAnual_prop}
+        seleccion={seleccion} 
+        setSeleccion={setSeleccion}
       />}
 
 
@@ -222,6 +235,7 @@ const TablesContainer = () => {
           importeTotalAnual_prop={importeTotalAnual_prop}
           preciosPropuesta={preciosPropuesta}
           inputHome={inputHome}
+          seleccion={seleccion}
         
         />} fileName="Propuesta Several">
           <button id="download_button">

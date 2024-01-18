@@ -2,6 +2,10 @@
     display: flex;
     justify-content: center;
     margin-top: 6%;
+    margin-bottom: 50px;
    
 }
 
+#black_logo{
+    width: 80%;
+}
