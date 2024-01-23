@@ -22,7 +22,7 @@ const database = require('./config/db_pgsql')
 database.connectSQL();
 
 const corsOptions ={
-  origin:'https://cloudbuilds-client-folgybvrpq-ew.a.run.app/', 
+  origin:'https://cloudbuilds-client-folgybvrpq-ew.a.run.app', 
   credentials:true,           
   optionSuccessStatus:200
 }
