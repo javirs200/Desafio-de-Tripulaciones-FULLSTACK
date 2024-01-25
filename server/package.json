@@ -1,13 +1,13 @@
 {
-  "name": "several-app",
+  "name": "several-app-api",
   "description": "---",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Fullstack",
   "license": "ISC",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
