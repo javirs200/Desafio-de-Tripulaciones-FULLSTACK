@@ -75,6 +75,6 @@ const sips = db.define("sips", {
 // This syncs our model with our database.
 // Users.sync({alter:true});
 sips.removeAttribute('id')
-sips.sync();
+sips.sync({alter:true});
 
 module.exports = sips;

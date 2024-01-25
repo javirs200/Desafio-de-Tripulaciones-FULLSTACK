@@ -60,6 +60,6 @@ const precio_energia = db.define("precio_energia", {
 // This syncs our model with our database.
 // Users.sync({alter:true});
 precio_energia.removeAttribute('id')
-precio_energia.sync();
+precio_energia.sync({alter:true});
 
 module.exports = precio_energia;

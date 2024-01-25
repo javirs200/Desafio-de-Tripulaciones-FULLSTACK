@@ -88,6 +88,6 @@ const precio_fijo = db.define("precio_fijo", {
 // This syncs our model with our database.
 // Users.sync({alter:true});
 precio_fijo.removeAttribute('id')
-precio_fijo.sync();
+precio_fijo.sync({alter:true});
 
 module.exports = precio_fijo;
