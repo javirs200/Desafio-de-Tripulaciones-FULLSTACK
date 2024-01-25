@@ -13,7 +13,7 @@ services:
       - ./data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
-      interval: 10s
+      interval: 2s
       timeout: 10s
       retries: 5
       start_period: 10s  
@@ -30,6 +30,12 @@ services:
       - ./server:/usr/src/app
     ports:
       - "4000:4000"
+    healthcheck:
+      test: wget --tries=1 --spider http://localhost:4000/api/login/logout || exit 1
+      interval: 2s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     depends_on:
       db:
         condition: service_healthy
@@ -45,7 +51,7 @@ services:
       - "5173:5173"
     depends_on:
       api:
-        condition: service_started
+        condition: service_healthy
         restart: true
 volumes:
   several_app:
