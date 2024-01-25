@@ -53,7 +53,7 @@ function TablaInputFactura({
       }
       
       if (validarFormato(CupsFetch) === true){
-      const response = await fetch('https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/sips/', {
+      const response = await fetch(`http://${import.meta.env.VITE_API_HOST}/api/sips/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -3,6 +3,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import { UserContext } from "../../../context/userContext";
+import.meta.env.VITE_API_HOST
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,9 +15,11 @@ const Login = () => {
     const fetchUsers = async () => {
       const user = { email: email, password: password };
 
+      console.log("entorno ? ",import.meta.env);
+
       if (isValidEmail(email)) {
         //peticion api para login con objeto usuario
-        const response = await fetch("https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/login", {
+        const response = await fetch(`http://${import.meta.env.VITE_API_HOST}/api/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),

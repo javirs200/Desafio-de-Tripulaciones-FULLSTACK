@@ -237,7 +237,9 @@ const SelectPropuesta = (
           producto: seleccion.producto
         }
 
-        const response = await fetch("http://localhost:3000/api/precios/fijos", {
+        
+
+        const response = await fetch(`http://${import.meta.env.VITE_API_HOST}/api/precios/fijos`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(parametrosFetch)
@@ -273,7 +275,7 @@ const SelectPropuesta = (
 
         console.log('parametros', parametrosFetch);
 
-        const response = await fetch("http://localhost:3000/api/precios/indexados", {
+        const response = await fetch(`http://${import.meta.env.VITE_API_HOST}/api/precios/indexados`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(parametrosFetch)

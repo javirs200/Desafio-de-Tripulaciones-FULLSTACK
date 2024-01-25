@@ -4,6 +4,8 @@ require('dotenv').config()
 //?sslmode=require
 const dbURI = `postgres://${process.env.SQL_USER}:${process.env.SQL_PASSWORD}@${process.env.SQL_HOST}/${process.env.SQL_NAME}`
 
+console.log('uri de la database',dbURI);
+
 const db = new Sequelize(dbURI, {logging:false});
 
 const connectSQL = async () => {

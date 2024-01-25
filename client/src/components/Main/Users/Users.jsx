@@ -11,7 +11,7 @@ const Users = () => {
     const fetchApi = async () => {
       try {
 
-        const response = await fetch("https://cloudbuilds-server-folgybvrpq-ew.a.run.app/api/users/all", {
+        const response = await fetch(`http://${import.meta.env.VITE_API_HOST}/api/users/all`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
